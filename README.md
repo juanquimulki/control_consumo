@@ -1,5 +1,9 @@
-Introduction
-============
+Control Consumo
+===============
+
+Este es un Sistema Web, que gestiona el control del consumo de máquinas y vehículos para la industria, implementando la plantilla AdminLTE.
+
+### Introduction
 
 ![Bower version](https://img.shields.io/bower/v/adminlte.svg)
 [![npm version](https://img.shields.io/npm/v/admin-lte.svg)](https://www.npmjs.com/package/admin-lte)
