@@ -29,7 +29,10 @@ desired effect
 <div class="wrapper">
 
 <?php include "est/main-header.php"; ?>
-<?php include "est/main-sidebar.php"; ?>
+<?php
+  $opcion1 = "active";
+  include "est/main-sidebar.php";
+?>
   
 
   <!-- Content Wrapper. Contains page content -->

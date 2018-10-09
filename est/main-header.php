@@ -18,13 +18,13 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="img/user_accounts.png" class="user-image" alt="User Image">
+            <img src="http://localhost/control_consumo/img/user_accounts.png" class="user-image" alt="User Image">
             <span class="hidden-xs">Usuario Genérico</span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-              <img src="img/user_accounts.png" class="img-circle" alt="User Image">
+              <img src="http://localhost/control_consumo/img/user_accounts.png" class="img-circle" alt="User Image">
 
               <p>
                 Usuario Genérico

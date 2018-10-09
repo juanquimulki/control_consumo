@@ -6,7 +6,7 @@
     <div class="user-panel">
       <div class="pull-left image">
         <!--img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"-->
-        <img src="img/user_accounts.png" class="img-circle" alt="User Image">
+        <img src="http://localhost/control_consumo/img/user_accounts.png" class="img-circle" alt="User Image">
         </div>
       <div class="pull-left info">
         <p>Usuario Genérico</p>
@@ -29,8 +29,8 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MENÚ PRINCIPAL</li>
-      <li class="active">
-        <a href="#">
+      <li class="<?php echo $opcion1; ?>">
+        <a href="http://localhost/control_consumo/index.php">
           <i class="fa fa-dashboard"></i> <span>Tablero</span>
           <!--span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
@@ -41,7 +41,7 @@
           <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
         </ul-->
       </li>
-      <li class="treeview">
+      <li class="<?php echo $opcion21; ?> treeview">
         <a href="#">
           <i class="fa fa-file"></i> <span>Archivos</span>
           <span class="pull-right-container">
@@ -49,7 +49,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Operarios</a></li>
+          <li class="<?php echo $opcion21; ?>"><a href="http://localhost/control_consumo/src/operarios/index.php"><i class="fa fa-circle-o"></i> Operarios</a></li>
         </ul>
       </li>
       <li class="">
