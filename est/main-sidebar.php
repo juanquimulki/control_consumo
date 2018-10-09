@@ -29,7 +29,7 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MENÚ PRINCIPAL</li>
-      <li class="active treeview">
+      <li class="active">
         <a href="#">
           <i class="fa fa-dashboard"></i> <span>Tablero</span>
           <!--span class="pull-right-container">
@@ -40,6 +40,66 @@
           <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
           <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
         </ul-->
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-file"></i> <span>Archivos</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="index.html"><i class="fa fa-circle-o"></i> Operarios</a></li>
+        </ul>
+      </li>
+      <li class="">
+        <a href="#">
+          <i class="fa fa-truck"></i> <span>Vehículos</span>
+          <!--span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span-->
+        </a>
+        <!--ul class="treeview-menu">
+          <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+          <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+        </ul-->
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-keyboard-o"></i> <span>Registros</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="index.html"><i class="fa fa-circle-o"></i> Trabajos Realizados</a></li>
+          <li><a href="index.html"><i class="fa fa-circle-o"></i> Cargas de Combustible</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-paper-plane"></i> <span>Reportes</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="index.html"><i class="fa fa-circle-o"></i> Reporte uno</a></li>
+          <li><a href="index.html"><i class="fa fa-circle-o"></i> Reporte dos</a></li>
+          <li><a href="index.html"><i class="fa fa-circle-o"></i> Reporte tres</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-gears"></i> <span>Configuración</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="index.html"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+          <li><a href="index.html"><i class="fa fa-circle-o"></i> BackUp</a></li>
+        </ul>
       </li>
     </ul>
   </section>
