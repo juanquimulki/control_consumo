@@ -13,7 +13,7 @@
         <a href="#"><i class="fa fa-circle text-success"></i> desde 08/10/2018 - 18:10</a>
       </div>
     </div>
-    
+
     <!-- search form -->
     <!--form action="#" method="get" class="sidebar-form">
       <div class="input-group">
@@ -25,12 +25,12 @@
       </div>
     </form-->
     <!-- /.search form -->
-    
+
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MENÚ PRINCIPAL</li>
       <li class="<?php echo $opcion1; ?>">
-        <a href="http://localhost/control_consumo/index.php">
+        <a href="http://localhost/control_consumo/app/index.php?c=tablero&a=index">
           <i class="fa fa-dashboard"></i> <span>Tablero</span>
           <!--span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
@@ -49,7 +49,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="<?php echo $opcion21; ?>"><a href="http://localhost/control_consumo/src/operarios/index.php"><i class="fa fa-circle-o"></i> Operarios</a></li>
+          <li class="<?php echo $opcion21; ?>"><a href="http://localhost/control_consumo/app/index.php?c=operarios&a=index"><i class="fa fa-circle-o"></i> Operarios</a></li>
         </ul>
       </li>
       <li class="">
