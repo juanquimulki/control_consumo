@@ -52,8 +52,8 @@
           <li class="<?php echo $opcion21; ?>"><a href="http://localhost/control_consumo/app/index.php?c=operarios&a=index"><i class="fa fa-circle-o"></i> Operarios</a></li>
         </ul>
       </li>
-      <li class="">
-        <a href="#">
+      <li class="<?php echo $opcion3; ?>">
+        <a href="http://localhost/control_consumo/app/index.php?c=vehiculos&a=index">
           <i class="fa fa-truck"></i> <span>Vehículos</span>
           <!--span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
