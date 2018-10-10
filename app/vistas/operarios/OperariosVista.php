@@ -52,6 +52,10 @@
           the plugin.
         </div-->
       </div>
+
+      <div id="alerta">
+      </div>
+      
     </div>
   </div>
 
