@@ -13,3 +13,11 @@
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
+     
+<?php
+if ($scripts) {
+  foreach ($scripts as $s) {
+    echo "<script src='http://localhost/control_consumo/app/js/$s'></script>";
+  }
+} 
+?>
