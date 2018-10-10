@@ -57,35 +57,15 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <table id="example1" class="table table-bordered table-hover">
-            <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Abreviatura</th>
-            </tr>
-            </thead>
-            <tbody>
-              <?php
-              while ($registro = $operarios->fetch()) {
-                echo "<tr>
-                <td>".utf8_encode($registro['idOperario'])."</td>
-                <td>".utf8_encode($registro['nombre'])."</td>
-                <td>".utf8_encode($registro['abreviatura'])."</td>
-                </tr>";
-              }
-              ?>
-            </tbody>
-            <!-- <tfoot>
-            <tr>
-              <th>Rendering engine</th>
-              <th>Browser</th>
-              <th>Platform(s)</th>
-              <th>Engine version</th>
-              <th>CSS grade</th>
-            </tr>
-            </tfoot> -->
-          </table>
+          
+          <?php
+          $nombre      = "tabla_registros";
+          $campos      = array("idOperario","nombre","abreviatura");
+          $encabezados = array("ID","Nombre","Abreviatura");
+          $registros   = $operarios;
+          include "tabla_registros.php";
+          ?>
+
         </div>
         <!-- /.box-body -->
       </div>
