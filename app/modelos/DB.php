@@ -19,11 +19,20 @@ class DB {
       }    
   }
   
-  public function consulta($sql,$bind) {
+  public function select($sql,$bind) {
     $cnn = DB::conexion();
     $consulta = $cnn->prepare($sql);
     $consulta-> execute($bind);
     return $consulta;
+  }
+
+  public function insert($sql,$bind) {
+    $cnn = DB::conexion();
+    $consulta = $cnn->prepare($sql);
+    if ($consulta-> execute($bind))
+      return $cnn->lastInsertId();
+    else
+      return 0;
   }
 }
 ?>

@@ -1,5 +1,38 @@
-$(function () {
+function guardar() {
+  var nombre      = $("#nombre").val();
+  var abreviatura = $("#abreviatura").val();
+  
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=operarios&a=guardar",
+    data: "nombre="+nombre+"&abreviatura="+abreviatura,
+    success: function(data) {
+      $("#id").val(data);
+      mostrar();
+    }
+  })  
+}
+
+function cancelar() {
+  $("#id").val("#");
+  $("#nombre").val("");
+  $("#abreviatura").val("");
+}
+
+function mostrar() {
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=operarios&a=mostrar",
+    success: function(data) {
+      $("#mostrar").html(data);
+      datatable();
+    }
+  })   
+}
+
+function datatable() {
   $('#tabla_registros').DataTable({
+      "order": [[ 1, "asc" ]],
       'paging'      : true,
       'lengthChange': false,
       'searching'   : false,
@@ -26,5 +59,9 @@ $(function () {
               "previous": "Anterior"
           }
       }
-    });
+    });  
+}
+
+$(function () {
+  mostrar();
 })

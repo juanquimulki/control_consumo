@@ -23,23 +23,29 @@
           <div class="box-body">
             <form class="form-horizontal">
               <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                <label for="id" class="col-sm-2 control-label">ID</label>
                 <div class="col-sm-10">
-                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                  <input type="text" class="form-control" id="id" placeholder="" style="width:100px;" value="#" disabled />
                 </div>
               </div>
               <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                <label for="nombre" class="col-sm-2 control-label">Nombre</label>
                 <div class="col-sm-10">
-                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                  <input type="text" class="form-control" id="nombre" placeholder="Nombre..." maxlength="50">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="abreviatura" class="col-sm-2 control-label">Abreviatura</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="abreviatura" placeholder="Abreviatura..." maxlength="20">
                 </div>
               </div>
           </form>
           </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          <button type="submit" class="btn btn-default">Cancelar</button>
-          <button type="submit" class="btn btn-info pull-right">Agregar</button>
+          <button class="btn btn-default" onclick="cancelar()">Cancelar</button>
+          <button class="btn btn-info pull-right" onclick="guardar()">Guardar</button>
         </div>
         <!--div class="box-footer">
           Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
@@ -49,26 +55,6 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="box">
-        <div class="box-header">
-          <h3 class="box-title">Registros guardados...</h3>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          
-          <?php
-          $nombre      = "tabla_registros";
-          $campos      = array("idOperario","nombre","abreviatura");
-          $encabezados = array("ID","Nombre","Abreviatura");
-          $registros   = $operarios;
-          include "tabla_registros.php";
-          ?>
-
-        </div>
-        <!-- /.box-body -->
-      </div>
-    </div>
-  </div>
+<div id="mostrar">
+</div>
 </section>
