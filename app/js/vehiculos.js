@@ -1,12 +1,19 @@
+function buscarCodigo(id) {
+  $("#codigo").val(id);
+  var texto = $("#maquina option:selected").text();
+  $("#descripcion").val(texto);
+}
+
 function guardar() {
   $("#alerta").hide();
-  var nombre      = $("#nombre").val();
-  var abreviatura = $("#abreviatura").val();
+  var codigo      = $("#codigo").val();
+  var descripcion = $("#descripcion").val();
+  var iniciales   = $("#iniciales").val();
   
   $.ajax({
     type: "POST",
-    url: "index.php?c=operarios&a=guardar",
-    data: "nombre="+nombre+"&abreviatura="+abreviatura,
+    url: "index.php?c=vehiculos&a=guardar",
+    data: "codigo="+codigo+"&descripcion="+descripcion+"&iniciales="+iniciales,
     success: function(data) {
       if (data!=0) {
         $("#id").val(data);
@@ -22,14 +29,16 @@ function guardar() {
 
 function cancelar() {
   $("#id").val("#");
-  $("#nombre").val("");
-  $("#abreviatura").val("");
+  $("#maquina").val(0);
+  $("#codigo").val("0");
+  $("#descripcion").val("");
+  $("#iniciales").val("");
 }
 
 function mostrar() {
   $.ajax({
     type: "POST",
-    url: "index.php?c=operarios&a=mostrar",
+    url: "index.php?c=vehiculos&a=mostrar",
     beforeSend: function() {
       $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
     },
@@ -83,5 +92,5 @@ function datatable() {
 
 $(function () {
   $("#alerta").hide();
-  //mostrar();
+  mostrar();
 })

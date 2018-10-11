@@ -31,7 +31,7 @@
               <div class="form-group">
                 <label for="maquina" class="col-sm-2 control-label">Máquina</label>
                 <div class="col-sm-10">
-                  <select class="form-control" id="maquina">
+                  <select class="form-control" id="maquina" onchange='buscarCodigo(this.value)'>
                     <option value='0'>Seleccione...</option>
                     <?php
                     while ($registro=$maquinas->fetch()) {
@@ -44,13 +44,13 @@
               <div class="form-group">
                 <label for="codigo" class="col-sm-2 control-label">Código</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="id" placeholder="" style="width:100px;" value="0" disabled />
+                  <input type="text" class="form-control" id="codigo" placeholder="" style="width:100px;" value="0" disabled />
                 </div>
               </div>
               <div class="form-group">
                 <label for="descripcion" class="col-sm-2 control-label">Descripción</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="descripcion" placeholder="Descripción..." />
+                  <input type="text" class="form-control" id="descripcion" placeholder="Descripción..." maxlength="50" />
                 </div>
               </div>
               <div class="form-group">

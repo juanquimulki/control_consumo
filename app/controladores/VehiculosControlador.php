@@ -14,15 +14,15 @@ class VehiculosControlador {
   }
   
   public function guardar() {
-    require_once "modelos/OperariosModelo.php";
-    $id = OperariosModelo::insertOperario($_POST['nombre'],$_POST['abreviatura']);
+    require_once "modelos/VehiculosModelo.php";
+    $id = VehiculosModelo::insertVehiculo($_POST['codigo'],$_POST['descripcion'],$_POST['iniciales']);
     echo $id;
   }
   
   public function mostrar() {
-    require_once "modelos/OperariosModelo.php";
-    $operarios = OperariosModelo::getOperarios();
-    require_once "vistas/operarios/mostrarRegistros.php";
+    require_once "modelos/VehiculosModelo.php";
+    $vehiculos = VehiculosModelo::getVehiculos();
+    require_once "vistas/vehiculos/mostrarRegistros.php";
   }
 }
 ?>
