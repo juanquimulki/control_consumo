@@ -64,7 +64,7 @@
           <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
         </ul-->
       </li>
-      <li class="treeview">
+      <li class="<?php echo $opcion41; ?> treeview">
         <a href="#">
           <i class="fa fa-keyboard-o"></i> <span>Registros</span>
           <span class="pull-right-container">
@@ -72,7 +72,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Cargas de Combustible</a></li>
+          <li class="<?php echo $opcion41; ?>"><a href="http://localhost/control_consumo/app/index.php?c=cargas&a=index"><i class="fa fa-circle-o"></i> Cargas de Combustible</a></li>
           <li><a href="index.html"><i class="fa fa-circle-o"></i> Trabajos Realizados</a></li>
         </ul>
       </li>
