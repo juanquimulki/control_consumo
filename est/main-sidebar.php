@@ -72,8 +72,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Trabajos Realizados</a></li>
           <li><a href="index.html"><i class="fa fa-circle-o"></i> Cargas de Combustible</a></li>
+          <li><a href="index.html"><i class="fa fa-circle-o"></i> Trabajos Realizados</a></li>
         </ul>
       </li>
       <li class="treeview">
