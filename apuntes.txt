@@ -4,3 +4,5 @@ validaciones de datos
 actualizacion de js mediante mt_rand
 completar el CRUD
 login y seguridad
+lenguaje de datepicker
+máscara de fechas

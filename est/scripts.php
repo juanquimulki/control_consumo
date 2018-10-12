@@ -7,6 +7,8 @@
 <!-- DataTables -->
 <script src="http://localhost/control_consumo/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="http://localhost/control_consumo/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- bootstrap datepicker -->
+<script src="http://localhost/control_consumo/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- AdminLTE App -->
 <script src="http://localhost/control_consumo/dist/js/adminlte.min.js"></script>
 

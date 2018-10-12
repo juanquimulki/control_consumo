@@ -5,6 +5,10 @@ class CargasControlador {
     $opcion41 = "active";
     require_once "layouts/layout_head.php";
     
+    require_once "modelos/OperariosModelo.php";
+    require_once "modelos/VehiculosModelo.php";
+    $operarios = OperariosModelo::getOperarios();
+    $vehiculos = VehiculosModelo::getVehiculos();
     require_once "vistas/cargas/CargasVista.php";
     
     $scripts = array("cargas.js");

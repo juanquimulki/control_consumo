@@ -1,5 +1,5 @@
 <?php 
-include "modelos/DB.php";
+require_once "modelos/DB.php";
 
 class OperariosModelo {
   public function getOperarios() {

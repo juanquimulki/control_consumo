@@ -1,5 +1,5 @@
 <?php 
-include "modelos/DBmant.php";
+require_once "modelos/DBmant.php";
 
 class MaquinasModelo {
   public function getMaquinas() {
