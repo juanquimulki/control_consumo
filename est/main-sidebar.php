@@ -9,8 +9,8 @@
         <img src="http://localhost/control_consumo/img/user_accounts.png" class="img-circle" alt="User Image">
         </div>
       <div class="pull-left info">
-        <p>Usuario Genérico</p>
-        <a href="#"><i class="fa fa-circle text-success"></i> desde 08/10/2018 - 18:10</a>
+        <p><?php echo $_SESSION['usuario']; ?></p>
+        <a href="#"><i class="fa fa-circle text-success"></i> desde <?php echo $_SESSION['desde']; ?></a>
       </div>
     </div>
 

@@ -19,7 +19,7 @@
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <img src="http://localhost/control_consumo/img/user_accounts.png" class="user-image" alt="User Image">
-            <span class="hidden-xs">Usuario Genérico</span>
+            <span class="hidden-xs"><?php echo $_SESSION['usuario']; ?></span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
@@ -27,7 +27,7 @@
               <img src="http://localhost/control_consumo/img/user_accounts.png" class="img-circle" alt="User Image">
 
               <p>
-                Usuario Genérico
+                <?php echo $_SESSION['usuario']; ?>
                 <small>Nivel de Acceso</small>
               </p>
             </li>

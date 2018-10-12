@@ -1,4 +1,4 @@
-<?php header("Location: app/index.php?c=tablero&a=index"); ?>
+<?php header("Location: app/index.php?c=usuarios&a=login"); ?>
 
 <!DOCTYPE html>
 <!--

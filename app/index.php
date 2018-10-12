@@ -1,4 +1,6 @@
 <?php
+session_start("cc");
+
 $controlador = ucfirst($_GET['c'])."Controlador";
 $accion      = $_GET['a'];
 
