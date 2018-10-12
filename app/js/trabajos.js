@@ -2,15 +2,14 @@ function guardar() {
   $("#alerta").hide();
   var fecha         = $("#fecha").val();
   var idvehiculo    = $("#idvehiculo").val();
-  var litros        = $("#litros").val();
-  var precinto      = $("#precinto").val();
+  var kmshrs        = $("#kmshrs").val();
   var idoperario    = $("#idoperario").val();
   var observaciones = $("#observaciones").val();
   
   $.ajax({
     type: "POST",
-    url: "index.php?c=cargas&a=guardar",
-    data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&litros="+litros+"&precinto="+precinto+"&idoperario="+idoperario+"&observaciones="+observaciones,
+    url: "index.php?c=trabajos&a=guardar",
+    data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&kmshrs="+kmshrs+"&idoperario="+idoperario+"&observaciones="+observaciones,
     success: function(data) {
       if (data!=0) {
         $("#id").val(data);
@@ -28,8 +27,7 @@ function cancelar() {
   $("#id").val("#");
   $("#fecha").val("");
   $("#idvehiculo").val("0");
-  $("#litros").val("");
-  $("#precinto").val("");
+  $("#kmshrs").val("");
   $("#idoperario").val("0");
   $("#observaciones").val("");
 }
@@ -37,7 +35,7 @@ function cancelar() {
 function mostrar() {
   $.ajax({
     type: "POST",
-    url: "index.php?c=cargas&a=mostrar",
+    url: "index.php?c=trabajos&a=mostrar",
     beforeSend: function() {
       $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
     },

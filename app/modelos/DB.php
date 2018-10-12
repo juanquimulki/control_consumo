@@ -31,8 +31,10 @@ class DB {
     $consulta = $cnn->prepare($sql);
     if ($consulta-> execute($bind))
       return $cnn->lastInsertId();
-    else
+    else {
+      print_r($consulta->errorInfo());
       return 0;
+    }
   }
 }
 ?>
