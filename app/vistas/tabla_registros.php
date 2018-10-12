@@ -13,7 +13,10 @@
     while ($r = $registros->fetch()) {
       echo "<tr>";
       foreach ($campos as $c) {
-        echo "<td>".utf8_encode($r[$c])."</td>";
+        if ($c=="fecha")
+          echo "<td>".date("d/m/Y",strtotime($r[$c]))."</td>";
+        else
+          echo "<td>".utf8_encode($r[$c])."</td>";
       }
       echo "</tr>";
     }

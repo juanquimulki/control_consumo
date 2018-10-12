@@ -6,14 +6,17 @@ function buscarCodigo(id) {
 
 function guardar() {
   $("#alerta").hide();
-  var codigo      = $("#codigo").val();
-  var descripcion = $("#descripcion").val();
-  var iniciales   = $("#iniciales").val();
+  var fecha         = $("#fecha").val();
+  var idvehiculo    = $("#idvehiculo").val();
+  var litros        = $("#litros").val();
+  var precinto      = $("#precinto").val();
+  var idoperario    = $("#idoperario").val();
+  var observaciones = $("#observaciones").val();
   
   $.ajax({
     type: "POST",
-    url: "index.php?c=vehiculos&a=guardar",
-    data: "codigo="+codigo+"&descripcion="+descripcion+"&iniciales="+iniciales,
+    url: "index.php?c=cargas&a=guardar",
+    data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&litros="+litros+"&precinto="+precinto+"&idoperario="+idoperario+"&observaciones="+observaciones,
     success: function(data) {
       if (data!=0) {
         $("#id").val(data);
@@ -40,7 +43,7 @@ function cancelar() {
 function mostrar() {
   $.ajax({
     type: "POST",
-    url: "index.php?c=vehiculos&a=mostrar",
+    url: "index.php?c=cargas&a=mostrar",
     beforeSend: function() {
       $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
     },
@@ -62,7 +65,7 @@ function alerta(tipo,titulo,mensaje,icono) {
 
 function datatable() {
   $('#tabla_registros').DataTable({
-      "order": [[ 1, "asc" ]],
+      "order": [],
       'paging'      : true,
       'lengthChange': false,
       'searching'   : false,

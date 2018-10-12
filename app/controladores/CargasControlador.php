@@ -16,15 +16,17 @@ class CargasControlador {
   }
   
   public function guardar() {
-    require_once "modelos/OperariosModelo.php";
-    $id = OperariosModelo::insertOperario($_POST['nombre'],$_POST['abreviatura']);
+    require_once "modelos/Fechas.php";
+    $fecha = Fechas::fecha_mysql($_POST['fecha']);
+    require_once "modelos/CargasModelo.php";
+    $id = CargasModelo::insertCarga($fecha,$_POST['idvehiculo'],$_POST['litros'],$_POST['precinto'],$_POST['idoperario'],$_POST['observaciones']);
     echo $id;
   }
   
   public function mostrar() {
-    require_once "modelos/OperariosModelo.php";
-    $operarios = OperariosModelo::getOperarios();
-    require_once "vistas/operarios/mostrarRegistros.php";
+    require_once "modelos/CargasModelo.php";
+    $cargas = CargasModelo::getCargas();
+    require_once "vistas/cargas/mostrarRegistros.php";
   }
 }
 ?>
