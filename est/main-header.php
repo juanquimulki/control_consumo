@@ -52,7 +52,7 @@
                 <a href="#" class="btn btn-default btn-flat">Profile</a>
               </div-->
               <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                <a href="http://localhost/control_consumo/app/index.php?c=usuarios&a=cerrar" class="btn btn-default btn-flat">Cerrar Sesión</a>
               </div>
             </li>
           </ul>

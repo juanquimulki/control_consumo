@@ -41,6 +41,11 @@ class UsuariosControlador {
     }
   }
   
+  public function cerrar() {
+    session_destroy();
+    header("Location: index.php?c=usuarios&a=login");
+  }
+  
   public function guardar() {
     require_once "modelos/OperariosModelo.php";
     $id = OperariosModelo::insertOperario($_POST['nombre'],$_POST['abreviatura']);
