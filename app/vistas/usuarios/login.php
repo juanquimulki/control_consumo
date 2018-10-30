@@ -45,7 +45,20 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-8" style="color:red;">
+          <?php 
+          switch ($_GET['e']) {
+            case "null":
+              echo "Debe ingresar los datos...";
+              break;
+            case "user":
+              echo "El usuario no existe...";
+              break;
+            case "pass":
+              echo "La clave es incorrecta...";
+              break;
+          }
+          ?>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
