@@ -57,6 +57,9 @@
             case "pass":
               echo "La clave es incorrecta...";
               break;
+            case "session":
+              echo "Primero debe loguearse...";
+              break;
           }
           ?>
         </div>

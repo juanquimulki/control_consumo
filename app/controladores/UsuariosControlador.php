@@ -22,6 +22,7 @@ class UsuariosControlador {
   
       if ($usuario['user']==$_POST['user']) {
         if ($usuario['pass']==$_POST['pass']) {
+          $_SESSION['auth']    = true;
           $_SESSION['user']    = $usuario['user'];
           $_SESSION['usuario'] = $usuario['nombre'];
           $_SESSION['desde']   = date("d/m/Y")." - ".date("H:i");
