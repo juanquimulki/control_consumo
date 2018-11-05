@@ -5,6 +5,12 @@ class ReportesControlador {
     $opcion51 = "active";
     require_once "layouts/layout_head.php";
     
+    require_once "modelos/Fechas.php";
+    $anios = Fechas::get_anios();
+    $meses = Fechas::get_meses();
+    require_once "modelos/VehiculosModelo.php";
+    $vehiculos = VehiculosModelo::getVehiculos();
+    
     require_once "vistas/reportes/planilla.php";
     
     $scripts = array("reportes.js");

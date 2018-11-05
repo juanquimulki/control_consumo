@@ -18,7 +18,15 @@ class Fechas {
         
         return $meses;
     }
-    
+
+    function get_anios()
+    {
+        $anios = array();
+        for ($i=2000;$i<=2100;$i++)
+          $anios[]=$i;
+        return $anios;
+    }
+        
     function fecha_mysql($fecha) {
         $dia = substr($fecha,0,2);
         $mes = substr($fecha,3,2);

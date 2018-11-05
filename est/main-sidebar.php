@@ -85,8 +85,8 @@
         </a>
         <ul class="treeview-menu">
           <li class="<?php echo $opcion51; ?>"><a href="http://localhost/control_consumo/app/index.php?c=reportes&a=planilla"><i class="fa fa-circle-o"></i> Planilla Mensual</a></li>
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Reporte dos</a></li>
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Reporte tres</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Reporte dos</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Reporte tres</a></li>
         </ul>
       </li>
       <li class="treeview">
@@ -97,8 +97,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> BackUp</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> BackUp</a></li>
         </ul>
       </li>
     </ul>
