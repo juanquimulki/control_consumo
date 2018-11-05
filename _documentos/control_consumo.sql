@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50067
 File Encoding         : 65001
 
-Date: 2018-11-05 10:30:08
+Date: 2018-11-05 12:48:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,18 +28,18 @@ CREATE TABLE `cargas` (
   `idOperario` int(11) default NULL,
   `observaciones` text,
   PRIMARY KEY  (`idCarga`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of cargas
 -- ----------------------------
-INSERT INTO `cargas` VALUES ('6', '1963-01-01', '5', '123', '321', '10', 'asdasd');
-INSERT INTO `cargas` VALUES ('3', '1969-12-31', '5', '123', '321', '8', 'asdasd');
-INSERT INTO `cargas` VALUES ('4', '2018-10-31', '5', '123', '321', '8', 'asdasd');
-INSERT INTO `cargas` VALUES ('5', '2018-10-09', '5', '123', '321', '10', 'asdasd');
-INSERT INTO `cargas` VALUES ('7', '1963-01-01', '1', '123', '321', '10', 'asdasd');
-INSERT INTO `cargas` VALUES ('8', '2018-10-18', '6', '333', '555', '1', 'estoy escribiendo detalles bastante largosssss\nveremos quÃ© sucede.');
-INSERT INTO `cargas` VALUES ('9', '2018-10-09', '1', null, null, '13', 'dsfasdfsadf');
+INSERT INTO `cargas` VALUES ('10', '2018-11-01', '6', '100', '0', '1', '');
+INSERT INTO `cargas` VALUES ('11', '2018-11-10', '6', '200', '0', '1', '');
+INSERT INTO `cargas` VALUES ('12', '2018-11-15', '6', '50', '0', '1', '');
+INSERT INTO `cargas` VALUES ('13', '2018-11-21', '6', '1000', '0', '1', '');
+INSERT INTO `cargas` VALUES ('14', '2018-11-25', '6', '200', '0', '1', '');
+INSERT INTO `cargas` VALUES ('15', '2018-11-25', '6', '200', '0', '1', '');
+INSERT INTO `cargas` VALUES ('16', '2018-11-25', '6', '200', '0', '1', '');
 
 -- ----------------------------
 -- Table structure for `operarios`
@@ -75,21 +75,23 @@ INSERT INTO `operarios` VALUES ('13', 'Arnaldo Ruiz', 'A.Ruiz');
 DROP TABLE IF EXISTS `trabajos`;
 CREATE TABLE `trabajos` (
   `idTrabajo` int(11) NOT NULL auto_increment,
-  `fecha` int(11) default NULL,
+  `fecha` date default NULL,
   `idVehiculo` int(11) default NULL,
   `kmshrs` int(11) default NULL,
   `idOperario` int(11) default NULL,
   `observaciones` text,
   PRIMARY KEY  (`idTrabajo`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of trabajos
 -- ----------------------------
-INSERT INTO `trabajos` VALUES ('1', '2018', '2', '333', '9', 'dasf');
-INSERT INTO `trabajos` VALUES ('2', '0', '0', '0', '0', '');
-INSERT INTO `trabajos` VALUES ('3', '2018', '7', '4433', '12', 'dsaf');
-INSERT INTO `trabajos` VALUES ('4', '2018', '7', '4433', '12', 'dsafss');
+INSERT INTO `trabajos` VALUES ('5', '2018-11-05', '6', '500', '1', '');
+INSERT INTO `trabajos` VALUES ('6', '2018-11-20', '6', '700', '1', '');
+INSERT INTO `trabajos` VALUES ('7', '2018-11-22', '6', '850', '1', '');
+INSERT INTO `trabajos` VALUES ('8', '2018-11-23', '6', '1000', '1', '');
+INSERT INTO `trabajos` VALUES ('9', '2018-11-26', '6', '1300', '1', '');
+INSERT INTO `trabajos` VALUES ('10', '2018-11-26', '6', '1600', '1', '');
 
 -- ----------------------------
 -- Table structure for `vehiculos`
@@ -114,3 +116,9 @@ INSERT INTO `vehiculos` VALUES ('5', '233', 'Amasadora MORANDO AST (Sector Humed
 INSERT INTO `vehiculos` VALUES ('6', '624', 'Pasillo de Carga (Secadero)', '222');
 INSERT INTO `vehiculos` VALUES ('7', '0', 'undefined', '0');
 INSERT INTO `vehiculos` VALUES ('8', null, null, null);
+
+-- ----------------------------
+-- View structure for `consulta`
+-- ----------------------------
+DROP VIEW IF EXISTS `consulta`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `consulta` AS select `cargas`.`idCarga` AS `id`,`cargas`.`fecha` AS `fecha`,`cargas`.`idVehiculo` AS `idvehiculo`,`cargas`.`litros` AS `valor`,1 AS `tipo` from `cargas` union select `trabajos`.`idTrabajo` AS `id`,`trabajos`.`fecha` AS `fecha`,`trabajos`.`idVehiculo` AS `idVehiculo`,`trabajos`.`kmshrs` AS `valor`,2 AS `tipo` from `trabajos` order by `fecha`,`tipo` ;

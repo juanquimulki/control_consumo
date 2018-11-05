@@ -16,5 +16,12 @@ class ReportesControlador {
     $scripts = array("reportes.js");
     require_once "layouts/layout_foot.php";
   }
+  
+  public function mostrar() {
+    require_once "modelos/ReportesModelo.php";
+    $reporte = ReportesModelo::getConsulta();
+    $inicial = ReportesModelo::getInicial();
+    require_once "vistas/reportes/mostrar.php";
+  }
 }
 ?>

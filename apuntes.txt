@@ -1,6 +1,7 @@
 index en todas las carpetas
 control de errores de mvc
 validaciones de datos
+  inclusive controles lógicos, como km siempre mayores al anterior
 actualizacion de js mediante mt_rand
 completar el CRUD
 login y seguridad

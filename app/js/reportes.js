@@ -19,3 +19,16 @@ function cancelar() {
   $("#anio_hasta").val(fecha.getFullYear());
   $("#mes_hasta").val(fecha.getMonth()+1);
 }
+
+function mostrar() {
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=reportes&a=mostrar",
+    beforeSend: function() {
+      $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
+    },
+    success: function(data) {
+      $("#mostrar").html(data);
+    }
+  })   
+}
