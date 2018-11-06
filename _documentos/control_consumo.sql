@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50067
 File Encoding         : 65001
 
-Date: 2018-11-05 12:48:59
+Date: 2018-11-06 20:55:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,9 +37,6 @@ INSERT INTO `cargas` VALUES ('10', '2018-11-01', '6', '100', '0', '1', '');
 INSERT INTO `cargas` VALUES ('11', '2018-11-10', '6', '200', '0', '1', '');
 INSERT INTO `cargas` VALUES ('12', '2018-11-15', '6', '50', '0', '1', '');
 INSERT INTO `cargas` VALUES ('13', '2018-11-21', '6', '1000', '0', '1', '');
-INSERT INTO `cargas` VALUES ('14', '2018-11-25', '6', '200', '0', '1', '');
-INSERT INTO `cargas` VALUES ('15', '2018-11-25', '6', '200', '0', '1', '');
-INSERT INTO `cargas` VALUES ('16', '2018-11-25', '6', '200', '0', '1', '');
 
 -- ----------------------------
 -- Table structure for `operarios`
@@ -86,12 +83,26 @@ CREATE TABLE `trabajos` (
 -- ----------------------------
 -- Records of trabajos
 -- ----------------------------
-INSERT INTO `trabajos` VALUES ('5', '2018-11-05', '6', '500', '1', '');
-INSERT INTO `trabajos` VALUES ('6', '2018-11-20', '6', '700', '1', '');
-INSERT INTO `trabajos` VALUES ('7', '2018-11-22', '6', '850', '1', '');
-INSERT INTO `trabajos` VALUES ('8', '2018-11-23', '6', '1000', '1', '');
-INSERT INTO `trabajos` VALUES ('9', '2018-11-26', '6', '1300', '1', '');
-INSERT INTO `trabajos` VALUES ('10', '2018-11-26', '6', '1600', '1', '');
+INSERT INTO `trabajos` VALUES ('5', '2018-11-01', '6', '500', '1', '');
+INSERT INTO `trabajos` VALUES ('6', '2018-11-10', '6', '700', '1', '');
+INSERT INTO `trabajos` VALUES ('7', '2018-11-15', '6', '850', '1', '');
+INSERT INTO `trabajos` VALUES ('8', '2018-11-21', '6', '1000', '1', '');
+
+-- ----------------------------
+-- Table structure for `usuarios`
+-- ----------------------------
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE `usuarios` (
+  `idUsuario` int(11) NOT NULL default '0',
+  `nombre` varchar(50) default NULL,
+  `user` varchar(20) default NULL,
+  `pass` varchar(50) default NULL,
+  PRIMARY KEY  (`idUsuario`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of usuarios
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `vehiculos`
@@ -121,4 +132,10 @@ INSERT INTO `vehiculos` VALUES ('8', null, null, null);
 -- View structure for `consulta`
 -- ----------------------------
 DROP VIEW IF EXISTS `consulta`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `consulta` AS select `cargas`.`idCarga` AS `id`,`cargas`.`fecha` AS `fecha`,`cargas`.`idVehiculo` AS `idvehiculo`,`cargas`.`litros` AS `valor`,1 AS `tipo` from `cargas` union select `trabajos`.`idTrabajo` AS `id`,`trabajos`.`fecha` AS `fecha`,`trabajos`.`idVehiculo` AS `idVehiculo`,`trabajos`.`kmshrs` AS `valor`,2 AS `tipo` from `trabajos` order by `fecha`,`tipo` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `consulta` AS select `cargas`.`idCarga` AS `idCarga`,`trabajos`.`idTrabajo` AS `idTrabajo`,`cargas`.`fecha` AS `fecha`,`cargas`.`idVehiculo` AS `idVehiculo`,`cargas`.`litros` AS `litros`,`trabajos`.`kmshrs` AS `kmshrs` from (`cargas` join `trabajos` on(((`cargas`.`fecha` = `trabajos`.`fecha`) and (`cargas`.`idVehiculo` = `trabajos`.`idVehiculo`)))) ;
+
+-- ----------------------------
+-- View structure for `_consulta`
+-- ----------------------------
+DROP VIEW IF EXISTS `_consulta`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `_consulta` AS select `cargas`.`idCarga` AS `id`,`cargas`.`fecha` AS `fecha`,`cargas`.`idVehiculo` AS `idvehiculo`,`cargas`.`litros` AS `valor`,1 AS `tipo` from `cargas` union select `trabajos`.`idTrabajo` AS `id`,`trabajos`.`fecha` AS `fecha`,`trabajos`.`idVehiculo` AS `idVehiculo`,`trabajos`.`kmshrs` AS `valor`,2 AS `tipo` from `trabajos` order by `fecha`,`tipo` ;
