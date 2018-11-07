@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="http://localhost/control_consumo/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="http://localhost/control_consumo/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Morris charts -->
+  <link rel="stylesheet" href="http://localhost/control_consumo/bower_components/morris.js/morris.css">
   <!-- bootstrap datepicker -->
   <link rel="stylesheet" href="http://localhost/control_consumo/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <!-- DataTables -->

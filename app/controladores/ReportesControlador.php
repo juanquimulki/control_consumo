@@ -23,5 +23,28 @@ class ReportesControlador {
     $inicial = ReportesModelo::getInicial();
     require_once "vistas/reportes/mostrar.php";
   }
+  
+  public function json() {
+    require_once "modelos/ReportesModelo.php";
+    $consulta = ReportesModelo::getConsulta();
+    $inicial  = ReportesModelo::getInicial();
+    
+    $respuesta = array();
+    while ($registro = $consulta->fetch()) {
+      $pordia=$inicial;
+      $pordia=$registro['kmshrs']-$pordia;
+      $porlt=$pordia/$registro['litros'];
+
+      /*$respuesta["y"][]=$registro['fecha'];
+      $respuesta["item1"][]=$porlt;*/
+      $respuesta[]=array(y=>$registro['fecha'],item1=>$porlt);
+
+      $porltant = $porlt;
+      $inicial=$registro['kmshrs'];
+    }
+    
+    //var_dump($respuesta);
+    echo json_encode($respuesta);
+  }
 }
 ?>

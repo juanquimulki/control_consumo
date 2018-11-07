@@ -4,6 +4,9 @@
 <script src="http://localhost/control_consumo/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="http://localhost/control_consumo/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Morris.js charts -->
+<script src="http://localhost/control_consumo/bower_components/raphael/raphael.min.js"></script>
+<script src="http://localhost/control_consumo/bower_components/morris.js/morris.min.js"></script>
 <!-- DataTables -->
 <script src="http://localhost/control_consumo/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="http://localhost/control_consumo/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
