@@ -18,6 +18,7 @@
       </tr>
       <?php 
       $i=1;
+      $primero=1;
       while ($registro = $reporte->fetch()) {
         $pordia=$inicial;
         $pordia=$registro['kmshrs']-$pordia;
@@ -29,7 +30,19 @@
         echo "<td>".$registro['litros']."</td>";
         echo "<td>".$registro['kmshrs']."</td>";
         echo "<td>$pordia</td>";
-        echo "<td>$porlt</td>";
+
+        if ($primero) {
+          echo "<td><span class='badge bg-blue'>".number_format($porlt,2)."</span></td>";
+          $primero=0;
+        }
+        else {
+          if ($porlt<=$porltant)
+            echo "<td><span class='badge bg-green'>".number_format($porlt,2)."</span></td>";
+          else
+            echo "<td><span class='badge bg-red'>".number_format($porlt,2)."</span></td>";
+        }
+        $porltant = $porlt;
+        
         echo "</tr>";
 
         $inicial=$registro['kmshrs'];
