@@ -24,7 +24,7 @@ class ReportesControlador {
     require_once "vistas/reportes/mostrar.php";
   }
   
-  public function json() {
+  public function json_rendimiento() {
     require_once "modelos/ReportesModelo.php";
     $consulta = ReportesModelo::getConsulta();
     $inicial  = ReportesModelo::getInicial();
@@ -37,9 +37,30 @@ class ReportesControlador {
 
       /*$respuesta["y"][]=$registro['fecha'];
       $respuesta["item1"][]=$porlt;*/
-      $respuesta[]=array(y=>$registro['fecha'],item1=>$porlt);
+      $respuesta[]=array(y=>$registro['fecha'],item1=>number_format($porlt,2));
 
       $porltant = $porlt;
+      $inicial=$registro['kmshrs'];
+    }
+    
+    //var_dump($respuesta);
+    echo json_encode($respuesta);
+  }
+
+  public function json_carga() {
+    require_once "modelos/ReportesModelo.php";
+    $consulta = ReportesModelo::getConsulta();
+    $inicial  = ReportesModelo::getInicial();
+    
+    $respuesta = array();
+    while ($registro = $consulta->fetch()) {
+      $pordia=$inicial;
+      $pordia=$registro['kmshrs']-$pordia;
+      //$porlt=$pordia/$registro['litros'];
+
+      $respuesta[]=array(y=>$registro['fecha'],item1=>$pordia);
+
+      //$porltant = $porlt;
       $inicial=$registro['kmshrs'];
     }
     

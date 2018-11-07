@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50067
 File Encoding         : 65001
 
-Date: 2018-11-06 20:55:13
+Date: 2018-11-07 11:42:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,20 +23,23 @@ CREATE TABLE `cargas` (
   `idCarga` int(11) NOT NULL auto_increment,
   `fecha` date default NULL,
   `idVehiculo` int(11) default NULL,
-  `litros` double default NULL,
+  `litros` double(11,1) default NULL,
   `precinto` int(11) default NULL,
   `idOperario` int(11) default NULL,
   `observaciones` text,
   PRIMARY KEY  (`idCarga`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of cargas
 -- ----------------------------
-INSERT INTO `cargas` VALUES ('10', '2018-11-01', '6', '100', '0', '1', '');
-INSERT INTO `cargas` VALUES ('11', '2018-11-10', '6', '200', '0', '1', '');
-INSERT INTO `cargas` VALUES ('12', '2018-11-15', '6', '50', '0', '1', '');
-INSERT INTO `cargas` VALUES ('13', '2018-11-21', '6', '1000', '0', '1', '');
+INSERT INTO `cargas` VALUES ('17', '2018-11-02', '6', '492.0', '0', '1', '');
+INSERT INTO `cargas` VALUES ('18', '2018-11-04', '6', '429.0', '0', '1', '');
+INSERT INTO `cargas` VALUES ('19', '2018-11-07', '6', '442.0', '0', '1', '');
+INSERT INTO `cargas` VALUES ('20', '2018-11-09', '6', '435.0', '0', '1', '');
+INSERT INTO `cargas` VALUES ('21', '2018-11-11', '6', '303.0', '0', '1', '');
+INSERT INTO `cargas` VALUES ('22', '2018-11-14', '6', '472.0', '0', '1', '');
+INSERT INTO `cargas` VALUES ('23', '2018-11-15', '6', '355.0', '0', '1', '');
 
 -- ----------------------------
 -- Table structure for `operarios`
@@ -74,19 +77,22 @@ CREATE TABLE `trabajos` (
   `idTrabajo` int(11) NOT NULL auto_increment,
   `fecha` date default NULL,
   `idVehiculo` int(11) default NULL,
-  `kmshrs` int(11) default NULL,
+  `kmshrs` double(11,1) default NULL,
   `idOperario` int(11) default NULL,
   `observaciones` text,
   PRIMARY KEY  (`idTrabajo`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of trabajos
 -- ----------------------------
-INSERT INTO `trabajos` VALUES ('5', '2018-11-01', '6', '500', '1', '');
-INSERT INTO `trabajos` VALUES ('6', '2018-11-10', '6', '700', '1', '');
-INSERT INTO `trabajos` VALUES ('7', '2018-11-15', '6', '850', '1', '');
-INSERT INTO `trabajos` VALUES ('8', '2018-11-21', '6', '1000', '1', '');
+INSERT INTO `trabajos` VALUES ('14', '2018-11-04', '6', '360784.9', '1', '');
+INSERT INTO `trabajos` VALUES ('13', '2018-11-02', '6', '359791.5', '1', '');
+INSERT INTO `trabajos` VALUES ('15', '2018-11-07', '6', '361830.7', '1', '');
+INSERT INTO `trabajos` VALUES ('16', '2018-11-09', '6', '362871.5', '1', '');
+INSERT INTO `trabajos` VALUES ('17', '2018-11-11', '6', '363562.7', '1', '');
+INSERT INTO `trabajos` VALUES ('18', '2018-11-14', '6', '364698.3', '1', '');
+INSERT INTO `trabajos` VALUES ('19', '2018-11-15', '6', '365550.5', '1', '');
 
 -- ----------------------------
 -- Table structure for `usuarios`
@@ -112,20 +118,20 @@ CREATE TABLE `vehiculos` (
   `idVehiculo` int(11) NOT NULL auto_increment,
   `idMaquina` int(11) default NULL,
   `descripcion` varchar(50) default NULL,
-  `iniciales` int(11) default NULL,
+  `iniciales` double(11,1) default NULL,
   PRIMARY KEY  (`idVehiculo`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of vehiculos
 -- ----------------------------
-INSERT INTO `vehiculos` VALUES ('1', '123', 'maquina', '1144');
-INSERT INTO `vehiculos` VALUES ('2', '444', 'otra', '12345');
-INSERT INTO `vehiculos` VALUES ('3', '0', '', '0');
-INSERT INTO `vehiculos` VALUES ('4', '0', '', '0');
-INSERT INTO `vehiculos` VALUES ('5', '233', 'Amasadora MORANDO AST (Sector Humedo)', '12345');
-INSERT INTO `vehiculos` VALUES ('6', '624', 'Pasillo de Carga (Secadero)', '222');
-INSERT INTO `vehiculos` VALUES ('7', '0', 'undefined', '0');
+INSERT INTO `vehiculos` VALUES ('1', '123', 'maquina', '1144.0');
+INSERT INTO `vehiculos` VALUES ('2', '444', 'otra', '12345.0');
+INSERT INTO `vehiculos` VALUES ('3', '0', '', '0.0');
+INSERT INTO `vehiculos` VALUES ('4', '0', '', '0.0');
+INSERT INTO `vehiculos` VALUES ('5', '233', 'Amasadora MORANDO AST (Sector Humedo)', '12345.0');
+INSERT INTO `vehiculos` VALUES ('6', '624', 'Pasillo de Carga (Secadero)', '358633.5');
+INSERT INTO `vehiculos` VALUES ('7', '0', 'undefined', '0.0');
 INSERT INTO `vehiculos` VALUES ('8', null, null, null);
 
 -- ----------------------------

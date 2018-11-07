@@ -19,6 +19,9 @@
       <?php 
       $i=1;
       $primero=1;
+      $total_lts=0;
+      $total_kms=0;
+      $total_porlt=0;
       while ($registro = $reporte->fetch()) {
         $pordia=$inicial;
         $pordia=$registro['kmshrs']-$pordia;
@@ -47,8 +50,15 @@
 
         $inicial=$registro['kmshrs'];
         $i++;
+        
+        $total_lts += $registro['litros'];
+        $total_kms += $pordia;
+        $total_porlt += $porlt;
       }
       ?>
+      <tr>
+        <td></td><td><span class='badge bg-blue'>TOTALES</span></td><td><strong><?php echo number_format($total_lts,2); ?></strong></td><td></td><td><strong><?php echo number_format($total_kms,2); ?></strong></td><td><span class='badge bg-blue'>Promedio = <?php echo number_format($total_porlt/($i-1),2); ?></span></td>
+      </tr>
     </table>
   </div>
   <!-- /.box-body -->
@@ -56,6 +66,25 @@
 <!-- /.box -->
 
 <div class="row">
+  <div class="col-md-6">
+    <!-- AREA CHART -->
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Carga de Trabajo</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body chart-responsive">
+        <div class="chart" id="carga-trabajo" style="height: 300px;"></div>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+  </div>
   <div class="col-md-6">
     <!-- AREA CHART -->
     <div class="box box-primary">
@@ -69,7 +98,7 @@
         </div>
       </div>
       <div class="box-body chart-responsive">
-        <div class="chart" id="revenue-chart" style="height: 300px;"></div>
+        <div class="chart" id="rendimiento-combustible" style="height: 300px;"></div>
       </div>
       <!-- /.box-body -->
     </div>

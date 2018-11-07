@@ -3,7 +3,7 @@ require_once "modelos/DB.php";
 
 class ReportesModelo {
   public function getConsulta() {
-    $consulta = DB::select("select * from consulta",null);
+    $consulta = DB::select("select * from consulta order by fecha",null);
     return $consulta;
   }
   
