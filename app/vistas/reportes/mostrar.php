@@ -4,6 +4,7 @@
   </div>
   <!-- /.box-header -->
   <div class="box-body no-padding">
+    <?php //echo "$_POST[vehiculo] $_POST[mesdesde] $_POST[meshasta] $_POST[aniodesde] $_POST[aniohasta]"; ?>
     <table class="table table-condensed">
       <tr>
         <th style="width: 50px">#</th>
@@ -57,7 +58,7 @@
       }
       ?>
       <tr>
-        <td></td><td><span class='badge bg-blue'>TOTALES</span></td><td><strong><?php echo number_format($total_lts,2); ?></strong></td><td></td><td><strong><?php echo number_format($total_kms,2); ?></strong></td><td><span class='badge bg-blue'>Promedio = <?php echo number_format($total_porlt/($i-1),2); ?></span></td>
+        <td></td><td><span class='badge bg-blue'>TOTALES</span></td><td><strong><?php echo number_format($total_lts,2); ?></strong></td><td></td><td><strong><?php echo number_format($total_kms,2); ?></strong></td><td><span class='badge bg-blue'>Promedio = <?php echo (($i-1)>0?number_format($total_porlt/($i-1),2):"---"); ?></span></td>
       </tr>
     </table>
   </div>
@@ -72,11 +73,11 @@
       <div class="box-header with-border">
         <h3 class="box-title">Carga de Trabajo</h3>
 
-        <div class="box-tools pull-right">
+        <!--div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
           </button>
           <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-        </div>
+        </div-->
       </div>
       <div class="box-body chart-responsive">
         <div class="chart" id="carga-trabajo" style="height: 300px;"></div>
@@ -91,11 +92,11 @@
       <div class="box-header with-border">
         <h3 class="box-title">Rendimiento del Combustible</h3>
 
-        <div class="box-tools pull-right">
+        <!--div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
           </button>
           <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-        </div>
+        </div-->
       </div>
       <div class="box-body chart-responsive">
         <div class="chart" id="rendimiento-combustible" style="height: 300px;"></div>

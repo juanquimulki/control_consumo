@@ -23,7 +23,7 @@
           <div class="box-body">
             <form class="form-horizontal">
               <div class="form-group">
-                <label for="maquina" class="col-sm-2 control-label">Vehículo</label>
+                <label for="vehiculo" class="col-sm-2 control-label">Vehículo</label>
                 <div class="col-sm-10">
                   <select class="form-control" id="vehiculo">
                     <option value='0'>Seleccione...</option>

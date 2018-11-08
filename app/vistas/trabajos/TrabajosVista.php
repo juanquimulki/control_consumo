@@ -31,7 +31,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                        <label for="fecha" class="col-sm-2 control-label">Fecha:</label>
+                        <label for="fecha" class="col-sm-2 control-label">Fecha</label>
                         <div class="col-sm-10">
                         <div class="input-group date">
                           <div class="input-group-addon">
@@ -60,7 +60,7 @@
                 <div class="col-md-6">
                   <form class="form-horizontal">
                     <div class="form-group">
-                      <label for="kmshrs" class="col-sm-2 control-label">Kms/Hrs</label>
+                      <label for="kmshrs" class="col-sm-2 control-label">Odóm./Reloj</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="kmshrs" placeholder="Kms/Hrs..." style="width:100px;" />
                       </div>

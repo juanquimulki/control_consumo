@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50067
 File Encoding         : 65001
 
-Date: 2018-11-07 11:42:46
+Date: 2018-11-08 10:45:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,7 +28,7 @@ CREATE TABLE `cargas` (
   `idOperario` int(11) default NULL,
   `observaciones` text,
   PRIMARY KEY  (`idCarga`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of cargas
@@ -40,6 +40,13 @@ INSERT INTO `cargas` VALUES ('20', '2018-11-09', '6', '435.0', '0', '1', '');
 INSERT INTO `cargas` VALUES ('21', '2018-11-11', '6', '303.0', '0', '1', '');
 INSERT INTO `cargas` VALUES ('22', '2018-11-14', '6', '472.0', '0', '1', '');
 INSERT INTO `cargas` VALUES ('23', '2018-11-15', '6', '355.0', '0', '1', '');
+INSERT INTO `cargas` VALUES ('24', '2019-12-02', '6', '492.0', '0', '1', null);
+INSERT INTO `cargas` VALUES ('25', '2019-12-04', '6', '429.0', '0', '1', null);
+INSERT INTO `cargas` VALUES ('26', '2019-12-07', '6', '442.0', '0', '1', null);
+INSERT INTO `cargas` VALUES ('27', '2019-12-09', '6', '435.0', '0', '1', null);
+INSERT INTO `cargas` VALUES ('28', '2019-12-11', '6', '303.0', '0', '1', null);
+INSERT INTO `cargas` VALUES ('29', '2019-12-14', '6', '472.0', '0', '1', null);
+INSERT INTO `cargas` VALUES ('30', '2019-12-15', '6', '355.0', '0', '1', null);
 
 -- ----------------------------
 -- Table structure for `operarios`
@@ -81,7 +88,7 @@ CREATE TABLE `trabajos` (
   `idOperario` int(11) default NULL,
   `observaciones` text,
   PRIMARY KEY  (`idTrabajo`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of trabajos
@@ -93,6 +100,13 @@ INSERT INTO `trabajos` VALUES ('16', '2018-11-09', '6', '362871.5', '1', '');
 INSERT INTO `trabajos` VALUES ('17', '2018-11-11', '6', '363562.7', '1', '');
 INSERT INTO `trabajos` VALUES ('18', '2018-11-14', '6', '364698.3', '1', '');
 INSERT INTO `trabajos` VALUES ('19', '2018-11-15', '6', '365550.5', '1', '');
+INSERT INTO `trabajos` VALUES ('20', '2019-12-04', '6', '370100.0', '1', null);
+INSERT INTO `trabajos` VALUES ('21', '2019-12-02', '6', '370000.0', '1', null);
+INSERT INTO `trabajos` VALUES ('22', '2019-12-07', '6', '370200.0', '1', null);
+INSERT INTO `trabajos` VALUES ('23', '2019-12-09', '6', '370300.0', '1', null);
+INSERT INTO `trabajos` VALUES ('24', '2019-12-11', '6', '370400.0', '1', null);
+INSERT INTO `trabajos` VALUES ('25', '2019-12-14', '6', '370500.0', '1', null);
+INSERT INTO `trabajos` VALUES ('26', '2019-12-15', '6', '370600.0', '1', null);
 
 -- ----------------------------
 -- Table structure for `usuarios`

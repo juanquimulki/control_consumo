@@ -2,8 +2,12 @@
 require_once "modelos/DB.php";
 
 class ReportesModelo {
-  public function getConsulta() {
-    $consulta = DB::select("select * from consulta order by fecha",null);
+  public function getConsulta($vehiculo,$mesdesde,$aniodesde,$meshasta,$aniohasta) {
+    $sql = "select * from consulta 
+              where idVehiculo=? and ((month(fecha) between ? and ?) and (year(fecha) between ? and ?))
+              order by fecha";
+    $bind = array($vehiculo,$mesdesde,$meshasta,$aniodesde,$aniohasta);
+    $consulta = DB::select($sql,$bind);
     return $consulta;
   }
   

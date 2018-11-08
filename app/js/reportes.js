@@ -21,30 +21,33 @@ function cancelar() {
 }
 
 function mostrar() {
+  vehiculo  = $("#vehiculo").val();
+  mesdesde  = $("#mes_desde").val();
+  aniodesde = $("#anio_desde").val();
+  meshasta  = $("#mes_hasta").val();
+  aniohasta = $("#anio_hasta").val();
+  
   $.ajax({
     type: "POST",
     url: "index.php?c=reportes&a=mostrar",
+    data: "vehiculo="+vehiculo+"&mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
     beforeSend: function() {
       $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
     },
     success: function(data) {
       $("#mostrar").html(data);
-      rendimientoChart();
-      cargaChart();
+      rendimientoChart(vehiculo,mesdesde,aniodesde,meshasta,aniohasta);
+      cargaChart(vehiculo,mesdesde,aniodesde,meshasta,aniohasta);
     }
   })   
 }
 
-function rendimientoChart() {
+function rendimientoChart(vehiculo,mesdesde,aniodesde,meshasta,aniohasta) {
   $.ajax({
     type: "POST",
     url: "index.php?c=reportes&a=json_rendimiento",
-    /*beforeSend: function() {
-      $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
-    },*/
+    data: "vehiculo="+vehiculo+"&mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
     success: function(data) {
-      //alert(data);
-      //var obj = JSON.parse(data);
       // AREA CHART
       var area = new Morris.Area({
         element: 'rendimiento-combustible',
@@ -60,16 +63,12 @@ function rendimientoChart() {
   })
 }
 
-function cargaChart() {
+function cargaChart(vehiculo,mesdesde,aniodesde,meshasta,aniohasta) {
   $.ajax({
     type: "POST",
     url: "index.php?c=reportes&a=json_carga",
-    /*beforeSend: function() {
-      $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
-    },*/
+    data: "vehiculo="+vehiculo+"&mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
     success: function(data) {
-      //alert(data);
-      //var obj = JSON.parse(data);
       // AREA CHART
       var area = new Morris.Area({
         element: 'carga-trabajo',
