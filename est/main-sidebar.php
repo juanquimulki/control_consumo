@@ -6,7 +6,7 @@
     <div class="user-panel">
       <div class="pull-left image">
         <!--img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"-->
-        <img src="http://localhost/control_consumo/img/user_accounts.png" class="img-circle" alt="User Image">
+        <img src="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/img/user_accounts.png" class="img-circle" alt="User Image">
         </div>
       <div class="pull-left info">
         <p><?php echo $_SESSION['usuario']; ?></p>
@@ -30,7 +30,7 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MENÚ PRINCIPAL</li>
       <li class="<?php echo $opcion1; ?>">
-        <a href="http://localhost/control_consumo/app/index.php?c=tablero&a=index">
+        <a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=tablero&a=index">
           <i class="fa fa-dashboard"></i> <span>Tablero</span>
           <!--span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
@@ -49,11 +49,11 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="<?php echo $opcion21; ?>"><a href="http://localhost/control_consumo/app/index.php?c=operarios&a=index"><i class="fa fa-circle-o"></i> Operarios</a></li>
+          <li class="<?php echo $opcion21; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=operarios&a=index"><i class="fa fa-circle-o"></i> Operarios</a></li>
         </ul>
       </li>
       <li class="<?php echo $opcion3; ?>">
-        <a href="http://localhost/control_consumo/app/index.php?c=vehiculos&a=index">
+        <a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=vehiculos&a=index">
           <i class="fa fa-truck"></i> <span>Vehículos</span>
           <!--span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
@@ -72,8 +72,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="<?php echo $opcion41; ?>"><a href="http://localhost/control_consumo/app/index.php?c=cargas&a=index"><i class="fa fa-circle-o"></i> Cargas de Combustible</a></li>
-          <li class="<?php echo $opcion42; ?>"><a href="http://localhost/control_consumo/app/index.php?c=trabajos&a=index"><i class="fa fa-circle-o"></i> Trabajos Realizados</a></li>
+          <li class="<?php echo $opcion41; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=cargas&a=index"><i class="fa fa-circle-o"></i> Cargas de Combustible</a></li>
+          <li class="<?php echo $opcion42; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=trabajos&a=index"><i class="fa fa-circle-o"></i> Trabajos Realizados</a></li>
         </ul>
       </li>
       <li class="<?php echo $opcion51; ?> treeview">
@@ -84,7 +84,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="<?php echo $opcion51; ?>"><a href="http://localhost/control_consumo/app/index.php?c=reportes&a=planilla"><i class="fa fa-circle-o"></i> Planilla Mensual</a></li>
+          <li class="<?php echo $opcion51; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=planilla"><i class="fa fa-circle-o"></i> Planilla Mensual</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Reporte dos</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Reporte tres</a></li>
         </ul>

@@ -1,5 +1,6 @@
 <?php
 session_start("cc");
+$GLOBALS['SERVER_NAME']="localhost";
 
 //BLOQUE DE SEGURIDAD
 if (($_GET['c']=="usuarios") && ($_GET['a']=="login")) {}

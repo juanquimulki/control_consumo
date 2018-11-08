@@ -20,7 +20,7 @@
       <div class="icon">
         <i class="fa fa-truck"></i>
       </div>
-      <a href="http://localhost/control_consumo/app/index.php?c=vehiculos&a=index" class="small-box-footer">Más info <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=vehiculos&a=index" class="small-box-footer">Más info <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->
@@ -35,7 +35,7 @@
       <div class="icon">
         <i class="fa fa-user"></i>
       </div>
-      <a href="http://localhost/control_consumo/app/index.php?c=operarios&a=index" class="small-box-footer">Más info <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=operarios&a=index" class="small-box-footer">Más info <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->
@@ -50,7 +50,7 @@
       <div class="icon">
         <i class="fa fa-battery-quarter"></i>
       </div>
-      <a href="http://localhost/control_consumo/app/index.php?c=cargas&a=index" class="small-box-footer">Más info <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=cargas&a=index" class="small-box-footer">Más info <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->
@@ -65,7 +65,7 @@
       <div class="icon">
         <i class="fa fa-gears"></i>
       </div>
-      <a href="http://localhost/control_consumo/app/index.php?c=trabajos&a=index" class="small-box-footer">Más info <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=trabajos&a=index" class="small-box-footer">Más info <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->
