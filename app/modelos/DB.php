@@ -26,6 +26,22 @@ class DB {
     return $consulta;
   }
 
+  public function selectCount($tabla,$id) {
+    $cnn = DB::conexion();
+    $sql = "select count($id) as cantidad from $tabla";
+    $consulta = $cnn->prepare($sql);
+    $consulta-> execute();
+    return $consulta;
+  }
+
+  public function selectSum($tabla,$campo) {
+    $cnn = DB::conexion();
+    $sql = "select sum($campo) as cantidad from $tabla";
+    $consulta = $cnn->prepare($sql);
+    $consulta-> execute();
+    return $consulta;
+  }
+  
   public function insert($sql,$bind) {
     $cnn = DB::conexion();
     $consulta = $cnn->prepare($sql);
