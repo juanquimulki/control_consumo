@@ -20,14 +20,16 @@ class ReportesControlador {
   public function mostrar() {
     require_once "modelos/ReportesModelo.php";
     $reporte = ReportesModelo::getConsulta($_POST['vehiculo'],$_POST['mesdesde'],$_POST['aniodesde'],$_POST['meshasta'],$_POST['aniohasta']);
-    $inicial = ReportesModelo::getInicial();
+    $fecha   = $_POST['aniodesde']."/".$_POST['mesdesde']."/01";
+    $inicial = ReportesModelo::getInicial($_POST['vehiculo'],$fecha);
     require_once "vistas/reportes/mostrar.php";
   }
   
   public function json_rendimiento() {
     require_once "modelos/ReportesModelo.php";
     $consulta = ReportesModelo::getConsulta($_POST['vehiculo'],$_POST['mesdesde'],$_POST['aniodesde'],$_POST['meshasta'],$_POST['aniohasta']);
-    $inicial  = ReportesModelo::getInicial();
+    $fecha   = $_POST['aniodesde']."/".$_POST['mesdesde']."/01";
+    $inicial = ReportesModelo::getInicial($_POST['vehiculo'],$fecha);
     
     $respuesta = array();
     while ($registro = $consulta->fetch()) {
@@ -47,7 +49,8 @@ class ReportesControlador {
   public function json_carga() {
     require_once "modelos/ReportesModelo.php";
     $consulta = ReportesModelo::getConsulta($_POST['vehiculo'],$_POST['mesdesde'],$_POST['aniodesde'],$_POST['meshasta'],$_POST['aniohasta']);
-    $inicial  = ReportesModelo::getInicial();
+    $fecha   = $_POST['aniodesde']."/".$_POST['mesdesde']."/01";
+    $inicial = ReportesModelo::getInicial($_POST['vehiculo'],$fecha);
     
     $respuesta = array();
     while ($registro = $consulta->fetch()) {
