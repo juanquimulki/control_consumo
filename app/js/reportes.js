@@ -77,7 +77,7 @@ function cargaChart(vehiculo,mesdesde,aniodesde,meshasta,aniohasta) {
         xkey: 'y',
         ykeys: ['item1'],
         labels: ['Kms/Hrs x Día'],
-        lineColors: ['#a0d0e0'],
+        lineColors: ['#f5b7b1'],
         hideHover: 'auto'
       });
     }
