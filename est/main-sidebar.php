@@ -41,7 +41,7 @@
           <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
         </ul-->
       </li>
-      <li class="<?php echo $opcion21; ?> treeview">
+      <li class="<?php echo $opcion21.$opcion22; ?> treeview">
         <a href="#">
           <i class="fa fa-file"></i> <span>Archivos</span>
           <span class="pull-right-container">
@@ -50,6 +50,7 @@
         </a>
         <ul class="treeview-menu">
           <li class="<?php echo $opcion21; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=operarios&a=index"><i class="fa fa-circle-o"></i> Operarios</a></li>
+          <li class="<?php echo $opcion22; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=precios&a=index"><i class="fa fa-circle-o"></i> Precios de Combustible</a></li>
         </ul>
       </li>
       <li class="<?php echo $opcion3; ?>">
