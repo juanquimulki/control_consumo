@@ -7,11 +7,14 @@ $(function () {
   $("#anio_hasta").val(fecha.getFullYear());
   $("#mes_hasta").val(fecha.getMonth()+1);
 
+  var etiquetas = etiquetas_precios();
+  var datos     = datos_precios();
+
   //-------------
   //- BAR CHART -
   //-------------
   var areaChartData = {
-    labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels  : JSON.parse(etiquetas), //['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [
       {
         label               : 'Digital Goods',
@@ -21,7 +24,7 @@ $(function () {
         pointStrokeColor    : 'rgba(60,141,188,1)',
         pointHighlightFill  : '#fff',
         pointHighlightStroke: 'rgba(60,141,188,1)',
-        data                : [28, 48, 40, 19, 86, 27, 90]
+        data                : JSON.parse(datos)
       }
     ]
   }
@@ -63,6 +66,32 @@ $(function () {
   barChartOptions.datasetFill = false
   barChart.Bar(barChartData, barChartOptions)
 })
+
+function etiquetas_precios() {
+  var cadena;
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=reportes&a=json_etiquetas",
+    async: false,
+    success: function(data) {
+      cadena = data;
+    }
+  })
+  return cadena;
+}
+
+function datos_precios() {
+  var cadena;
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=reportes&a=json_datos",
+    async: false,
+    success: function(data) {
+      cadena = data;
+    }
+  })
+  return cadena;
+}
 
 function cancelar() {
   $("#vehiculo").val(0);

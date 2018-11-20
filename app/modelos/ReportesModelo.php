@@ -25,5 +25,21 @@ class ReportesModelo {
       return $registro['iniciales'];
     }
   }
+
+  public function getEtiquetas() {
+    $sql  = "select * from precios
+              order by fecha
+              limit 20";
+    $consulta = DB::select($sql,null);
+    return $consulta;
+  }
+
+  public function getDatos() {
+    $sql  = "select * from precios
+              order by fecha
+              limit 20";
+    $consulta = DB::select($sql,null);
+    return $consulta;
+  }
 }
 ?>

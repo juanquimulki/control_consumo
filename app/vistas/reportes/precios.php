@@ -2,7 +2,7 @@
 <section class="content-header">
   <h1>
     Evolución de Precios
-    <small>Gráfica de los cambios en el precio del combustible</small>
+    <small>Gráfica de cambios en el precio del combustible</small>
   </h1>
 </section>
 
@@ -21,7 +21,7 @@
     </div>
     <div class="box-body">
       <div class="chart">
-        <canvas id="barChart" style="height:230px"></canvas>
+        <canvas id="barChart" style="height:400px"></canvas>
       </div>
     </div>
     <!-- /.box-body -->

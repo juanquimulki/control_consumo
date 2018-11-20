@@ -74,5 +74,29 @@ class ReportesControlador {
     
     echo json_encode($respuesta);
   }
+
+  public function json_etiquetas() {
+    require_once "modelos/ReportesModelo.php";
+    $consulta = ReportesModelo::getEtiquetas();
+    
+    $respuesta = array();
+    while ($registro = $consulta->fetch()) {
+      $respuesta[]= date("d/m/Y",strtotime($registro['fecha']));
+    }
+    
+    echo json_encode($respuesta);
+  }
+
+  public function json_datos() {
+    require_once "modelos/ReportesModelo.php";
+    $consulta = ReportesModelo::getDatos();
+    
+    $respuesta = array();
+    while ($registro = $consulta->fetch()) {
+      $respuesta[]=$registro['precio'];
+    }
+    
+    echo json_encode($respuesta);
+  }
 }
 ?>
