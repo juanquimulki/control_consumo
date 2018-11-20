@@ -77,7 +77,7 @@
           <li class="<?php echo $opcion42; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=trabajos&a=index"><i class="fa fa-circle-o"></i> Trabajos Realizados</a></li>
         </ul>
       </li>
-      <li class="<?php echo $opcion51; ?> treeview">
+      <li class="<?php echo $opcion51.$opcion52; ?> treeview">
         <a href="#">
           <i class="fa fa-paper-plane"></i> <span>Reportes</span>
           <span class="pull-right-container">
@@ -86,7 +86,7 @@
         </a>
         <ul class="treeview-menu">
           <li class="<?php echo $opcion51; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=planilla"><i class="fa fa-circle-o"></i> Planilla Mensual</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Reporte dos</a></li>
+          <li class="<?php echo $opcion52; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=precios"><i class="fa fa-circle-o"></i> Evolución de Precios</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Reporte tres</a></li>
         </ul>
       </li>

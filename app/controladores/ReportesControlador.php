@@ -17,6 +17,16 @@ class ReportesControlador {
     require_once "layouts/layout_foot.php";
   }
   
+  public function precios() {
+    $opcion52 = "active";
+    require_once "layouts/layout_head.php";
+    
+    require_once "vistas/reportes/precios.php";
+    
+    $scripts = array("reportes.js");
+    require_once "layouts/layout_foot.php";
+  }
+  
   public function mostrar() {
     require_once "modelos/ReportesModelo.php";
     $reporte = ReportesModelo::getConsulta($_POST['vehiculo'],$_POST['mesdesde'],$_POST['aniodesde'],$_POST['meshasta'],$_POST['aniohasta']);

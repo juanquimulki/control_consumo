@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50067
 File Encoding         : 65001
 
-Date: 2018-11-08 10:45:19
+Date: 2018-11-20 12:40:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -77,6 +77,25 @@ INSERT INTO `operarios` VALUES ('12', 'mostra', 'brevi');
 INSERT INTO `operarios` VALUES ('13', 'Arnaldo Ruiz', 'A.Ruiz');
 
 -- ----------------------------
+-- Table structure for `precios`
+-- ----------------------------
+DROP TABLE IF EXISTS `precios`;
+CREATE TABLE `precios` (
+  `idPrecio` int(11) NOT NULL auto_increment,
+  `fecha` date default NULL,
+  `precio` double(11,2) default NULL,
+  PRIMARY KEY  (`idPrecio`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of precios
+-- ----------------------------
+INSERT INTO `precios` VALUES ('1', '2018-02-15', '25.00');
+INSERT INTO `precios` VALUES ('2', '2018-11-01', '30.00');
+INSERT INTO `precios` VALUES ('3', '2018-12-01', '32.00');
+INSERT INTO `precios` VALUES ('4', '2018-11-01', '33.33');
+
+-- ----------------------------
 -- Table structure for `trabajos`
 -- ----------------------------
 DROP TABLE IF EXISTS `trabajos`;
@@ -134,7 +153,7 @@ CREATE TABLE `vehiculos` (
   `descripcion` varchar(50) default NULL,
   `iniciales` double(11,1) default NULL,
   PRIMARY KEY  (`idVehiculo`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of vehiculos
@@ -147,6 +166,7 @@ INSERT INTO `vehiculos` VALUES ('5', '233', 'Amasadora MORANDO AST (Sector Humed
 INSERT INTO `vehiculos` VALUES ('6', '624', 'Pasillo de Carga (Secadero)', '358633.5');
 INSERT INTO `vehiculos` VALUES ('7', '0', 'undefined', '0.0');
 INSERT INTO `vehiculos` VALUES ('8', null, null, null);
+INSERT INTO `vehiculos` VALUES ('9', '30', 'Amasadora (Sector Humedo)', '369.0');
 
 -- ----------------------------
 -- View structure for `consulta`
