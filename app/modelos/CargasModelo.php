@@ -11,8 +11,8 @@ class CargasModelo {
     return $consulta;
   }
 
-  public function insertCarga($fecha,$idvehiculo,$litros,$precinto,$idoperario,$observaciones) {
-    $id = DB::insert("insert into cargas (fecha,idVehiculo,litros,precinto,idOperario,observaciones) values (?,?,?,?,?,?)",array($fecha,$idvehiculo,$litros,$precinto,$idoperario,$observaciones));
+  public function insertCarga($fecha,$idvehiculo,$litros,$precinto,$idoperario,$observaciones,$precio) {
+    $id = DB::insert("insert into cargas (fecha,idVehiculo,litros,precinto,idOperario,observaciones,precio) values (?,?,?,?,?,?,?)",array($fecha,$idvehiculo,$litros,$precinto,$idoperario,$observaciones,$precio));
     return $id;
   }
 }

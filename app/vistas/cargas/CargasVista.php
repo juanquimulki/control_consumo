@@ -55,6 +55,12 @@
                         </select>
                       </div>
                     </div>
+                    <div class="form-group">
+                      <label for="precio" class="col-sm-2 control-label">Precio Lt</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="precio" placeholder="" style="width:100px;" value="<?php echo $precio; ?>" disabled />
+                      </div>
+                    </div>
                   </form>
                 </div>
                 <div class="col-md-6">

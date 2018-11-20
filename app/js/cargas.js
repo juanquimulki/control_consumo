@@ -6,11 +6,12 @@ function guardar() {
   var precinto      = $("#precinto").val();
   var idoperario    = $("#idoperario").val();
   var observaciones = $("#observaciones").val();
+  var precio        = $("#precio").val();
   
   $.ajax({
     type: "POST",
     url: "index.php?c=cargas&a=guardar",
-    data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&litros="+litros+"&precinto="+precinto+"&idoperario="+idoperario+"&observaciones="+observaciones,
+    data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&litros="+litros+"&precinto="+precinto+"&idoperario="+idoperario+"&observaciones="+observaciones+"&precio="+precio,
     success: function(data) {
       if (data!=0) {
         $("#id").val(data);

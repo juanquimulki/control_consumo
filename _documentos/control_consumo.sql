@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50067
 File Encoding         : 65001
 
-Date: 2018-11-20 12:40:53
+Date: 2018-11-20 20:33:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,26 +27,29 @@ CREATE TABLE `cargas` (
   `precinto` int(11) default NULL,
   `idOperario` int(11) default NULL,
   `observaciones` text,
+  `precio` double(11,2) default NULL,
   PRIMARY KEY  (`idCarga`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of cargas
 -- ----------------------------
-INSERT INTO `cargas` VALUES ('17', '2018-11-02', '6', '492.0', '0', '1', '');
-INSERT INTO `cargas` VALUES ('18', '2018-11-04', '6', '429.0', '0', '1', '');
-INSERT INTO `cargas` VALUES ('19', '2018-11-07', '6', '442.0', '0', '1', '');
-INSERT INTO `cargas` VALUES ('20', '2018-11-09', '6', '435.0', '0', '1', '');
-INSERT INTO `cargas` VALUES ('21', '2018-11-11', '6', '303.0', '0', '1', '');
-INSERT INTO `cargas` VALUES ('22', '2018-11-14', '6', '472.0', '0', '1', '');
-INSERT INTO `cargas` VALUES ('23', '2018-11-15', '6', '355.0', '0', '1', '');
-INSERT INTO `cargas` VALUES ('24', '2019-12-02', '6', '492.0', '0', '1', null);
-INSERT INTO `cargas` VALUES ('25', '2019-12-04', '6', '429.0', '0', '1', null);
-INSERT INTO `cargas` VALUES ('26', '2019-12-07', '6', '442.0', '0', '1', null);
-INSERT INTO `cargas` VALUES ('27', '2019-12-09', '6', '435.0', '0', '1', null);
-INSERT INTO `cargas` VALUES ('28', '2019-12-11', '6', '303.0', '0', '1', null);
-INSERT INTO `cargas` VALUES ('29', '2019-12-14', '6', '472.0', '0', '1', null);
-INSERT INTO `cargas` VALUES ('30', '2019-12-15', '6', '355.0', '0', '1', null);
+INSERT INTO `cargas` VALUES ('17', '2018-11-02', '6', '492.0', '0', '1', '', null);
+INSERT INTO `cargas` VALUES ('18', '2018-11-04', '6', '429.0', '0', '1', '', null);
+INSERT INTO `cargas` VALUES ('19', '2018-11-07', '6', '442.0', '0', '1', '', null);
+INSERT INTO `cargas` VALUES ('20', '2018-11-09', '6', '435.0', '0', '1', '', null);
+INSERT INTO `cargas` VALUES ('21', '2018-11-11', '6', '303.0', '0', '1', '', null);
+INSERT INTO `cargas` VALUES ('22', '2018-11-14', '6', '472.0', '0', '1', '', null);
+INSERT INTO `cargas` VALUES ('23', '2018-11-15', '6', '355.0', '0', '1', '', null);
+INSERT INTO `cargas` VALUES ('24', '2019-12-02', '6', '492.0', '0', '1', null, null);
+INSERT INTO `cargas` VALUES ('25', '2019-12-04', '6', '429.0', '0', '1', null, null);
+INSERT INTO `cargas` VALUES ('26', '2019-12-07', '6', '442.0', '0', '1', null, null);
+INSERT INTO `cargas` VALUES ('27', '2019-12-09', '6', '435.0', '0', '1', null, null);
+INSERT INTO `cargas` VALUES ('28', '2019-12-11', '6', '303.0', '0', '1', null, null);
+INSERT INTO `cargas` VALUES ('29', '2019-12-14', '6', '472.0', '0', '1', null, null);
+INSERT INTO `cargas` VALUES ('30', '2019-12-15', '6', '355.0', '0', '1', null, null);
+INSERT INTO `cargas` VALUES ('31', '2018-11-07', '6', '123.0', '11', '13', '', '32.00');
+INSERT INTO `cargas` VALUES ('32', '2018-11-05', '1', '321.0', '321', '4', '', '32.28');
 
 -- ----------------------------
 -- Table structure for `operarios`
@@ -92,7 +95,7 @@ CREATE TABLE `precios` (
 -- ----------------------------
 INSERT INTO `precios` VALUES ('1', '2018-02-15', '25.00');
 INSERT INTO `precios` VALUES ('2', '2018-11-01', '30.00');
-INSERT INTO `precios` VALUES ('3', '2018-12-01', '32.00');
+INSERT INTO `precios` VALUES ('3', '2018-12-01', '32.28');
 INSERT INTO `precios` VALUES ('4', '2018-11-01', '33.33');
 
 -- ----------------------------

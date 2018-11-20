@@ -7,8 +7,10 @@ class CargasControlador {
     
     require_once "modelos/OperariosModelo.php";
     require_once "modelos/VehiculosModelo.php";
+    require_once "modelos/PreciosModelo.php";
     $operarios = OperariosModelo::getOperarios();
     $vehiculos = VehiculosModelo::getVehiculos();
+    $precio    = PreciosModelo::getUltPrecio();
     require_once "vistas/cargas/CargasVista.php";
     
     $scripts = array("cargas.js");
@@ -19,7 +21,7 @@ class CargasControlador {
     require_once "modelos/Fechas.php";
     $fecha = Fechas::fecha_mysql($_POST['fecha']);
     require_once "modelos/CargasModelo.php";
-    $id = CargasModelo::insertCarga($fecha,$_POST['idvehiculo'],$_POST['litros'],$_POST['precinto'],$_POST['idoperario'],$_POST['observaciones']);
+    $id = CargasModelo::insertCarga($fecha,$_POST['idvehiculo'],$_POST['litros'],$_POST['precinto'],$_POST['idoperario'],$_POST['observaciones'],$_POST['precio']);
     echo $id;
   }
   
