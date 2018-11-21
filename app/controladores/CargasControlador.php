@@ -24,7 +24,13 @@ class CargasControlador {
     $id = CargasModelo::insertCarga($fecha,$_POST['idvehiculo'],$_POST['litros'],$_POST['precinto'],$_POST['idoperario'],$_POST['observaciones'],$_POST['precio']);
     echo $id;
   }
-  
+
+  public function eliminar() {
+    require_once "modelos/CargasModelo.php";
+    $id = CargasModelo::deleteCarga($_POST['id']);
+    echo $id;
+  }
+    
   public function mostrar() {
     require_once "modelos/CargasModelo.php";
     $cargas = CargasModelo::getCargas();
