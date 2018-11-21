@@ -22,7 +22,13 @@ class TrabajosControlador {
     $id = TrabajosModelo::insertTrabajo($fecha,$_POST['idvehiculo'],$_POST['kmshrs'],$_POST['idoperario'],$_POST['observaciones']);
     echo $id;
   }
-  
+
+  public function eliminar() {
+    require_once "modelos/TrabajosModelo.php";
+    $id = TrabajosModelo::deleteTrabajo($_POST['id']);
+    echo $id;
+  }
+    
   public function mostrar() {
     require_once "modelos/TrabajosModelo.php";
     $trabajos = TrabajosModelo::getTrabajos();

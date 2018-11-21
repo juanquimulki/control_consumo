@@ -10,6 +10,7 @@
         <?php
         $nombre      = "tabla_registros";
         $campos      = array("fecha","descripcion","kmshrs","abreviatura","observaciones");
+        $id          = "idTrabajo";
         $encabezados = array("Fecha","Vehiculo","Kms/Hrs","Operario","Detalles");
         $registros   = $trabajos;
         include "vistas/tabla_registros.php";

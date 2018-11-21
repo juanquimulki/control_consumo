@@ -15,5 +15,10 @@ class TrabajosModelo {
     $id = DB::insert("insert into trabajos (fecha,idVehiculo,kmshrs,idOperario,observaciones) values (?,?,?,?,?)",array($fecha,$idvehiculo,$kmshrs,$idoperario,$observaciones));
     return $id;
   }
+
+  public function deleteTrabajo($id) {
+    $id = DB::delete("delete from trabajos where idTrabajo=?",array($id));
+    return $id;
+  }
 }
 ?>
