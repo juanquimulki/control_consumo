@@ -35,19 +35,31 @@ function guardar() {
   
   $.ajax({
     type: "POST",
-    url: "index.php?c=vehiculos&a=guardar",
+    url: "index.php?c=vehiculos&a=validar",
     data: "codigo="+codigo+"&descripcion="+descripcion+"&iniciales="+iniciales,
     success: function(data) {
-      if (data!=0) {
-        $("#id").val(data);
-        alerta("success","Información","El registro ha sido guardado con éxito.","fa-check");
-        mostrar();
+      if (data) {
+        alerta("warning","Atención",data,"fa-warning");
       }
       else {
-        alerta("error","Error","Hubo problemas al guardar.","fa-ban");
+        $.ajax({
+          type: "POST",
+          url: "index.php?c=vehiculos&a=guardar",
+          data: "codigo="+codigo+"&descripcion="+descripcion+"&iniciales="+iniciales,
+          success: function(data) {
+            if (data!=0) {
+              $("#id").val(data);
+              alerta("success","Información","El registro ha sido guardado con éxito.","fa-check");
+              mostrar();
+            }
+            else {
+              alerta("error","Error","Hubo problemas al guardar.","fa-ban");
+            }
+          }
+        })  
       }
     }
-  })  
+  }) 
 }
 
 function cancelar() {

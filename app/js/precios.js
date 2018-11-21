@@ -28,19 +28,31 @@ function guardar() {
   
   $.ajax({
     type: "POST",
-    url: "index.php?c=precios&a=guardar",
+    url: "index.php?c=precios&a=validar",
     data: "fecha="+fecha+"&precio="+precio,
     success: function(data) {
-      if (data!=0) {
-        $("#id").val(data);
-        alerta("success","Información","El registro ha sido guardado con éxito.","fa-check");
-        mostrar();
+      if (data) {
+        alerta("warning","Atención",data,"fa-warning");
       }
       else {
-        alerta("error","Error","Hubo problemas al guardar.","fa-ban");
+        $.ajax({
+          type: "POST",
+          url: "index.php?c=precios&a=guardar",
+          data: "fecha="+fecha+"&precio="+precio,
+          success: function(data) {
+            if (data!=0) {
+              $("#id").val(data);
+              alerta("success","Información","El registro ha sido guardado con éxito.","fa-check");
+              mostrar();
+            }
+            else {
+              alerta("error","Error","Hubo problemas al guardar.","fa-ban");
+            }
+          }
+        })  
       }
     }
-  })  
+  })
 }
 
 function cancelar() {

@@ -11,6 +11,16 @@ class PreciosControlador {
     require_once "layouts/layout_foot.php";
   }
   
+  public function validar() {
+    if (empty($_POST['fecha']))
+      echo "- No ha ingresado FECHA.<br>";
+    if (empty($_POST['precio']))
+      echo "- No ha ingresado PRECIO.<br>";
+    else 
+      if (!is_numeric($_POST['precio']))
+        echo "- El PRECIO debe ser un número.<br>";
+  }
+
   public function guardar() {
     require_once "modelos/Fechas.php";
     $fecha = Fechas::fecha_mysql($_POST['fecha']);

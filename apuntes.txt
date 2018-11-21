@@ -1,12 +1,12 @@
 validaciones de datos
   inclusive controles lógicos, como km siempre mayores al anterior
--- actualizacion de js mediante mt_rand
-completar el CRUD
 login y seguridad
 acentos al guardar
 carteles de okay-error
 restricciones de bd
 
+-- actualizacion de js mediante mt_rand
+*completar el CRUD
 *index en todas las carpetas
 *control de errores de mvc
 *lenguaje de datepicker

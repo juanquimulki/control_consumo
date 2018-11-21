@@ -27,6 +27,16 @@ class ReportesControlador {
     require_once "layouts/layout_foot.php";
   }
   
+  public function validar() {
+    if ($_POST['vehiculo']==0)
+      echo "- No ha escogido VEHÍCULO.<br>";
+      
+    $desde = $_POST['aniodesde'].$_POST['mesdesde'];
+    $hasta = $_POST['aniohasta'].$_POST['meshasta'];    
+    if ($desde>$hasta)
+      echo "- El intervalo de FECHAS no es válido.<br>";
+  }
+  
   public function mostrar() {
     require_once "modelos/ReportesModelo.php";
     $reporte = ReportesModelo::getConsulta($_POST['vehiculo'],$_POST['mesdesde'],$_POST['aniodesde'],$_POST['meshasta'],$_POST['aniohasta']);

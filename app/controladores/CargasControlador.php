@@ -17,6 +17,22 @@ class CargasControlador {
     require_once "layouts/layout_foot.php";
   }
   
+  public function validar() {
+    if (empty($_POST['fecha']))
+      echo "- No ha ingresado FECHA.<br>";
+    if ($_POST['idvehiculo']==0)
+      echo "- No ha escogido VEHÍCULO.<br>";
+    if (empty($_POST['litros']) || $_POST['litros']==0)
+      echo "- No ha ingresado LITROS.<br>";
+    else 
+      if (!is_numeric($_POST['litros']))
+        echo "- Los LITROS deben ser un número.<br>";
+    if ($_POST['idoperario']==0)
+      echo "- No ha escogido OPERARIO.<br>";
+    if ($_POST['precio']==0)
+      echo "- No hay PRECIOS de combustible.<br>";
+  }
+  
   public function guardar() {
     require_once "modelos/Fechas.php";
     $fecha = Fechas::fecha_mysql($_POST['fecha']);
