@@ -17,5 +17,10 @@ class PreciosModelo {
     $id = DB::insert("insert into precios (fecha,precio) values (?,?)",array($fecha,$precio));
     return $id;
   }
+
+  public function deletePrecio($id) {
+    $id = DB::delete("delete from precios where idPrecio=?",array($id));
+    return $id;
+  }
 }
 ?>

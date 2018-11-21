@@ -18,6 +18,12 @@ class PreciosControlador {
     $id = PreciosModelo::insertPrecio($fecha,$_POST['precio']);
     echo $id;
   }
+
+  public function eliminar() {
+    require_once "modelos/PreciosModelo.php";
+    $id = PreciosModelo::deletePrecio($_POST['id']);
+    echo $id;
+  }
   
   public function mostrar() {
     require_once "modelos/PreciosModelo.php";

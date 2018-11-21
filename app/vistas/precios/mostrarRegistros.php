@@ -10,6 +10,7 @@
         <?php
         $nombre      = "tabla_registros";
         $campos      = array("idPrecio","fecha","precio");
+        $id          = "idPrecio";
         $encabezados = array("ID","Fecha","Precio");
         $registros   = $precios;
         include "vistas/tabla_registros.php";
