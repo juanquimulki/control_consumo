@@ -11,6 +11,13 @@ class OperariosControlador {
     require_once "layouts/layout_foot.php";
   }
   
+  public function validar() {
+    if (empty($_POST['nombre']))
+      echo "- No ha ingresado NOMBRE.<br>";
+    if (empty($_POST['abreviatura']))
+      echo "- No ha ingresado ABREVIATURA.<br>";
+  }
+  
   public function guardar() {
     require_once "modelos/OperariosModelo.php";
     $id = OperariosModelo::insertOperario($_POST['nombre'],$_POST['abreviatura']);

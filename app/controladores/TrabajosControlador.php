@@ -15,6 +15,20 @@ class TrabajosControlador {
     require_once "layouts/layout_foot.php";
   }
   
+  public function validar() {
+    if (empty($_POST['fecha']))
+      echo "- No ha ingresado FECHA.<br>";
+    if ($_POST['idvehiculo']==0)
+      echo "- No ha escogido VEHÍCULO.<br>";
+    if (empty($_POST['kmshrs']) || $_POST['kmshrs']==0)
+      echo "- No ha ingresado KMS/HRS.<br>";
+    else 
+      if (!is_numeric($_POST['kmshrs']))
+        echo "- Los KMS/HRS deben ser un número.<br>";
+    if ($_POST['idoperario']==0)
+      echo "- No ha escogido OPERARIO.<br>";
+  }
+  
   public function guardar() {
     require_once "modelos/Fechas.php";
     $fecha = Fechas::fecha_mysql($_POST['fecha']);

@@ -13,6 +13,16 @@ class VehiculosControlador {
     require_once "layouts/layout_foot.php";
   }
   
+  public function validar() {
+    if (empty($_POST['descripcion']))
+      echo "- No ha ingresado DESCRIPCIÓN.<br>";
+    if (empty($_POST['iniciales']))
+      echo "- No ha ingresado KMS/HRS INICIALES.<br>";
+    else 
+      if (!is_numeric($_POST['iniciales']))
+        echo "- Los KMS/HRS INICIALES deben ser un número.<br>";
+  }
+  
   public function guardar() {
     require_once "modelos/VehiculosModelo.php";
     $id = VehiculosModelo::insertVehiculo($_POST['codigo'],$_POST['descripcion'],$_POST['iniciales']);
