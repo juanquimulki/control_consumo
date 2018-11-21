@@ -24,7 +24,7 @@
 <?php
 if ($scripts) {
   foreach ($scripts as $s) {
-    echo "<script src='http://".$GLOBALS['SERVER_NAME']."/control_consumo/app/js/$s'></script>";
+    echo "<script src='http://".$GLOBALS['SERVER_NAME']."/control_consumo/app/js/$s?x=".mt_rand()."'></script>";
   }
 } 
 ?>

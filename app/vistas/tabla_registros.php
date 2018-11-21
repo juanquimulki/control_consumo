@@ -5,6 +5,7 @@
     foreach ($encabezados as $e) {
       echo "<th>".utf8_encode($e)."</th>";
     }
+    echo "<th></th>";
     ?>
   </tr>
   </thead>
@@ -18,6 +19,9 @@
         else
           echo "<td>".utf8_encode($r[$c])."</td>";
       }
+      //echo "<td><a href='http://".$GLOBALS['SERVER_NAME']."/control_consumo/index.php?c=operarios&a=borrar&id=".$r[$id]."'><img src='http://".$GLOBALS['SERVER_NAME']."/control_consumo/img/delete.png' /></a></td>";
+      $id_eliminar = $r[$id]; 
+      echo "<td><a style='cursor:pointer' data-toggle='modal' data-target='#modal-default' onclick='javascript:modalEliminar($id_eliminar)'><img src='http://".$GLOBALS['SERVER_NAME']."/control_consumo/img/delete.png' /></a></td>";
       echo "</tr>";
     }
     ?>

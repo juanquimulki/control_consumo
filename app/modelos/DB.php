@@ -52,5 +52,16 @@ class DB {
       return 0;
     }
   }
+
+  public function delete($sql,$bind) {
+    $cnn = DB::conexion();
+    $consulta = $cnn->prepare($sql);
+    if ($consulta-> execute($bind))
+      return 1;
+    else {
+      print_r($consulta->errorInfo());
+      return 0;
+    }
+  }
 }
 ?>

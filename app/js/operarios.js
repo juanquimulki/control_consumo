@@ -1,3 +1,26 @@
+function modalEliminar(id) {
+  $("#id_eliminar").val(id);
+}
+
+function eliminar() {
+  var id = $("#id_eliminar").val();
+  
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=operarios&a=eliminar",
+    data: "id="+id,
+    success: function(data) {
+      if (data=="1") {
+        alerta("success","Información","El registro ha sido eliminado con éxito.","fa-check");
+        mostrar();
+      }
+      else {
+        alerta("error","Error","Hubo problemas al eliminar.","fa-ban");
+      }
+    }
+  })  
+}
+
 function guardar() {
   $("#alerta").hide();
   var nombre      = $("#nombre").val();

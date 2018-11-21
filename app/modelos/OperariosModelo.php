@@ -11,5 +11,10 @@ class OperariosModelo {
     $id = DB::insert("insert into operarios (nombre,abreviatura) values (?,?)",array($nombre,$abreviatura));
     return $id;
   }
+
+  public function deleteOperario($id) {
+    $id = DB::delete("delete from operarios where idOperario=?",array($id));
+    return $id;
+  }
 }
 ?>

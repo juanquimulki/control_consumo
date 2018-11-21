@@ -17,6 +17,12 @@ class OperariosControlador {
     echo $id;
   }
   
+  public function eliminar() {
+    require_once "modelos/OperariosModelo.php";
+    $id = OperariosModelo::deleteOperario($_POST['id']);
+    echo $id;
+  }
+
   public function mostrar() {
     require_once "modelos/OperariosModelo.php";
     $operarios = OperariosModelo::getOperarios();
