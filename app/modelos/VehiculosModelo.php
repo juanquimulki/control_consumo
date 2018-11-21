@@ -11,5 +11,10 @@ class VehiculosModelo {
     $id = DB::insert("insert into vehiculos (idMaquina,descripcion,iniciales) values (?,?,?)",array($codigo,$descripcion,$iniciales));
     return $id;
   }
+
+  public function deleteVehiculo($id) {
+    $id = DB::delete("delete from vehiculos where idVehiculo=?",array($id));
+    return $id;
+  }
 }
 ?>

@@ -18,7 +18,13 @@ class VehiculosControlador {
     $id = VehiculosModelo::insertVehiculo($_POST['codigo'],$_POST['descripcion'],$_POST['iniciales']);
     echo $id;
   }
-  
+
+  public function eliminar() {
+    require_once "modelos/VehiculosModelo.php";
+    $id = VehiculosModelo::deleteVehiculo($_POST['id']);
+    echo $id;
+  }
+    
   public function mostrar() {
     require_once "modelos/VehiculosModelo.php";
     $vehiculos = VehiculosModelo::getVehiculos();
