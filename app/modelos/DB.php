@@ -23,6 +23,7 @@ class DB {
     $cnn = DB::conexion();
     $consulta = $cnn->prepare($sql);
     $consulta-> execute($bind);
+    //print_r($consulta->errorInfo());
     return $consulta;
   }
 

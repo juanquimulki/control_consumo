@@ -105,6 +105,16 @@ function cancelar() {
   $("#mes_hasta").val(fecha.getMonth()+1);
 }
 
+function cancelarHistorico() {
+  fecha = new Date();
+  $("#alerta").hide();
+  
+  $("#anio_desde").val(fecha.getFullYear());
+  $("#mes_desde").val(fecha.getMonth()+1);
+  $("#anio_hasta").val(fecha.getFullYear());
+  $("#mes_hasta").val(fecha.getMonth()+1);
+}
+
 function mostrar() {
   vehiculo  = $("#vehiculo").val();
   mesdesde  = $("#mes_desde").val();
@@ -138,6 +148,82 @@ function mostrar() {
       }
     }
   }) 
+}
+
+function mostrarHistorico() {
+  mesdesde  = $("#mes_desde").val();
+  aniodesde = $("#anio_desde").val();
+  meshasta  = $("#mes_hasta").val();
+  aniohasta = $("#anio_hasta").val();
+  
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=reportes&a=validarHistorico",
+    data: "mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
+    success: function(data) {
+      if (data) {
+        alerta("warning","Atención",data,"fa-warning");
+      }
+      else {
+        $("#alerta").hide();
+        $.ajax({
+          type: "POST",
+          url: "index.php?c=reportes&a=mostrarHistorico",
+          data: "mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
+          beforeSend: function() {
+            $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
+          },
+          success: function(data) {
+            $("#mostrar").html(data);
+            litrosChart(mesdesde,aniodesde,meshasta,aniohasta);
+            costosChart(mesdesde,aniodesde,meshasta,aniohasta);
+          }
+        })   
+      }
+    }
+  }) 
+}
+
+function litrosChart(mesdesde,aniodesde,meshasta,aniohasta) {
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=reportes&a=json_litros",
+    data: "mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
+    success: function(data) {
+      // AREA CHART
+      var area = new Morris.Area({
+        element: 'litros-cargados',
+        resize: true,
+        data: JSON.parse(data),
+        xkey: 'y',
+        ykeys: ['item1'],
+        labels: ['Litros x Mes'],
+        lineColors: ['#a0d0e0'],
+        hideHover: 'auto'
+      });
+    }
+  })
+}
+
+function costosChart(mesdesde,aniodesde,meshasta,aniohasta) {
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=reportes&a=json_costos",
+    data: "mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
+    success: function(data) {
+      // AREA CHART
+      var area = new Morris.Area({
+        element: 'costos-afrontados',
+        resize: true,
+        data: JSON.parse(data),
+        xkey: 'y',
+        ykeys: ['item1'],
+        labels: ['Costos x Mes'],
+        lineColors: ['#f5b7b1'],
+        hideHover: 'auto'
+      });
+    }
+  })
 }
 
 function rendimientoChart(vehiculo,mesdesde,aniodesde,meshasta,aniohasta) {

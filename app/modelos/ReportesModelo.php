@@ -11,6 +11,15 @@ class ReportesModelo {
     return $consulta;
   }
   
+  public function getConsultaHistorico($mesdesde,$aniodesde,$meshasta,$aniohasta) {
+    $sql  = "select month(fecha) as mes, year(fecha) as anio, sum(litros) as litros, sum(precio*litros) as precio from cargas
+              where month(fecha) BETWEEN ? and ? and year(fecha) BETWEEN ? and ?
+              group by mes,anio";
+    $bind = array($mesdesde,$meshasta,$aniodesde,$aniohasta);
+    $consulta = DB::select($sql,$bind);
+    return $consulta;
+  }
+
   public function getInicial($vehiculo,$fecha) {
     $sql  = "select kmshrs from trabajos 
               where idvehiculo=? and fecha<?
