@@ -90,7 +90,7 @@
           <li class="<?php echo $opcion53; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=historico"><i class="fa fa-circle-o"></i> Histórico de Consumo</a></li>
         </ul>
       </li>
-      <li class="treeview">
+      <li class="<?php echo $opcion61; ?> treeview">
         <a href="#">
           <i class="fa fa-gears"></i> <span>Configuración</span>
           <span class="pull-right-container">
@@ -98,7 +98,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+          <li class="<?php echo $opcion61; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=usuarios&a=index"><i class="fa fa-circle-o"></i> Usuarios</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> BackUp</a></li>
         </ul>
       </li>

@@ -2,12 +2,14 @@
 class UsuariosControlador {
 
   public function index() {
-    $opcion21 = "active";
+    $opcion61 = "active";
     require_once "layouts/layout_head.php";
     
-    require_once "vistas/operarios/OperariosVista.php";
+    require_once "modelos/UsuariosModelo.php";
+    $perfiles = UsuariosModelo::getPerfiles();
+    require_once "vistas/usuarios/UsuariosVista.php";
     
-    $scripts = array("operarios.js");
+    $scripts = array("usuarios.js");
     require_once "layouts/layout_foot.php";
   }
   
@@ -47,16 +49,31 @@ class UsuariosControlador {
     header("Location: index.php?c=usuarios&a=login");
   }
   
+  public function validar() {
+    if (empty($_POST['nombre']))
+      echo "- No ha ingresado NOMBRE.<br>";
+    if (empty($_POST['usuario']))
+      echo "- No ha ingresado USUARIO.<br>";
+    if ($_POST['perfil']==0)
+      echo "- No ha escogido PERFIL.<br>";
+  }
+  
   public function guardar() {
-    require_once "modelos/OperariosModelo.php";
-    $id = OperariosModelo::insertOperario($_POST['nombre'],$_POST['abreviatura']);
+    require_once "modelos/UsuariosModelo.php";
+    $id = UsuariosModelo::insertUsuario($_POST['nombre'],$_POST['usuario'],$_POST['perfil']);
+    echo $id;
+  }
+  
+  public function eliminar() {
+    require_once "modelos/UsuariosModelo.php";
+    $id = UsuariosModelo::deleteUsuario($_POST['id']);
     echo $id;
   }
   
   public function mostrar() {
-    require_once "modelos/OperariosModelo.php";
-    $operarios = OperariosModelo::getOperarios();
-    require_once "vistas/operarios/mostrarRegistros.php";
+    require_once "modelos/UsuariosModelo.php";
+    $usuarios = UsuariosModelo::getUsuarios();
+    require_once "vistas/usuarios/mostrarRegistros.php";
   }
 }
 ?>

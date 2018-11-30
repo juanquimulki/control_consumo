@@ -12,3 +12,4 @@ restricciones de bd
 *lenguaje de datepicker
 *máscara de fechas
 *convertir la app en win
+constantes con nombres de perfil de usuario
