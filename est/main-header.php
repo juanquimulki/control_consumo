@@ -28,7 +28,11 @@
 
               <p>
                 <?php echo $_SESSION['usuario']; ?>
-                <small>Nivel de Acceso</small>
+                <small>
+                  <?php
+                  echo "(".utf8_encode($_SESSION['perfil_nombre']).")";
+                  ?>
+                </small>
               </p>
             </li>
             <!-- Menu Body -->

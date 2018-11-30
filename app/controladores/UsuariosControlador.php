@@ -23,10 +23,28 @@ class UsuariosControlador {
       $usuario = UsuariosModelo::selectUsuario($_POST['user']);
   
       if ($usuario['user']==$_POST['user']) {
-        if ($usuario['pass']==$_POST['pass']) {
+        //if ($usuario['pass']==$_POST['pass']) {
+        if ($usuario['pass']==md5($_POST['pass'])) {
           $_SESSION['auth']    = true;
           $_SESSION['user']    = $usuario['user'];
           $_SESSION['usuario'] = $usuario['nombre'];
+          $_SESSION['perfil']  = $usuario['perfil'];
+          
+          switch ($usuario['perfil']) {
+            case 1:
+              $_SESSION['perfil_nombre']="Administrador";
+              break;
+            case 2:
+              $_SESSION['perfil_nombre']="Carga";
+              break;
+            case 3:
+              $_SESSION['perfil_nombre']="Consulta";
+              break;
+            default:
+              $_SESSION['perfil_nombre']="Nivel de Acceso";
+              break;
+          }
+          
           $_SESSION['desde']   = date("d/m/Y")." - ".date("H:i");
 
           header("Location: index.php?c=tablero&a=index");

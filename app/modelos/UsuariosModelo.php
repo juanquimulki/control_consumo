@@ -19,10 +19,13 @@ class UsuariosModelo {
   }
   
   public function selectUsuario($user) {
-    $usuario['user'] = "jmulki";
+    /*$usuario['user'] = "jmulki";
     $usuario['pass'] = "123456";
     $usuario['nombre'] = "Juan M. Mulki A.";
-    return $usuario;
+    return $usuario;*/
+
+    $consulta = DB::select("select * from usuarios where user=?",array($user));
+    return $consulta->fetch();
   }
   
   public function getPerfiles() {
