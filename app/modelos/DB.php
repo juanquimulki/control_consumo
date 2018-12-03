@@ -64,5 +64,16 @@ class DB {
       return 0;
     }
   }
+  
+  public function update($sql,$bind) {
+    $cnn = DB::conexion();
+    $consulta = $cnn->prepare($sql);
+    if ($consulta-> execute($bind))
+      return $consulta->rowCount();
+    else {
+      print_r($consulta->errorInfo());
+      return 0;
+    }
+  }
 }
 ?>

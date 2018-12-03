@@ -39,7 +39,7 @@
             <li class="user-body">
               <div class="row">
                 <div class="col-xs-5 text-center" style="text-decoration:underline;">
-                  <a href="#">Cambiar Clave</a>
+                  <a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=usuarios&a=clave">Cambiar Clave</a>
                 </div>
                 <!--div class="col-xs-4 text-center">
                   <a href="#">Sales</a>

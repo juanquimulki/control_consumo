@@ -37,6 +37,52 @@ function guardar() {
   })  
 }
 
+function cancelar() {
+  $("#id").val("#");
+  $("#nombre").val("");
+  $("#usuario").val("");
+  $("#perfil").val(0);
+}
+
+function guardarClave() {
+  $("#alerta").hide();
+  var actual   = $("#actual").val();
+  var nueva    = $("#nueva").val();
+  var confirma = $("#confirma").val();
+  
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=usuarios&a=validarClave",
+    data: "actual="+actual+"&nueva="+nueva+"&confirma="+confirma,
+    success: function(data) {
+      if (data) {
+        alerta("warning","Atención",data,"fa-warning");
+      }
+      else {
+        $.ajax({
+          type: "POST",
+          url: "index.php?c=usuarios&a=guardarClave",
+          data: "actual="+actual+"&nueva="+nueva+"&confirma="+confirma,
+          success: function(data) {
+            if (data>=1) {
+              alerta("success","Información","La clave ha sido cambiada con éxito.","fa-check");
+            }
+            else {
+              alerta("error","Error","Hubo problemas al guardar.","fa-ban");
+            }
+          }
+        })  
+      }
+    }
+  })  
+}
+
+function cancelarClave() {
+  $("#actual").val("");
+  $("#nueva").val("");
+  $("#confirma").val("");
+}
+
 function eliminar() {
   var id = $("#id_eliminar").val();
   

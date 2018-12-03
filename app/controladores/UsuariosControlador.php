@@ -27,6 +27,7 @@ class UsuariosControlador {
         if ($usuario['pass']==md5($_POST['pass'])) {
           $_SESSION['auth']    = true;
           $_SESSION['user']    = $usuario['user'];
+          $_SESSION['pass']    = $usuario['pass'];
           $_SESSION['usuario'] = $usuario['nombre'];
           $_SESSION['perfil']  = $usuario['perfil'];
           
@@ -76,12 +77,36 @@ class UsuariosControlador {
       echo "- No ha escogido PERFIL.<br>";
   }
   
+  public function validarClave() {
+    require_once "modelos/UsuariosModelo.php";
+
+    if (empty($_POST['actual']))
+      echo "- No ha ingresado CLAVE ACTUAL.<br>";
+    else 
+      if (md5($_POST['actual'])!=$_SESSION['pass'])
+        echo "- La CLAVE ACTUAL no es correcta.<br>"; 
+    
+    if (empty($_POST['nueva']))
+      echo "- No ha ingresado NUEVA CLAVE.<br>";
+    if (empty($_POST['confirma']))
+      echo "- No ha escogido CONFIRMACIÓN DE CLAVE.<br>";
+
+    if ($_POST['nueva']!=$_POST['confirma'])
+      echo "- La NUEVA CLAVE y su CONFIRMACIÓN no coinciden.<br>";
+  }
+
   public function guardar() {
     require_once "modelos/UsuariosModelo.php";
     $id = UsuariosModelo::insertUsuario($_POST['nombre'],$_POST['usuario'],$_POST['perfil']);
     echo $id;
   }
   
+  public function guardarClave() {
+    require_once "modelos/UsuariosModelo.php";
+    $cantidad = UsuariosModelo::updateClave(md5($_POST['nueva']),$_SESSION['user']);
+    echo $cantidad;  
+  }
+
   public function eliminar() {
     require_once "modelos/UsuariosModelo.php";
     $id = UsuariosModelo::deleteUsuario($_POST['id']);
@@ -92,6 +117,13 @@ class UsuariosControlador {
     require_once "modelos/UsuariosModelo.php";
     $usuarios = UsuariosModelo::getUsuarios();
     require_once "vistas/usuarios/mostrarRegistros.php";
+  }
+
+  public function clave() {
+    require_once "layouts/layout_head.php";
+    require_once "vistas/usuarios/cambiarClave.php";
+    $scripts = array("usuarios.js");
+    require_once "layouts/layout_foot.php";    
   }
 }
 ?>

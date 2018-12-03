@@ -27,6 +27,11 @@ class UsuariosModelo {
     $consulta = DB::select("select * from usuarios where user=?",array($user));
     return $consulta->fetch();
   }
+
+  public function updateClave($pass,$user) {
+    $cantidad = DB::update("update usuarios set pass=? where user=?",array($pass,$user));
+    return $cantidad;
+  }
   
   public function getPerfiles() {
     $perfiles = array();
