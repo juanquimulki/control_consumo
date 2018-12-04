@@ -8,6 +8,10 @@
 
 <!-- Main content -->
 <section class="content container-fluid">
+
+  <?php
+  if ($_SESSION['perfil']<=2) {
+  ?>
   <div class="row">
     <div class="col-md-6">
       <div class="box box-default">
@@ -77,6 +81,9 @@
       
     </div>
   </div>
+  <?php
+  }
+  ?>
 
 <div id="mostrar">
 </div>

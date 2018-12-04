@@ -21,7 +21,12 @@
       }
       //echo "<td><a href='http://".$GLOBALS['SERVER_NAME']."/control_consumo/index.php?c=operarios&a=borrar&id=".$r[$id]."'><img src='http://".$GLOBALS['SERVER_NAME']."/control_consumo/img/delete.png' /></a></td>";
       $id_eliminar = $r[$id]; 
-      echo "<td><a style='cursor:pointer' data-toggle='modal' data-target='#modal-default' onclick='javascript:modalEliminar($id_eliminar)'><img src='http://".$GLOBALS['SERVER_NAME']."/control_consumo/img/delete.png' /></a></td>";
+      if ($_SESSION['perfil']==1) {
+        echo "<td><a style='cursor:pointer' data-toggle='modal' data-target='#modal-default' onclick='javascript:modalEliminar($id_eliminar)'><img src='http://".$GLOBALS['SERVER_NAME']."/control_consumo/img/delete.png' /></a></td>";
+      }
+      else {
+        echo "<td></td>";
+      }
       echo "</tr>";
     }
     ?>
