@@ -14,21 +14,21 @@ class ItemsControlador {
   }
   
   public function validar() {
-    if (empty($_POST['nombre']))
-      echo "- No ha ingresado NOMBRE.<br>";
-    if (empty($_POST['abreviatura']))
-      echo "- No ha ingresado ABREVIATURA.<br>";
+    if ($_POST['seccion']==0)
+      echo "- No ha escogido SECCIÓN.<br>";
+    if (empty($_POST['item']))
+      echo "- No ha ingresado DESCRIPCIÓN.<br>";
   }
   
   public function guardar() {
-    require_once "modelos/OperariosModelo.php";
-    $id = OperariosModelo::insertOperario($_POST['nombre'],$_POST['abreviatura']);
+    require_once "modelos/ItemsModelo.php";
+    $id = ItemsModelo::insertItem($_POST['seccion'],$_POST['item']);
     echo $id;
   }
   
   public function eliminar() {
-    require_once "modelos/OperariosModelo.php";
-    $id = OperariosModelo::deleteOperario($_POST['id']);
+    require_once "modelos/ItemsModelo.php";
+    $id = ItemsModelo::deleteItem($_POST['id']);
     echo $id;
   }
 

@@ -7,7 +7,7 @@ function eliminar() {
   
   $.ajax({
     type: "POST",
-    url: "index.php?c=operarios&a=eliminar",
+    url: "index.php?c=items&a=eliminar",
     data: "id="+id,
     success: function(data) {
       if (data=="1") {
@@ -23,13 +23,13 @@ function eliminar() {
 
 function guardar() {
   $("#alerta").hide();
-  var nombre      = $("#nombre").val();
-  var abreviatura = $("#abreviatura").val();
+  var seccion = $("#seccion").val();
+  var item    = $("#item").val();
   
   $.ajax({
     type: "POST",
-    url: "index.php?c=operarios&a=validar",
-    data: "nombre="+nombre+"&abreviatura="+abreviatura,
+    url: "index.php?c=items&a=validar",
+    data: "seccion="+seccion+"&item="+item,
     success: function(data) {
       if (data) {
         alerta("warning","Atención",data,"fa-warning");
@@ -37,8 +37,8 @@ function guardar() {
       else {
         $.ajax({
           type: "POST",
-          url: "index.php?c=operarios&a=guardar",
-          data: "nombre="+nombre+"&abreviatura="+abreviatura,
+          url: "index.php?c=items&a=guardar",
+          data: "seccion="+seccion+"&item="+item,
           success: function(data) {
             if (data!=0) {
               $("#id").val(data);
@@ -57,8 +57,8 @@ function guardar() {
 
 function cancelar() {
   $("#id").val("#");
-  $("#nombre").val("");
-  $("#abreviatura").val("");
+  $("#seccion").val(0);
+  $("#item").val("");
 }
 
 function mostrar() {
