@@ -97,7 +97,7 @@ function datatable() {
           "decimal": "",
           "emptyTable": "No hay información",
           "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
-          "infoEmpty": "Mostrando 0 to 0 of 0 registros",
+          "infoEmpty": "Mostrando 0 a 0 de 0 registros",
           "infoFiltered": "(Filtrado de _MAX_ registros)",
           "infoPostFix": "",
           "thousands": ",",
