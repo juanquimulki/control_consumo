@@ -66,7 +66,7 @@
           <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
         </ul-->
       </li>
-      <li class="<?php echo $opcion41.$opcion42; ?> treeview">
+      <li class="<?php echo $opcion41.$opcion42.$opcion43; ?> treeview">
         <a href="#">
           <i class="fa fa-keyboard-o"></i> <span>Registros</span>
           <span class="pull-right-container">
@@ -76,6 +76,7 @@
         <ul class="treeview-menu">
           <li class="<?php echo $opcion41; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=cargas&a=index"><i class="fa fa-circle-o"></i> Cargas de Combustible</a></li>
           <li class="<?php echo $opcion42; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=trabajos&a=index"><i class="fa fa-circle-o"></i> Trabajos Realizados</a></li>
+          <li class="<?php echo $opcion43; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=checklist&a=index"><i class="fa fa-circle-o"></i> Checklist de Novedades</a></li>
         </ul>
       </li>
       <li class="<?php echo $opcion51.$opcion52.$opcion53; ?> treeview">
