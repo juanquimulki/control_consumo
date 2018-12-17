@@ -1,3 +1,9 @@
+function probar() {
+  $("#texto").val("hello...");
+  //$("#texto").hide();
+  $("#texto").show();
+}
+
 function modalEliminar(id) {
   $("#id_eliminar").val(id);
 }
@@ -134,4 +140,6 @@ $(function () {
   
   $("#alerta").hide();
   mostrar();
+
+  $("#texto").hide();
 })

@@ -7,8 +7,10 @@ class ChecklistControlador {
     
     require_once "modelos/OperariosModelo.php";
     require_once "modelos/VehiculosModelo.php";
+    require_once "modelos/ItemsModelo.php";
     $operarios = OperariosModelo::getOperarios();
     $vehiculos = VehiculosModelo::getVehiculos();
+    $items     = ItemsModelo::getItems();
     require_once "vistas/checklist/ChecklistVista.php";
     
     $scripts = array("checklist.js");

@@ -99,11 +99,31 @@
         </div>
         <!-- /.box-header -->
           <div class="box-body">
-            hello
-            <label class="switch">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
+            <input type="text" id="texto" /><button onclick="probar();">Boton</button>
+            <table style="width:100%;">
+               <thead>
+               <tr><th>Sección/Item</th><th>Atención</th><th>Detalles</th></tr>
+               </thead>
+               <tbody>
+               <?php
+               $seccion = "";
+               while ($registro = $items->fetch()) {
+                 if ($seccion!=$registro['seccion']) {
+                   echo "<tr><td>".$registro['seccion'].":</td></tr>";
+                   $seccion = $registro['seccion'];
+                 }
+                 echo "<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$registro['item']."</td>";
+                 echo "<td>";
+                 echo "<label class='switch'>
+                 <input type='checkbox'>
+                 <span class='slider round'></span>
+                 </label>";
+                 echo "</td>";
+                 echo "</tr>";
+               }
+               ?>
+               </tbody>
+            </table>
           </div>
         <!-- /.box-body -->
       </div>
