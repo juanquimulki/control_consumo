@@ -22,7 +22,7 @@ function eliminar() {
   
   $.ajax({
     type: "POST",
-    url: "index.php?c=cargas&a=eliminar",
+    url: "index.php?c=checklist&a=eliminar",
     data: "id="+id,
     success: function(data) {
       if (data=="1") {
@@ -40,16 +40,12 @@ function guardar() {
   $("#alerta").hide();
   var fecha         = $("#fecha").val();
   var idvehiculo    = $("#idvehiculo").val();
-  var litros        = $("#litros").val();
-  var precinto      = $("#precinto").val();
   var idoperario    = $("#idoperario").val();
-  var observaciones = $("#observaciones").val();
-  var precio        = $("#precio").val();
   
   $.ajax({
     type: "POST",
-    url: "index.php?c=cargas&a=validar",
-    data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&litros="+litros+"&precinto="+precinto+"&idoperario="+idoperario+"&observaciones="+observaciones+"&precio="+precio,
+    url: "index.php?c=checklist&a=validar",
+    data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&idoperario="+idoperario,
     success: function(data) {
       if (data) {
         alerta("warning","Atención",data,"fa-warning");
@@ -57,11 +53,12 @@ function guardar() {
       else {
         $.ajax({
           type: "POST",
-          url: "index.php?c=cargas&a=guardar",
-          data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&litros="+litros+"&precinto="+precinto+"&idoperario="+idoperario+"&observaciones="+observaciones+"&precio="+precio,
+          url: "index.php?c=checklist&a=guardar",
+          data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&idoperario="+idoperario,
           success: function(data) {
             if (data!=0 && $.isNumeric(data)) {
               $("#id").val(data);
+              guardarDetalles(data);
               alerta("success","Información","El registro ha sido guardado con éxito.","fa-check");
               mostrar();
             }
@@ -73,6 +70,23 @@ function guardar() {
       }
     }
   }) 
+}
+
+function guardarDetalles(idchecklist) {
+  $(".clase_checks").each(function(){
+    if ($(this).is(':checked')) {
+      iditem   = $(this).val();
+      detalles = $("#detalles"+iditem).val(); 
+      
+      $.ajax({
+        type: "POST",
+        url: "index.php?c=checklist&a=guardarDetalles",
+        data: "idchecklist="+idchecklist+"&iditem="+iditem+"&detalles="+detalles,
+        success: function(data) {
+        }
+      })      
+    }
+  });   
 }
 
 function cancelar() {
@@ -93,7 +107,7 @@ function cancelar() {
 function mostrar() {
   $.ajax({
     type: "POST",
-    url: "index.php?c=cargas&a=mostrar",
+    url: "index.php?c=checklist&a=mostrar",
     beforeSend: function() {
       $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
     },

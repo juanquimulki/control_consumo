@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50067
 File Encoding         : 65001
 
-Date: 2018-12-04 08:56:05
+Date: 2018-12-18 12:09:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -48,6 +48,72 @@ INSERT INTO `cargas` VALUES ('28', '2019-12-11', '6', '303.0', '0', '1', null, n
 INSERT INTO `cargas` VALUES ('29', '2019-12-14', '6', '472.0', '0', '1', null, null);
 INSERT INTO `cargas` VALUES ('32', '2018-10-01', '5', '10.0', '0', '1', '', '43.00');
 INSERT INTO `cargas` VALUES ('33', '2018-10-02', '5', '5.0', '0', '7', '', '50.00');
+
+-- ----------------------------
+-- Table structure for `checklist`
+-- ----------------------------
+DROP TABLE IF EXISTS `checklist`;
+CREATE TABLE `checklist` (
+  `idChecklist` int(11) NOT NULL auto_increment,
+  `fecha` date default NULL,
+  `idVehiculo` int(11) default NULL,
+  `idOperario` int(11) default NULL,
+  PRIMARY KEY  (`idChecklist`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of checklist
+-- ----------------------------
+INSERT INTO `checklist` VALUES ('1', '0000-00-00', '1', '6');
+
+-- ----------------------------
+-- Table structure for `detalles`
+-- ----------------------------
+DROP TABLE IF EXISTS `detalles`;
+CREATE TABLE `detalles` (
+  `idDetalle` int(11) NOT NULL auto_increment,
+  `idChecklist` int(11) default NULL,
+  `idItem` int(11) default NULL,
+  `detalles` text,
+  PRIMARY KEY  (`idDetalle`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of detalles
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `items`
+-- ----------------------------
+DROP TABLE IF EXISTS `items`;
+CREATE TABLE `items` (
+  `idItem` int(11) NOT NULL auto_increment,
+  `idSeccion` int(11) default NULL,
+  `item` varchar(30) default NULL,
+  PRIMARY KEY  (`idItem`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of items
+-- ----------------------------
+INSERT INTO `items` VALUES ('1', '1', 'Aceite del motor');
+INSERT INTO `items` VALUES ('2', '1', 'Líquido refrigerante');
+INSERT INTO `items` VALUES ('3', '1', 'Fluído Hidráulico');
+INSERT INTO `items` VALUES ('4', '1', 'Falla general');
+INSERT INTO `items` VALUES ('5', '1', 'Ruido extraño');
+INSERT INTO `items` VALUES ('6', '1', 'Fuerza');
+INSERT INTO `items` VALUES ('7', '2', 'Dirección');
+INSERT INTO `items` VALUES ('8', '2', 'Frenos');
+INSERT INTO `items` VALUES ('9', '2', 'Cubiertas');
+INSERT INTO `items` VALUES ('10', '2', 'Suspensión');
+INSERT INTO `items` VALUES ('11', '3', 'Arranque');
+INSERT INTO `items` VALUES ('12', '3', 'Luces');
+INSERT INTO `items` VALUES ('13', '3', 'Tablero');
+INSERT INTO `items` VALUES ('14', '3', 'Aire acondicionado');
+INSERT INTO `items` VALUES ('15', '3', 'Limpia parabrisas');
+INSERT INTO `items` VALUES ('16', '4', 'Falla general');
+INSERT INTO `items` VALUES ('17', '5', 'Falla general');
+INSERT INTO `items` VALUES ('19', '6', 'Falla general');
 
 -- ----------------------------
 -- Table structure for `operarios`
@@ -89,6 +155,27 @@ CREATE TABLE `precios` (
 -- ----------------------------
 INSERT INTO `precios` VALUES ('7', '2018-11-30', '50.00');
 INSERT INTO `precios` VALUES ('6', '2018-11-21', '43.00');
+
+-- ----------------------------
+-- Table structure for `secciones`
+-- ----------------------------
+DROP TABLE IF EXISTS `secciones`;
+CREATE TABLE `secciones` (
+  `idSeccion` int(11) NOT NULL auto_increment,
+  `seccion` varchar(30) default NULL,
+  PRIMARY KEY  (`idSeccion`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of secciones
+-- ----------------------------
+INSERT INTO `secciones` VALUES ('1', 'Motor');
+INSERT INTO `secciones` VALUES ('2', 'Tren Rodante');
+INSERT INTO `secciones` VALUES ('3', 'Electricidad/Electrónica');
+INSERT INTO `secciones` VALUES ('4', 'Sistema de Neumáticos');
+INSERT INTO `secciones` VALUES ('5', 'Cabina/Caja Volcadora');
+INSERT INTO `secciones` VALUES ('6', 'Transmisión');
+INSERT INTO `secciones` VALUES ('7', 'Otra Sección');
 
 -- ----------------------------
 -- Table structure for `trabajos`

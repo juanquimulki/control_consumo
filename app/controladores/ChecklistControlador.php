@@ -18,28 +18,37 @@ class ChecklistControlador {
   }
   
   public function validar() {
-    if ($_POST['seccion']==0)
-      echo "- No ha escogido SECCIÓN.<br>";
-    if (empty($_POST['item']))
-      echo "- No ha ingresado DESCRIPCIÓN.<br>";
+    if (empty($_POST['fecha']))
+      echo "- No ha ingresado FECHA.<br>";
+    if ($_POST['idvehiculo']==0)
+      echo "- No ha escogido VEHÍCULO.<br>";
+    if ($_POST['idoperario']==0)
+      echo "- No ha escogido OPERARIO.<br>";
   }
   
   public function guardar() {
-    require_once "modelos/ItemsModelo.php";
-    $id = ItemsModelo::insertItem($_POST['seccion'],$_POST['item']);
+    require_once "modelos/Fechas.php";
+    $fecha = Fechas::fecha_mysql($_POST['fecha']);
+    require_once "modelos/ChecklistModelo.php";
+    $id = ChecklistModelo::insertChecklist($fecha,$_POST['idvehiculo'],$_POST['idoperario']);
     echo $id;
   }
   
+  public function guardarDetalles() {
+    require_once "modelos/ChecklistModelo.php";
+    $id = ChecklistModelo::insertDetalles($_POST['idchecklist'],$_POST['iditem'],$_POST['detalles']);    
+  }
+  
   public function eliminar() {
-    require_once "modelos/ItemsModelo.php";
-    $id = ItemsModelo::deleteItem($_POST['id']);
+    require_once "modelos/ChecklistModelo.php";
+    $id = ChecklistModelo::deleteChecklist($_POST['id']);
     echo $id;
   }
 
   public function mostrar() {
-    require_once "modelos/ItemsModelo.php";
-    $items = ItemsModelo::getItems();
-    require_once "vistas/items/mostrarRegistros.php";
+    require_once "modelos/ChecklistModelo.php";
+    $checklists = ChecklistModelo::getChecklists();
+    require_once "vistas/checklist/mostrarRegistros.php";
   }
 }
 ?>
