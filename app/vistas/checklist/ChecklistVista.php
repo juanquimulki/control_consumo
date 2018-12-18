@@ -99,27 +99,28 @@
         </div>
         <!-- /.box-header -->
           <div class="box-body">
-            <input type="text" id="texto" /><button onclick="probar();">Boton</button>
+            <!--button onclick="probar();">Boton</button-->
             <table style="width:100%;">
                <thead>
-               <tr><th>Sección/Item</th><th>Atención</th><th>Detalles</th></tr>
+               <tr><th width="25%;">Sección/Item</th><th width="20%;">Atención</th><th>Detalles</th></tr>
                </thead>
                <tbody>
                <?php
                $seccion = "";
                while ($registro = $items->fetch()) {
                  if ($seccion!=$registro['seccion']) {
-                   echo "<tr><td>".$registro['seccion'].":</td></tr>";
+                   echo "<tr><td>".utf8_encode($registro['seccion']).":</td></tr>";
                    $seccion = $registro['seccion'];
                  }
-                 echo "<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$registro['item']."</td>";
+                 echo "<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".utf8_encode($registro['item'])."</td>";
                  echo "<td>";
                  echo "<label class='switch'>
-                 <input type='checkbox'>
+                 <input type='checkbox' class='clase_checks' id='check".$registro['idItem']."' onclick='mostrarDetalles(".$registro['idItem'].");' value='".$registro['idItem']."' />
                  <span class='slider round'></span>
                  </label>";
                  echo "</td>";
-                 echo "</tr>";
+                 echo "<td><input class='clase_detalles' id='detalles".$registro['idItem']."' type='text' size=30 /></td>";
+                 echo "</tr>\n";
                }
                ?>
                </tbody>

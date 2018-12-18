@@ -1,7 +1,16 @@
 function probar() {
-  $("#texto").val("hello...");
-  //$("#texto").hide();
-  $("#texto").show();
+  $(".clase_checks").each(function(){
+    alert($(this).val());
+  });  
+}
+
+function mostrarDetalles(id) {
+  if ($("#check"+id).is(':checked'))
+    $("#detalles"+id).show();
+  else {
+    $("#detalles"+id).val("");
+    $("#detalles"+id).hide();
+  }
 }
 
 function modalEliminar(id) {
@@ -70,10 +79,15 @@ function cancelar() {
   $("#id").val("#");
   $("#fecha").val("");
   $("#idvehiculo").val("0");
-  $("#litros").val("");
-  $("#precinto").val("");
   $("#idoperario").val("0");
-  $("#observaciones").val("");
+  
+  $(".clase_checks").each(function(){
+    $(this).prop("checked",false);
+  });
+  $(".clase_detalles").each(function(){
+    $(this).val("");
+    $(this).hide();
+  });
 }
 
 function mostrar() {
@@ -141,5 +155,5 @@ $(function () {
   $("#alerta").hide();
   mostrar();
 
-  $("#texto").hide();
+  $(".clase_detalles").hide();
 })
