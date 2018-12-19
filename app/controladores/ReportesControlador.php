@@ -39,6 +39,21 @@ class ReportesControlador {
     $scripts = array("reportes.js");
     require_once "layouts/layout_foot.php";
   }
+  
+  public function checklist() {
+    $opcion54 = "active";
+    require_once "layouts/layout_head.php";
+    
+    require_once "modelos/Fechas.php";
+    $anios = Fechas::get_anios();
+    $meses = Fechas::get_meses();
+    require_once "modelos/VehiculosModelo.php";
+    $vehiculos = VehiculosModelo::getVehiculos();
+    require_once "vistas/reportes/checklists.php";
+    
+    $scripts = array("reportes.js");
+    require_once "layouts/layout_foot.php";
+  }
 
   public function validar() {
     if ($_POST['vehiculo']==0)
@@ -57,6 +72,11 @@ class ReportesControlador {
       echo "- El intervalo de FECHAS no es válido.<br>";
   }
   
+  public function validarChecklist() {
+    if ($_POST['idvehiculo']==0)
+      echo "- No ha escogido VEHÍCULO.<br>";
+  }
+
   public function mostrar() {
     require_once "modelos/ReportesModelo.php";
     $reporte = ReportesModelo::getConsulta($_POST['vehiculo'],$_POST['mesdesde'],$_POST['aniodesde'],$_POST['meshasta'],$_POST['aniohasta']);
@@ -72,6 +92,34 @@ class ReportesControlador {
     $reporte = ReportesModelo::getConsultaHistorico($_POST['mesdesde'],$_POST['aniodesde'],$_POST['meshasta'],$_POST['aniohasta']);
 
     require_once "vistas/reportes/mostrarHistorico.php";
+  }
+  
+  public function mostrarChecklist() {
+    $mes  = $_POST['mesdesde'];
+    $anio = $_POST['aniodesde'];
+
+    require_once "modelos/ItemsModelo.php";
+    require_once "modelos/ChecklistModelo.php";
+    $items = ItemsModelo::getItems();
+    
+    $arreglo = array();
+    while ($registro = $items->fetch()) {
+      $fila = array();
+      $fila[] = $registro['item'];
+      for ($i=1;$i<=30;$i++) {
+        $fecha   = $anio."-".$mes."-".$i;  
+        $novedad = ChecklistModelo::getNovedad($registro['idItem'],$fecha);
+        if ($nov = $novedad->fetch()) {
+          $fila[] = $nov['idDetalle'];
+        }
+        else {
+          $fila[] = 0;
+        }
+      }
+      $arreglo[] = $fila;
+    }
+
+    require_once "vistas/reportes/mostrarChecklist.php";  
   }
   
   public function json_litros() {

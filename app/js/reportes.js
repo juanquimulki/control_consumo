@@ -115,6 +115,15 @@ function cancelarHistorico() {
   $("#mes_hasta").val(fecha.getMonth()+1);
 }
 
+function cancelarChecklist() {
+  fecha = new Date();
+  $("#alerta").hide();
+  
+  $("#idvehiculo").val(0);
+  $("#anio_desde").val(fecha.getFullYear());
+  $("#mes_desde").val(fecha.getMonth()+1);
+}
+
 function mostrar() {
   vehiculo  = $("#vehiculo").val();
   mesdesde  = $("#mes_desde").val();
@@ -148,6 +157,37 @@ function mostrar() {
       }
     }
   }) 
+}
+
+function mostrarChecklist() {
+  mesdesde  = $("#mes_desde").val();
+  aniodesde = $("#anio_desde").val();
+  idvehiculo = $("#idvehiculo").val();
+
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=reportes&a=validarChecklist",
+    data: "mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&idvehiculo="+idvehiculo,
+    success: function(data) {
+      if (data) {
+        alerta("warning","Atención",data,"fa-warning");
+      }
+      else {
+        $("#alerta").hide();
+        $.ajax({
+          type: "POST",
+          url: "index.php?c=reportes&a=mostrarChecklist",
+          data: "mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&idvehiculo="+idvehiculo,
+          beforeSend: function() {
+            $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
+          },
+          success: function(data) {
+            $("#mostrar").html(data);
+          }
+        })   
+      }
+    }
+  })
 }
 
 function mostrarHistorico() {
