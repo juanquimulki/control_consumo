@@ -34,7 +34,7 @@
             $primero = true;
             while ($r = $registros->fetch()) {
               if ($id==$r['idChecklist']) {
-                if ($r['item']) echo utf8_encode($r['item']).": ".utf8_encode($r['detalles'])." <br> ";
+                if ($r['item']) echo utf8_encode($r['item'])." (".utf8_encode($r['seccion'])."): ".utf8_encode($r['detalles'])." <br> ";
               }
               else {
                 $id=$r['idChecklist'];
@@ -59,7 +59,7 @@
                     echo "<td>".utf8_encode($r[$c])."</td>";
                 }
                 echo "<td>";
-                if ($r['item']) echo utf8_encode($r['item']).": ".utf8_encode($r['detalles'])." <br> ";
+                if ($r['item']) echo utf8_encode($r['item'])." (".utf8_encode($r['seccion'])."): ".utf8_encode($r['detalles'])." <br> ";
                 $id_eliminar = $r['idChecklist']; 
               }
               

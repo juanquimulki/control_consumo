@@ -105,7 +105,7 @@ class ReportesControlador {
     $arreglo = array();
     while ($registro = $items->fetch()) {
       $fila = array();
-      $fila[] = $registro['item'];
+      $fila[] = $registro['seccion'].": ".$registro['item'];
       for ($i=1;$i<=30;$i++) {
         $fecha   = $anio."-".$mes."-".$i;  
         $novedad = ChecklistModelo::getNovedad($registro['idItem'],$fecha);
