@@ -40,5 +40,11 @@ class UsuariosModelo {
     $perfiles[] = array(3,"Consulta");
     return $perfiles;
   }
+  
+  public function datosComunes($fecha,$idvehiculo,$idoperario) {
+    $_SESSION['comunes']['fecha']      = $fecha;
+    $_SESSION['comunes']['idvehiculo'] = $idvehiculo;
+    $_SESSION['comunes']['idoperario'] = $idoperario;
+  }
 }
 ?>

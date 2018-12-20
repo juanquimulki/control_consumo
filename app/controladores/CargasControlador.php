@@ -34,6 +34,9 @@ class CargasControlador {
   }
   
   public function guardar() {
+    require_once "modelos/UsuariosModelo.php";
+    UsuariosModelo::datosComunes($_POST['fecha'],$_POST['idvehiculo'],$_POST['idoperario']);
+    
     require_once "modelos/Fechas.php";
     $fecha = Fechas::fecha_mysql($_POST['fecha']);
     require_once "modelos/CargasModelo.php";

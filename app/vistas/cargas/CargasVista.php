@@ -25,6 +25,7 @@
         </div>
         <!-- /.box-header -->
           <div class="box-body">
+            <?php //var_dump($_SESSION); ?>
             <div class="row">
               <div class="col-md-6">
                 <form class="form-horizontal">
@@ -41,7 +42,7 @@
                           <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                           </div>
-                          <input type="text" class="form-control pull-right" id="fecha" placeholder="dd/mm/aaaa">
+                          <input type="text" class="form-control pull-right" id="fecha" placeholder="dd/mm/aaaa" <?php echo ($_SESSION['comunes']['fecha']?"value='".$_SESSION['comunes']['fecha']."'":""); ?>>
                         </div>
                         <!-- /.input group -->
                       </div>
@@ -53,7 +54,8 @@
                           <option value='0'>Seleccione...</option>
                           <?php
                           while ($registro=$vehiculos->fetch()) {
-                            echo "<option value='".$registro['idVehiculo']."'>".utf8_encode($registro['descripcion'])."</option>";
+                            $selected = ($registro['idVehiculo']==$_SESSION['comunes']['idvehiculo']?"selected":"");
+                            echo "<option value='".$registro['idVehiculo']."' $selected>".utf8_encode($registro['descripcion'])."</option>";
                           }
                           ?>
                         </select>
@@ -88,7 +90,8 @@
                           <option value='0'>Seleccione...</option>
                           <?php
                           while ($registro=$operarios->fetch()) {
-                            echo "<option value='".$registro['idOperario']."'>".utf8_encode($registro['nombre'])." (".utf8_encode($registro['abreviatura']).")</option>";
+                            $selected = ($registro['idOperario']==$_SESSION['comunes']['idoperario']?"selected":"");
+                            echo "<option value='".$registro['idOperario']."' $selected>".utf8_encode($registro['nombre'])." (".utf8_encode($registro['abreviatura']).")</option>";
                           }
                           ?>
                         </select>
