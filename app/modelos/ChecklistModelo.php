@@ -25,6 +25,25 @@ class ChecklistModelo {
     $consulta = DB::select($sql,$bind);
     return $consulta;
   }
+  
+  public function getDetalles($id) {
+    $sql  = "select idDetalle,fecha,descripcion,nombre,item,seccion,detalles,solucionado from detalles
+              inner join checklist on detalles.idChecklist=checklist.idChecklist
+							inner join vehiculos on checklist.idVehiculo=vehiculos.idVehiculo
+							inner join operarios on checklist.idOperario=operarios.idOperario
+              inner join items on detalles.idItem=items.idItem
+              inner join secciones on items.idSeccion=secciones.idSeccion
+              where idDetalle=?";
+    $bind = array($id);
+    $consulta = DB::select($sql,$bind);
+    return $consulta;    
+  }
+  
+  public function solucionarDetalles($id) {
+    $sql  = "update detalles set solucionado=now() where iddetalle=?";
+    $bind = array($id);
+    $consulta = DB::exec($sql,$bind);    
+  }
 
   public function insertChecklist($fecha,$idvehiculo,$idoperario) {
     $id = DB::insert("insert into checklist (fecha,idVehiculo,idOperario) values (?,?,?)",array($fecha,$idvehiculo,$idoperario));

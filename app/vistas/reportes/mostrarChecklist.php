@@ -19,7 +19,7 @@
                     foreach ($arr as $a) {
                       if (is_numeric($a))
                         if ($a>0) {
-                          echo "<td><i style='color:red' class='fa fa-fw fa-circle'></i></td>";
+                          echo "<td><a style='cursor:pointer' data-toggle='modal' data-target='#modal-default' onclick='javascript:detalles($a);'><i style='color:red' class='fa fa-fw fa-circle'></a></i></td>";
                         }
                         else
                           echo "<td>&nbsp;</td>";

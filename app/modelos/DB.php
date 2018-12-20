@@ -19,6 +19,13 @@ class DB {
       }    
   }
   
+  public function exec($sql,$bind) {
+    $cnn = DB::conexion();
+    $consulta = $cnn->prepare($sql);
+    $consulta-> execute($bind);
+    //print_r($consulta->errorInfo());
+  }
+  
   public function select($sql,$bind) {
     $cnn = DB::conexion();
     $consulta = $cnn->prepare($sql);

@@ -122,6 +122,18 @@ class ReportesControlador {
     require_once "vistas/reportes/mostrarChecklist.php";  
   }
   
+  public function detalles() {
+    require_once "modelos/ChecklistModelo.php";
+    $detalles = ChecklistModelo::getDetalles($_POST['iddetalle']);
+    $registro = $detalles->fetch();
+    require_once "vistas/reportes/mostrarDetalles.php";
+  }
+  
+  public function solucionar() {
+    require_once "modelos/ChecklistModelo.php";
+    ChecklistModelo::solucionarDetalles($_POST['iddetalle']);
+  }
+  
   public function json_litros() {
     require_once "modelos/ReportesModelo.php";
     $consulta = ReportesModelo::getConsultaHistorico($_POST['mesdesde'],$_POST['aniodesde'],$_POST['meshasta'],$_POST['aniohasta']);

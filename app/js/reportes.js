@@ -190,6 +190,29 @@ function mostrarChecklist() {
   })
 }
 
+function detalles(id) {
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=reportes&a=detalles",
+    data: "iddetalle="+id,
+    success: function(data) {
+      $("#iddetalle").val(id);
+      $("#detalles").html(data);
+    }
+  })  
+}
+
+function solucionar() {
+  id = $("#iddetalle").val();
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=reportes&a=solucionar",
+    data: "iddetalle="+id,
+    success: function(data) {
+    }
+  })  
+}
+
 function mostrarHistorico() {
   mesdesde  = $("#mes_desde").val();
   aniodesde = $("#anio_desde").val();
