@@ -103,6 +103,7 @@ class ReportesControlador {
     $items = ItemsModelo::getItems();
     
     $arreglo = array();
+    $solucionado = array();
     while ($registro = $items->fetch()) {
       $fila = array();
       $fila[] = $registro['seccion'].": ".$registro['item'];
@@ -111,6 +112,7 @@ class ReportesControlador {
         $novedad = ChecklistModelo::getNovedad($registro['idItem'],$fecha);
         if ($nov = $novedad->fetch()) {
           $fila[] = $nov['idDetalle'];
+          $solucionado[] = $nov['solucionado'];
         }
         else {
           $fila[] = 0;

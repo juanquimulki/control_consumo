@@ -209,6 +209,7 @@ function solucionar() {
     url: "index.php?c=reportes&a=solucionar",
     data: "iddetalle="+id,
     success: function(data) {
+      mostrarChecklist();
     }
   })  
 }
