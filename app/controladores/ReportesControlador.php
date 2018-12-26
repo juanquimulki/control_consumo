@@ -97,6 +97,7 @@ class ReportesControlador {
   public function mostrarChecklist() {
     $mes  = $_POST['mesdesde'];
     $anio = $_POST['aniodesde'];
+    $dias = cal_days_in_month(CAL_GREGORIAN, $mes, $anio);
 
     require_once "modelos/ItemsModelo.php";
     require_once "modelos/ChecklistModelo.php";
@@ -107,7 +108,7 @@ class ReportesControlador {
     while ($registro = $items->fetch()) {
       $fila = array();
       $fila[] = $registro['seccion'].": ".$registro['item'];
-      for ($i=1;$i<=30;$i++) {
+      for ($i=1;$i<=$dias;$i++) {
         $fecha   = $anio."-".$mes."-".$i;  
         $novedad = ChecklistModelo::getNovedad($registro['idItem'],$fecha);
         if ($nov = $novedad->fetch()) {

@@ -3,13 +3,13 @@
               <h3 class="box-title">Registros consultados...</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body no-padding">
+            <div class="box-body no-padding" style="overflow-x:auto;">
               <?php //var_dump($solucionado); ?>
               <table class="table table-striped">
                 <tr>
                   <th>Sección / Item</th>
                   <?php 
-                  for ($i=1;$i<=30;$i++) {
+                  for ($i=1;$i<=$dias;$i++) {
                     echo "<th>$i</th>";
                   }
                   ?>
