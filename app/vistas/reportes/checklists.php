@@ -94,8 +94,9 @@
         <input id="iddetalle" type="hidden" />
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" onclick="solucionar();" data-dismiss="modal">Solucionado!</button>
+        <button type="button" class="btn btn-primary pull-left" onclick="solucionar();" data-dismiss="modal">Solucionado!:</button>
+        <input type="text" id="resultados" style="margin-left:10px;" size="30" placeholder="Resultados..." class="pull-left" />
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
     <!-- /.modal-content -->

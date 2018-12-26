@@ -133,7 +133,7 @@ class ReportesControlador {
   
   public function solucionar() {
     require_once "modelos/ChecklistModelo.php";
-    ChecklistModelo::solucionarDetalles($_POST['iddetalle']);
+    ChecklistModelo::solucionarDetalles($_POST['iddetalle'],$_POST['resultados']);
   }
   
   public function json_litros() {

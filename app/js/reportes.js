@@ -204,10 +204,11 @@ function detalles(id) {
 
 function solucionar() {
   id = $("#iddetalle").val();
+  resultados = $("#resultados").val();
   $.ajax({
     type: "POST",
     url: "index.php?c=reportes&a=solucionar",
-    data: "iddetalle="+id,
+    data: "iddetalle="+id+"&resultados="+resultados,
     success: function(data) {
       mostrarChecklist();
     }

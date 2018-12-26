@@ -27,7 +27,7 @@ class ChecklistModelo {
   }
   
   public function getDetalles($id) {
-    $sql  = "select idDetalle,fecha,descripcion,nombre,item,seccion,detalles,solucionado from detalles
+    $sql  = "select idDetalle,fecha,descripcion,nombre,item,seccion,detalles,solucionado,resultados from detalles
               inner join checklist on detalles.idChecklist=checklist.idChecklist
 							inner join vehiculos on checklist.idVehiculo=vehiculos.idVehiculo
 							inner join operarios on checklist.idOperario=operarios.idOperario
@@ -39,9 +39,9 @@ class ChecklistModelo {
     return $consulta;    
   }
   
-  public function solucionarDetalles($id) {
-    $sql  = "update detalles set solucionado=now() where iddetalle=?";
-    $bind = array($id);
+  public function solucionarDetalles($id,$resultados) {
+    $sql  = "update detalles set solucionado=now(),resultados=? where iddetalle=?";
+    $bind = array($resultados,$id);
     $consulta = DB::exec($sql,$bind);    
   }
 

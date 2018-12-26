@@ -10,5 +10,6 @@ echo "<tr><td>Item:</td><td>".utf8_encode($registro['item'])."</td></tr>";
 echo "<tr><td>Detalles:</td><td>".utf8_encode($registro['detalles'])."</td></tr>";
 echo "<tr height='10px;'></tr>";
 echo "<tr><td>SOLUCIONADO:</td><td>".$registro['solucionado']."</td></tr> ";
+echo "<tr><td></td><td>".utf8_encode($registro['resultados'])."</td></tr> ";
 echo "</table>";
 ?>
