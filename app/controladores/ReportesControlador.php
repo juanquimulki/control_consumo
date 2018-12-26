@@ -137,6 +137,13 @@ class ReportesControlador {
     ChecklistModelo::solucionarDetalles($_POST['iddetalle'],$_POST['resultados']);
   }
   
+  public function ticket() {
+    require_once "modelos/ChecklistModelo.php";
+    $detalles = ChecklistModelo::getDetalles($_GET['id']);
+    $registro = $detalles->fetch();
+    require_once "vistas/reportes/ticket.php";
+  }
+  
   public function json_litros() {
     require_once "modelos/ReportesModelo.php";
     $consulta = ReportesModelo::getConsultaHistorico($_POST['mesdesde'],$_POST['aniodesde'],$_POST['meshasta'],$_POST['aniohasta']);

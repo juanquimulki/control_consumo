@@ -211,8 +211,14 @@ function solucionar() {
     data: "iddetalle="+id+"&resultados="+resultados,
     success: function(data) {
       mostrarChecklist();
+      ticket();
     }
   })  
+}
+
+function ticket() {
+  id = $("#iddetalle").val();
+  window.open("index.php?c=reportes&a=ticket&id="+id,"_blank");
 }
 
 function mostrarHistorico() {
