@@ -4,6 +4,10 @@ function probar() {
   });  
 }
 
+function imprimir() {
+  window.open("index.php?c=checklist&a=imprimir","_blank");
+}
+
 function mostrarDetalles(id) {
   if ($("#check"+id).is(':checked'))
     $("#detalles"+id).show();

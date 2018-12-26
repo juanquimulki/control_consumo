@@ -53,5 +53,11 @@ class ChecklistControlador {
     $checklists = ChecklistModelo::getChecklists();
     require_once "vistas/checklist/mostrarRegistros.php";
   }
+  
+  public function imprimir() {
+    require_once "modelos/ItemsModelo.php";
+    $items     = ItemsModelo::getItems();
+    require_once "vistas/checklist/imprimirPlanilla.php";    
+  }
 }
 ?>

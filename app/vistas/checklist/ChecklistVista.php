@@ -77,6 +77,7 @@
         <!-- /.box-body -->
         <div class="box-footer">
           <button class="btn btn-default" onclick="cancelar()">Cancelar</button>
+          <button class="btn btn-default" onclick="imprimir()"><i class="fa fa-print"></i>&nbsp;Planilla</button>
           <button class="btn btn-info pull-right" onclick="guardar()">Guardar</button>
         </div>
         <!--div class="box-footer">
