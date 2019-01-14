@@ -9,7 +9,8 @@ class ChecklistModelo {
               left outer join detalles on checklist.idChecklist=detalles.idChecklist
               left outer join items on detalles.idItem=items.idItem
               left outer join secciones on items.idSeccion=secciones.idSeccion
-              order by fecha,descripcion,detalles.idItem";
+              order by idChecklist";
+              //order by fecha,descripcion,detalles.idItem";
     $consulta = DB::select($sql,null);
     return $consulta;
   }
