@@ -45,7 +45,7 @@
       <div class="inner">
         <h3><?php echo number_format($litros,2,",","."); ?></h3>
 
-        <p>Litros cargados</p>
+        <p>Litros cargados (en el mes)</p>
       </div>
       <div class="icon">
         <i class="fa fa-battery-quarter"></i>

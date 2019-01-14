@@ -1,5 +1,5 @@
 <?php
-session_start("cc");
+session_start();
 $GLOBALS['SERVER_NAME']="localhost";
 
 //BLOQUE DE SEGURIDAD

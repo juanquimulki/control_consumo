@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once "modelos/DB.php";
 
 class TableroModelo {
@@ -15,7 +15,8 @@ class TableroModelo {
   }
 
   public function getLitros() {
-    $consulta = DB::selectSum("cargas","litros");
+    $where = "month(fecha)=".date("m")." and year(fecha)=".date("Y");
+    $consulta = DB::selectSumWhere("cargas","litros",$where);
     $registro = $consulta->fetch();
     return $registro[0];
   }
