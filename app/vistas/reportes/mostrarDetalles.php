@@ -1,8 +1,9 @@
 <?php
 echo "<table>";
-echo "<tr><td width='150px;'>Fecha:</td><td>".$registro['fecha']."</td></tr>"; 
+echo "<tr><td width='150px;'>Fecha:</td><td>".$registro['fecha']."</td></tr>";
 echo "<tr height='10px;'></tr>";
 echo "<tr><td>Vehículo:</td><td>".utf8_encode($registro['descripcion'])."</td></tr>";
+echo "<tr><td>Kms/Hrs:</td><td>".$registro['kmshrs']."</td></tr>";
 echo "<tr><td>Operario:</td><td>".utf8_encode($registro['nombre'])."</td></tr>";
 echo "<tr height='10px;'></tr>";
 echo "<tr><td>Sección:</td><td>".utf8_encode($registro['seccion'])."</td></tr>";

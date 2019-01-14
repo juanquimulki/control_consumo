@@ -59,6 +59,12 @@
                 </div>
               </div>
               <div class="form-group">
+                <label for="kilometros" class="col-sm-2 control-label">Kms/Hrs</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="kmshrs" placeholder="Kms/Hrs..." style="width:100px;" />
+                </div>
+              </div>
+              <div class="form-group">
                 <label for="idoperario" class="col-sm-2 control-label">Operario</label>
                 <div class="col-sm-10">
                   <select class="form-control" id="idoperario">

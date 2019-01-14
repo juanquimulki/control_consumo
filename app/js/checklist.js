@@ -1,7 +1,7 @@
 function probar() {
   $(".clase_checks").each(function(){
     alert($(this).val());
-  });  
+  });
 }
 
 function imprimir() {
@@ -23,7 +23,7 @@ function modalEliminar(id) {
 
 function eliminar() {
   var id = $("#id_eliminar").val();
-  
+
   $.ajax({
     type: "POST",
     url: "index.php?c=checklist&a=eliminar",
@@ -37,19 +37,20 @@ function eliminar() {
         alerta("error","Error","Hubo problemas al eliminar.","fa-ban");
       }
     }
-  })  
+  })
 }
 
 function guardar() {
   $("#alerta").hide();
   var fecha         = $("#fecha").val();
   var idvehiculo    = $("#idvehiculo").val();
+  var kmshrs        = $("#kmshrs").val();
   var idoperario    = $("#idoperario").val();
-  
+
   $.ajax({
     type: "POST",
     url: "index.php?c=checklist&a=validar",
-    data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&idoperario="+idoperario,
+    data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&kmshrs="+kmshrs+"&idoperario="+idoperario,
     success: function(data) {
       if (data) {
         alerta("warning","Atención",data,"fa-warning");
@@ -58,7 +59,7 @@ function guardar() {
         $.ajax({
           type: "POST",
           url: "index.php?c=checklist&a=guardar",
-          data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&idoperario="+idoperario,
+          data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&kmshrs="+kmshrs+"&idoperario="+idoperario,
           success: function(data) {
             if (data!=0 && $.isNumeric(data)) {
               $("#id").val(data);
@@ -73,32 +74,33 @@ function guardar() {
         })
       }
     }
-  }) 
+  })
 }
 
 function guardarDetalles(idchecklist) {
   $(".clase_checks").each(function(){
     if ($(this).is(':checked')) {
       iditem   = $(this).val();
-      detalles = $("#detalles"+iditem).val(); 
-      
+      detalles = $("#detalles"+iditem).val();
+
       $.ajax({
         type: "POST",
         url: "index.php?c=checklist&a=guardarDetalles",
         data: "idchecklist="+idchecklist+"&iditem="+iditem+"&detalles="+detalles,
         success: function(data) {
         }
-      })      
+      })
     }
-  });   
+  });
 }
 
 function cancelar() {
   $("#id").val("#");
   $("#fecha").val("");
   $("#idvehiculo").val("0");
+  $("#kmshrs").val("");
   $("#idoperario").val("0");
-  
+
   $(".clase_checks").each(function(){
     $(this).prop("checked",false);
   });
@@ -119,7 +121,7 @@ function mostrar() {
       $("#mostrar").html(data);
       datatable();
     }
-  })   
+  })
 }
 
 function alerta(tipo,titulo,mensaje,icono) {
@@ -160,7 +162,7 @@ function datatable() {
               "previous": "Anterior"
           }
       }
-    });  
+    });
 }
 
 $(function () {
@@ -169,7 +171,7 @@ $(function () {
     autoclose: true,
     format: 'dd/mm/yyyy',
   })
-  
+
   $("#alerta").hide();
   mostrar();
 

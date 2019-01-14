@@ -1,9 +1,9 @@
-<?php 
+<?php
 require_once "modelos/DB.php";
 
 class ChecklistModelo {
   public function getChecklists() {
-    $sql = "select checklist.idChecklist,fecha,descripcion,abreviatura,seccion,item,detalles from checklist
+    $sql = "select checklist.idChecklist,fecha,descripcion,abreviatura,seccion,item,detalles,kmshrs from checklist
               inner join vehiculos on checklist.idVehiculo=vehiculos.idVehiculo
               inner join operarios on checklist.idOperario=operarios.idOperario
               left outer join detalles on checklist.idChecklist=detalles.idChecklist
@@ -13,7 +13,7 @@ class ChecklistModelo {
     $consulta = DB::select($sql,null);
     return $consulta;
   }
-  
+
   public function getNovedad($iditem,$fecha) {
     $sql  = "select checklist.idChecklist,idDetalle,detalles.idItem,checklist.idVehiculo,fecha,solucionado from checklist
               inner join vehiculos on checklist.idVehiculo=vehiculos.idVehiculo
@@ -25,9 +25,9 @@ class ChecklistModelo {
     $consulta = DB::select($sql,$bind);
     return $consulta;
   }
-  
+
   public function getDetalles($id) {
-    $sql  = "select idDetalle,fecha,descripcion,nombre,item,seccion,detalles,solucionado,resultados from detalles
+    $sql  = "select idDetalle,fecha,descripcion,nombre,item,seccion,detalles,solucionado,resultados,kmshrs from detalles
               inner join checklist on detalles.idChecklist=checklist.idChecklist
 							inner join vehiculos on checklist.idVehiculo=vehiculos.idVehiculo
 							inner join operarios on checklist.idOperario=operarios.idOperario
@@ -36,17 +36,17 @@ class ChecklistModelo {
               where idDetalle=?";
     $bind = array($id);
     $consulta = DB::select($sql,$bind);
-    return $consulta;    
+    return $consulta;
   }
-  
+
   public function solucionarDetalles($id,$resultados) {
     $sql  = "update detalles set solucionado=now(),resultados=? where iddetalle=?";
     $bind = array($resultados,$id);
-    $consulta = DB::exec($sql,$bind);    
+    $consulta = DB::exec($sql,$bind);
   }
 
-  public function insertChecklist($fecha,$idvehiculo,$idoperario) {
-    $id = DB::insert("insert into checklist (fecha,idVehiculo,idOperario) values (?,?,?)",array($fecha,$idvehiculo,$idoperario));
+  public function insertChecklist($fecha,$idvehiculo,$kmshrs,$idoperario) {
+    $id = DB::insert("insert into checklist (fecha,idVehiculo,kmshrs,idOperario) values (?,?,?,?)",array($fecha,$idvehiculo,$kmshrs,$idoperario));
     return $id;
   }
 
