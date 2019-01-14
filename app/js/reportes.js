@@ -1,7 +1,7 @@
 $(function () {
   fecha = new Date();
   $("#alerta").hide();
-  
+
   $("#anio_desde").val(fecha.getFullYear());
   $("#mes_desde").val(fecha.getMonth()+1);
   $("#anio_hasta").val(fecha.getFullYear());
@@ -95,10 +95,10 @@ function datos_precios() {
 
 function cancelar() {
   $("#vehiculo").val(0);
-  
+
   fecha = new Date();
   $("#alerta").hide();
-  
+
   $("#anio_desde").val(fecha.getFullYear());
   $("#mes_desde").val(fecha.getMonth()+1);
   $("#anio_hasta").val(fecha.getFullYear());
@@ -108,7 +108,17 @@ function cancelar() {
 function cancelarHistorico() {
   fecha = new Date();
   $("#alerta").hide();
-  
+
+  $("#anio_desde").val(fecha.getFullYear());
+  $("#mes_desde").val(fecha.getMonth()+1);
+  $("#anio_hasta").val(fecha.getFullYear());
+  $("#mes_hasta").val(fecha.getMonth()+1);
+}
+
+function cancelarHistcheck() {
+  fecha = new Date();
+  $("#alerta").hide();
+
   $("#anio_desde").val(fecha.getFullYear());
   $("#mes_desde").val(fecha.getMonth()+1);
   $("#anio_hasta").val(fecha.getFullYear());
@@ -118,7 +128,7 @@ function cancelarHistorico() {
 function cancelarChecklist() {
   fecha = new Date();
   $("#alerta").hide();
-  
+
   $("#idvehiculo").val(0);
   $("#anio_desde").val(fecha.getFullYear());
   $("#mes_desde").val(fecha.getMonth()+1);
@@ -130,7 +140,7 @@ function mostrar() {
   aniodesde = $("#anio_desde").val();
   meshasta  = $("#mes_hasta").val();
   aniohasta = $("#anio_hasta").val();
-  
+
   $.ajax({
     type: "POST",
     url: "index.php?c=reportes&a=validar",
@@ -153,10 +163,10 @@ function mostrar() {
             rendimientoChart(vehiculo,mesdesde,aniodesde,meshasta,aniohasta);
             cargaChart(vehiculo,mesdesde,aniodesde,meshasta,aniohasta);
           }
-        })   
+        })
       }
     }
-  }) 
+  })
 }
 
 function mostrarChecklist() {
@@ -184,7 +194,7 @@ function mostrarChecklist() {
           success: function(data) {
             $("#mostrar").html(data);
           }
-        })   
+        })
       }
     }
   })
@@ -199,7 +209,7 @@ function detalles(id) {
       $("#iddetalle").val(id);
       $("#detalles").html(data);
     }
-  })  
+  })
 }
 
 function solucionar() {
@@ -213,7 +223,7 @@ function solucionar() {
       mostrarChecklist();
       ticket();
     }
-  })  
+  })
 }
 
 function ticket() {
@@ -226,7 +236,7 @@ function mostrarHistorico() {
   aniodesde = $("#anio_desde").val();
   meshasta  = $("#mes_hasta").val();
   aniohasta = $("#anio_hasta").val();
-  
+
   $.ajax({
     type: "POST",
     url: "index.php?c=reportes&a=validarHistorico",
@@ -249,10 +259,42 @@ function mostrarHistorico() {
             litrosChart(mesdesde,aniodesde,meshasta,aniohasta);
             costosChart(mesdesde,aniodesde,meshasta,aniohasta);
           }
-        })   
+        })
       }
     }
-  }) 
+  })
+}
+
+function mostrarHistcheck() {
+  mesdesde  = $("#mes_desde").val();
+  aniodesde = $("#anio_desde").val();
+  meshasta  = $("#mes_hasta").val();
+  aniohasta = $("#anio_hasta").val();
+
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=reportes&a=validarHistcheck",
+    data: "mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
+    success: function(data) {
+      if (data) {
+        alerta("warning","Atención",data,"fa-warning");
+      }
+      else {
+        $("#alerta").hide();
+        $.ajax({
+          type: "POST",
+          url: "index.php?c=reportes&a=mostrarHistcheck",
+          data: "mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
+          beforeSend: function() {
+            $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
+          },
+          success: function(data) {
+            $("#mostrar").html(data);
+          }
+        })
+      }
+    }
+  })
 }
 
 function litrosChart(mesdesde,aniodesde,meshasta,aniohasta) {

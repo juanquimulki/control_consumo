@@ -15,7 +15,7 @@ class Fechas {
         $meses[] = array(10,"Octubre");
         $meses[] = array(11,"Noviembre");
         $meses[] = array(12,"Diciembre");
-        
+
         return $meses;
     }
 
@@ -26,13 +26,24 @@ class Fechas {
           $anios[]=$i;
         return $anios;
     }
-        
+
     function fecha_mysql($fecha) {
         $dia = substr($fecha,0,2);
         $mes = substr($fecha,3,2);
         $año = substr($fecha,6,4);
         $fecha_mysql = "$año-$mes-$dia";
-        return $fecha_mysql;        
+        return $fecha_mysql;
+    }
+
+    function get_primero($mes,$anio) {
+      $primero = "$anio-$mes-1";
+      return $primero;
+    }
+
+    function get_ultimo($mes,$anio) {
+      $ultimo = date("d",(mktime(0,0,0,$mes+1,1,$anio)-1));
+      $ultimo = "$anio-$mes-$ultimo";
+      return $ultimo;
     }
 }
 ?>

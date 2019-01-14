@@ -1,16 +1,16 @@
-<?php 
+<?php
 require_once "modelos/DB.php";
 
 class ReportesModelo {
   public function getConsulta($vehiculo,$mesdesde,$aniodesde,$meshasta,$aniohasta) {
-    $sql  = "select * from consulta 
+    $sql  = "select * from consulta
               where idVehiculo=? and ((month(fecha) between ? and ?) and (year(fecha) between ? and ?))
               order by fecha";
     $bind = array($vehiculo,$mesdesde,$meshasta,$aniodesde,$aniohasta);
     $consulta = DB::select($sql,$bind);
     return $consulta;
   }
-  
+
   public function getConsultaHistorico($mesdesde,$aniodesde,$meshasta,$aniohasta) {
     $sql  = "select month(fecha) as mes, year(fecha) as anio, sum(litros) as litros, sum(precio*litros) as precio from cargas
               where month(fecha) BETWEEN ? and ? and year(fecha) BETWEEN ? and ?
@@ -20,8 +20,21 @@ class ReportesModelo {
     return $consulta;
   }
 
+  public function getConsultaHistcheck($desde,$hasta) {
+    $sql  = "select fecha,descripcion,seccion,item,detalles,solucionado,resultados from checklist
+              inner join detalles on checklist.idchecklist=detalles.idchecklist
+              inner join vehiculos on checklist.idVehiculo=vehiculos.idVehiculo
+              inner join items on detalles.idItem=items.idItem
+              inner join secciones on items.idSeccion=secciones.idSeccion
+              where fecha BETWEEN ? and ?
+              order by fecha";
+    $bind = array($desde,$hasta);
+    $consulta = DB::select($sql,$bind);
+    return $consulta;
+  }
+
   public function getInicial($vehiculo,$fecha) {
-    $sql  = "select kmshrs from trabajos 
+    $sql  = "select kmshrs from trabajos
               where idvehiculo=? and fecha<?
               order by fecha desc, idtrabajo desc";
     $bind = array($vehiculo,$fecha);
