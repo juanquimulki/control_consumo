@@ -132,6 +132,18 @@ class ReportesControlador {
     require_once "vistas/reportes/mostrarHistcheck.php";
   }
 
+  public function imprimirHistcheck() {
+    require_once "modelos/Fechas.php";
+    $primero = Fechas::get_primero($_GET['md'],$_GET['ad']);
+    $ultimo  = Fechas::get_ultimo($_GET['mh'],$_GET['ah']);
+    //echo "$primero $ultimo";
+
+    require_once "modelos/ReportesModelo.php";
+    $reporte = ReportesModelo::getConsultaHistcheck($primero,$ultimo);
+
+    require_once "vistas/reportes/imprimirHistcheck.php";
+  }
+
   public function mostrarChecklist() {
     $mes  = $_POST['mesdesde'];
     $anio = $_POST['aniodesde'];

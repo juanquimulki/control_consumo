@@ -297,6 +297,15 @@ function mostrarHistcheck() {
   })
 }
 
+function imprimirHistcheck() {
+  md = $("#mes_desde").val();
+  ad = $("#anio_desde").val();
+  mh = $("#mes_hasta").val();
+  ah = $("#anio_hasta").val();
+
+  window.open("index.php?c=reportes&a=imprimirHistcheck&md="+md+"&ad="+ad+"&mh="+mh+"&ah="+ah,"_blank");
+}
+
 function litrosChart(mesdesde,aniodesde,meshasta,aniohasta) {
   $.ajax({
     type: "POST",
