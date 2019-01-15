@@ -72,15 +72,27 @@ class ReportesControlador {
     if ($_POST['vehiculo']==0)
       echo "- No ha escogido VEHÍCULO.<br>";
 
-    $desde = $_POST['aniodesde'].$_POST['mesdesde'];
-    $hasta = $_POST['aniohasta'].$_POST['meshasta'];
+    $mesdesde = $_POST['mesdesde'];
+    $meshasta = $_POST['meshasta'];
+
+    if ($mesdesde<10) $mesdesde = "0$mesdesde";
+    if ($meshasta<10) $meshasta = "0$meshasta";
+
+    $desde = $_POST['aniodesde'].$mesdesde;
+    $hasta = $_POST['aniohasta'].$meshasta;
     if ($desde>$hasta)
       echo "- El intervalo de FECHAS no es válido.<br>";
   }
 
   public function validarHistorico() {
-    $desde = $_POST['aniodesde'].$_POST['mesdesde'];
-    $hasta = $_POST['aniohasta'].$_POST['meshasta'];
+    $mesdesde = $_POST['mesdesde'];
+    $meshasta = $_POST['meshasta'];
+
+    if ($mesdesde<10) $mesdesde = "0$mesdesde";
+    if ($meshasta<10) $meshasta = "0$meshasta";
+
+    $desde = $_POST['aniodesde'].$mesdesde;
+    $hasta = $_POST['aniohasta'].$meshasta;
     if ($desde>$hasta)
       echo "- El intervalo de FECHAS no es válido.<br>";
   }
@@ -104,8 +116,12 @@ class ReportesControlador {
   }
 
   public function mostrar() {
+    require_once "modelos/Fechas.php";
+    $primero = Fechas::get_primero($_POST['mesdesde'],$_POST['aniodesde']);
+    $ultimo  = Fechas::get_ultimo($_POST['meshasta'],$_POST['aniohasta']);
+
     require_once "modelos/ReportesModelo.php";
-    $reporte = ReportesModelo::getConsulta($_POST['vehiculo'],$_POST['mesdesde'],$_POST['aniodesde'],$_POST['meshasta'],$_POST['aniohasta']);
+    $reporte = ReportesModelo::getConsulta($_POST['vehiculo'],$primero,$ultimo);
     $fecha   = $_POST['aniodesde']."/".$_POST['mesdesde']."/01";
     $inicial = ReportesModelo::getInicial($_POST['vehiculo'],$fecha);
     require_once "vistas/reportes/mostrar.php";
@@ -113,9 +129,12 @@ class ReportesControlador {
 
   public function mostrarHistorico() {
     require_once "modelos/Fechas.php";
+    $primero = Fechas::get_primero($_POST['mesdesde'],$_POST['aniodesde']);
+    $ultimo  = Fechas::get_ultimo($_POST['meshasta'],$_POST['aniohasta']);
+
     $meses = Fechas::get_meses();
     require_once "modelos/ReportesModelo.php";
-    $reporte = ReportesModelo::getConsultaHistorico($_POST['mesdesde'],$_POST['aniodesde'],$_POST['meshasta'],$_POST['aniohasta']);
+    $reporte = ReportesModelo::getConsultaHistorico($primero,$ultimo);
 
     require_once "vistas/reportes/mostrarHistorico.php";
   }
@@ -195,8 +214,12 @@ class ReportesControlador {
   }
 
   public function json_litros() {
+    require_once "modelos/Fechas.php";
+    $primero = Fechas::get_primero($_POST['mesdesde'],$_POST['aniodesde']);
+    $ultimo  = Fechas::get_ultimo($_POST['meshasta'],$_POST['aniohasta']);
+
     require_once "modelos/ReportesModelo.php";
-    $consulta = ReportesModelo::getConsultaHistorico($_POST['mesdesde'],$_POST['aniodesde'],$_POST['meshasta'],$_POST['aniohasta']);
+    $consulta = ReportesModelo::getConsultaHistorico($primero,$ultimo);
 
     $respuesta = array();
     while ($registro = $consulta->fetch()) {
@@ -207,8 +230,12 @@ class ReportesControlador {
   }
 
   public function json_costos() {
+    require_once "modelos/Fechas.php";
+    $primero = Fechas::get_primero($_POST['mesdesde'],$_POST['aniodesde']);
+    $ultimo  = Fechas::get_ultimo($_POST['meshasta'],$_POST['aniohasta']);
+
     require_once "modelos/ReportesModelo.php";
-    $consulta = ReportesModelo::getConsultaHistorico($_POST['mesdesde'],$_POST['aniodesde'],$_POST['meshasta'],$_POST['aniohasta']);
+    $consulta = ReportesModelo::getConsultaHistorico($primero,$ultimo);
 
     $respuesta = array();
     while ($registro = $consulta->fetch()) {
@@ -219,8 +246,12 @@ class ReportesControlador {
   }
 
   public function json_rendimiento() {
+    require_once "modelos/Fechas.php";
+    $primero = Fechas::get_primero($_POST['mesdesde'],$_POST['aniodesde']);
+    $ultimo  = Fechas::get_ultimo($_POST['meshasta'],$_POST['aniohasta']);
+
     require_once "modelos/ReportesModelo.php";
-    $consulta = ReportesModelo::getConsulta($_POST['vehiculo'],$_POST['mesdesde'],$_POST['aniodesde'],$_POST['meshasta'],$_POST['aniohasta']);
+    $consulta = ReportesModelo::getConsulta($_POST['vehiculo'],$primero,$ultimo);
     $fecha   = $_POST['aniodesde']."/".$_POST['mesdesde']."/01";
     $inicial = ReportesModelo::getInicial($_POST['vehiculo'],$fecha);
 
@@ -240,8 +271,12 @@ class ReportesControlador {
   }
 
   public function json_carga() {
+    require_once "modelos/Fechas.php";
+    $primero = Fechas::get_primero($_POST['mesdesde'],$_POST['aniodesde']);
+    $ultimo  = Fechas::get_ultimo($_POST['meshasta'],$_POST['aniohasta']);
+
     require_once "modelos/ReportesModelo.php";
-    $consulta = ReportesModelo::getConsulta($_POST['vehiculo'],$_POST['mesdesde'],$_POST['aniodesde'],$_POST['meshasta'],$_POST['aniohasta']);
+    $consulta = ReportesModelo::getConsulta($_POST['vehiculo'],$primero,$ultimo);
     $fecha   = $_POST['aniodesde']."/".$_POST['mesdesde']."/01";
     $inicial = ReportesModelo::getInicial($_POST['vehiculo'],$fecha);
 

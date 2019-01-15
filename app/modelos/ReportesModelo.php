@@ -2,20 +2,20 @@
 require_once "modelos/DB.php";
 
 class ReportesModelo {
-  public function getConsulta($vehiculo,$mesdesde,$aniodesde,$meshasta,$aniohasta) {
+  public function getConsulta($vehiculo,$desde,$hasta) {
     $sql  = "select * from consulta
-              where idVehiculo=? and ((month(fecha) between ? and ?) and (year(fecha) between ? and ?))
+              where idVehiculo=? and fecha between ? and ?
               order by fecha";
-    $bind = array($vehiculo,$mesdesde,$meshasta,$aniodesde,$aniohasta);
+    $bind = array($vehiculo,$desde,$hasta);
     $consulta = DB::select($sql,$bind);
     return $consulta;
   }
 
-  public function getConsultaHistorico($mesdesde,$aniodesde,$meshasta,$aniohasta) {
+  public function getConsultaHistorico($desde,$hasta) {
     $sql  = "select month(fecha) as mes, year(fecha) as anio, sum(litros) as litros, sum(precio*litros) as precio from cargas
-              where month(fecha) BETWEEN ? and ? and year(fecha) BETWEEN ? and ?
+              where fecha between ? and ?
               group by mes,anio";
-    $bind = array($mesdesde,$meshasta,$aniodesde,$aniohasta);
+    $bind = array($desde,$hasta);
     $consulta = DB::select($sql,$bind);
     return $consulta;
   }
