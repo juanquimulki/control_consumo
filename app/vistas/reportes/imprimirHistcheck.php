@@ -1,4 +1,4 @@
-<title>Control de Consumo | Servicios Industriales</title>
+<title>Control de Consumo | Cerámica Santiago</title>
 
 <style>
   body {

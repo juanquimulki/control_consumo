@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Control de Consumo | Servicios Industriales</title>
+  <title>Control de Consumo | Cerámica Santiago</title>
 
   <style>
     body {
@@ -32,8 +32,8 @@
 
 <div class="titulo">
   PLANILLA DE NOVEDADES DEL VEHÍCULO
-</div>  
-  
+</div>
+
 <table style="width:100%;" border=1>
   <tr><td style="width:250px;"><b>Fecha:</b></td><td></td></tr>
   <tr><td><b>Vehículo:</b></td><td></td><td style="width:250px;"><b>Kms. Actuales:</b></td><td></td></tr>

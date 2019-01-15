@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Control de Consumo | Servicios Industriales</title>
+  <title>Control de Consumo | Cerámica Santiago</title>
 
   <style>
     body {
@@ -32,11 +32,11 @@
 
 <div class="titulo">
   COMPROBANTE DE RESOLUCIÓN DE INCONVENIENTES MECÁNICOS
-</div>  
-  
+</div>
+
 <?php
 echo "<table>";
-echo "<tr><td width='150px;'><b>Fecha:</b></td><td>".$registro['fecha']."</td></tr>"; 
+echo "<tr><td width='150px;'><b>Fecha:</b></td><td>".$registro['fecha']."</td></tr>";
 echo "<tr height='10px;'></tr>";
 echo "<tr><td><b>Vehículo:</b></td><td>".utf8_encode($registro['descripcion'])."</td></tr>";
 echo "<tr><td><b>Operario:</b></td><td>".utf8_encode($registro['nombre'])."</td></tr>";
