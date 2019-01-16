@@ -52,6 +52,7 @@
           <li class="<?php echo $opcion21; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=operarios&a=index"><i class="fa fa-circle-o"></i> Operarios</a></li>
           <li class="<?php echo $opcion22; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=precios&a=index"><i class="fa fa-circle-o"></i> Precios de Combustible</a></li>
           <li class="<?php echo $opcion23; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=items&a=index"><i class="fa fa-circle-o"></i> Items de Checklist</a></li>
+          <li class="<?php echo $opcion24; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=particulares&a=index"><i class="fa fa-circle-o"></i> Particulares</a></li>
         </ul>
       </li>
       <li class="<?php echo $opcion3; ?>">

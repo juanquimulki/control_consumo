@@ -8,7 +8,7 @@
 
 <!-- Main content -->
 <section class="content container-fluid">
-  
+
   <?php
   if ($_SESSION['perfil']<=2) {
   ?>
@@ -59,10 +59,10 @@
 
       <div id="alerta">
       </div>
-      
+
     </div>
   </div>
-  <?
+  <?php
   }
   ?>
 

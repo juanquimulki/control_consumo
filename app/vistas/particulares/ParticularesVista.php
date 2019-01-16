@@ -1,8 +1,8 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Items
-    <small>Items a verificar en las checklists</small>
+    Particulares
+    <small>Archivo de particulares</small>
   </h1>
 </section>
 
@@ -33,22 +33,15 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="seccion" class="col-sm-2 control-label">Sección</label>
+                <label for="nombre" class="col-sm-2 control-label">Nombre</label>
                 <div class="col-sm-10">
-                  <select class="form-control" id="seccion">
-                    <option value='0'>Seleccione...</option>
-                    <?php
-                    while ($registro=$secciones->fetch()) {
-                      echo "<option value='".$registro['idSeccion']."'>".utf8_encode($registro['seccion'])."</option>";
-                    }
-                    ?>
-                  </select>
+                  <input type="text" class="form-control" id="nombre" placeholder="Nombre..." maxlength="50">
                 </div>
               </div>
               <div class="form-group">
-                <label for="descripcion" class="col-sm-2 control-label">Descripción</label>
+                <label for="abreviatura" class="col-sm-2 control-label">Abreviatura</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="item" placeholder="Descripción..." maxlength="30">
+                  <input type="text" class="form-control" id="abreviatura" placeholder="Abreviatura..." maxlength="20">
                 </div>
               </div>
           </form>
