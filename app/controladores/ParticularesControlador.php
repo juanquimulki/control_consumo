@@ -2,7 +2,7 @@
 class ParticularesControlador {
 
   public function index() {
-    $opcion21 = "active";
+    $opcion24 = "active";
     require_once "layouts/layout_head.php";
 
     require_once "vistas/particulares/ParticularesVista.php";
@@ -34,6 +34,20 @@ class ParticularesControlador {
     require_once "modelos/ParticularesModelo.php";
     $particulares = ParticularesModelo::getParticulares();
     require_once "vistas/particulares/mostrarRegistros.php";
+  }
+
+  public function cargas() {
+    $opcion44 = "active";
+    require_once "layouts/layout_head.php";
+
+    require_once "modelos/ParticularesModelo.php";
+    require_once "modelos/PreciosModelo.php";
+    $particulares = ParticularesModelo::getParticulares();
+    $precio       = PreciosModelo::getUltPrecio();
+    require_once "vistas/particulares/CargasVista.php";
+
+    $scripts = array("particulares.js");
+    require_once "layouts/layout_foot.php";
   }
 }
 ?>
