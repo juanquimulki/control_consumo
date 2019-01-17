@@ -21,6 +21,25 @@ function eliminar() {
   })
 }
 
+function eliminarCarga() {
+  var id = $("#id_eliminar").val();
+
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=particulares&a=eliminarCarga",
+    data: "id="+id,
+    success: function(data) {
+      if (data=="1") {
+        alerta("success","Información","El registro ha sido eliminado con éxito.","fa-check");
+        mostrarCargas();
+      }
+      else {
+        alerta("error","Error","Hubo problemas al eliminar.","fa-ban");
+      }
+    }
+  })
+}
+
 function guardar() {
   $("#alerta").hide();
   var nombre      = $("#nombre").val();
@@ -55,16 +74,75 @@ function guardar() {
   })
 }
 
+function guardarCarga() {
+  $("#alerta").hide();
+  var fecha         = $("#fecha").val();
+  var litros        = $("#litros").val();
+  var idparticular  = $("#idparticular").val();
+  var observaciones = $("#observaciones").val();
+  var precio        = $("#precio").val();
+
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=particulares&a=validarCarga",
+    data: "fecha="+fecha+"&litros="+litros+"&idparticular="+idparticular+"&observaciones="+observaciones+"&precio="+precio,
+    success: function(data) {
+      if (data) {
+        alerta("warning","Atención",data,"fa-warning");
+      }
+      else {
+        $.ajax({
+          type: "POST",
+          url: "index.php?c=particulares&a=guardarCarga",
+          data: "fecha="+fecha+"&litros="+litros+"&idparticular="+idparticular+"&observaciones="+observaciones+"&precio="+precio,
+          success: function(data) {
+            if (data!=0) {
+              $("#id").val(data);
+              alerta("success","Información","El registro ha sido guardado con éxito.","fa-check");
+              mostrarCargas();
+            }
+            else {
+              alerta("error","Error","Hubo problemas al guardar.","fa-ban");
+            }
+          }
+        })
+      }
+    }
+  })
+}
+
 function cancelar() {
   $("#id").val("#");
   $("#nombre").val("");
   $("#abreviatura").val("");
 }
 
+function cancelarCarga() {
+  $("#id").val("#");
+  $("#fecha").val("");
+  $("#litros").val("");
+  $("#idparticular").val(0);
+  $("#observaciones").val("");
+}
+
 function mostrar() {
   $.ajax({
     type: "POST",
     url: "index.php?c=particulares&a=mostrar",
+    beforeSend: function() {
+      $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
+    },
+    success: function(data) {
+      $("#mostrar").html(data);
+      datatable();
+    }
+  })
+}
+
+function mostrarCargas() {
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=particulares&a=mostrarCargas",
     beforeSend: function() {
       $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
     },
@@ -117,6 +195,15 @@ function datatable() {
 }
 
 $(function () {
+  //Date picker
+  $('#fecha').datepicker({
+    autoclose: true,
+    format: 'dd/mm/yyyy',
+  })
+
   $("#alerta").hide();
-  mostrar();
+  if ($("#nombre").length)
+    mostrar();
+  else
+    mostrarCargas();
 })

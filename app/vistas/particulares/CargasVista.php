@@ -89,8 +89,8 @@
           </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          <button class="btn btn-default" onclick="cancelar()">Cancelar</button>
-          <button class="btn btn-info pull-right" onclick="guardar()">Guardar</button>
+          <button class="btn btn-default" onclick="cancelarCarga()">Cancelar</button>
+          <button class="btn btn-info pull-right" onclick="guardarCarga()">Guardar</button>
         </div>
         <!--div class="box-footer">
           Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
@@ -124,7 +124,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" onclick="eliminar();" data-dismiss="modal">Aceptar</button>
+        <button type="button" class="btn btn-primary" onclick="eliminarCarga();" data-dismiss="modal">Aceptar</button>
       </div>
     </div>
     <!-- /.modal-content -->
