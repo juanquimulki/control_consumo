@@ -33,6 +33,16 @@ class ReportesModelo {
     return $consulta;
   }
 
+  public function getConsultaParticulares($desde,$hasta) {
+    $sql  = "select * from cargas_part
+              inner join particulares on cargas_part.idParticular=particulares.idParticular
+              where fecha BETWEEN ? and ?
+              order by fecha";
+    $bind = array($desde,$hasta);
+    $consulta = DB::select($sql,$bind);
+    return $consulta;
+  }
+
   public function getInicial($vehiculo,$fecha) {
     $sql  = "select kmshrs from trabajos
               where idvehiculo=? and fecha<?

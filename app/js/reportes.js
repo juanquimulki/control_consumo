@@ -134,6 +134,16 @@ function cancelarChecklist() {
   $("#mes_desde").val(fecha.getMonth()+1);
 }
 
+function cancelarParticulares() {
+  fecha = new Date();
+  $("#alerta").hide();
+
+  $("#anio_desde").val(fecha.getFullYear());
+  $("#mes_desde").val(fecha.getMonth()+1);
+  $("#anio_hasta").val(fecha.getFullYear());
+  $("#mes_hasta").val(fecha.getMonth()+1);
+}
+
 function mostrar() {
   vehiculo  = $("#vehiculo").val();
   mesdesde  = $("#mes_desde").val();
@@ -284,6 +294,38 @@ function mostrarHistcheck() {
         $.ajax({
           type: "POST",
           url: "index.php?c=reportes&a=mostrarHistcheck",
+          data: "mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
+          beforeSend: function() {
+            $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
+          },
+          success: function(data) {
+            $("#mostrar").html(data);
+          }
+        })
+      }
+    }
+  })
+}
+
+function mostrarParticulares() {
+  mesdesde  = $("#mes_desde").val();
+  aniodesde = $("#anio_desde").val();
+  meshasta  = $("#mes_hasta").val();
+  aniohasta = $("#anio_hasta").val();
+
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=reportes&a=validarParticulares",
+    data: "mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
+    success: function(data) {
+      if (data) {
+        alerta("warning","Atención",data,"fa-warning");
+      }
+      else {
+        $("#alerta").hide();
+        $.ajax({
+          type: "POST",
+          url: "index.php?c=reportes&a=mostrarParticulares",
           data: "mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
           beforeSend: function() {
             $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
