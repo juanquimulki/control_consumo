@@ -67,6 +67,11 @@
           <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
         </ul-->
       </li>
+      <li class="<?php echo $opcion7; ?>">
+        <a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=cisterna&a=index">
+          <i class="fa fa-flask"></i> <span>Cisterna</span>
+        </a>
+      </li>
       <li class="<?php echo $opcion41.$opcion42.$opcion43.$opcion44; ?> treeview">
         <a href="#">
           <i class="fa fa-keyboard-o"></i> <span>Registros</span>
