@@ -43,6 +43,57 @@ class ReportesModelo {
     return $consulta;
   }
 
+  public function getIngresosCisterna($desde,$hasta) {
+    $sql  = "select * from cisterna
+              where fecha BETWEEN ? and ? and litros>=0
+              order by fecha, idCisterna";
+    $bind = array($desde,$hasta);
+    $consulta = DB::select($sql,$bind);
+    return $consulta;
+  }
+
+  public function getEgresosCisterna($desde,$hasta) {
+    $sql  = "select fecha,litros*(-1) as litros,observaciones,'EGRESO' as tipo from cisterna
+              where fecha BETWEEN ? and ? and litros<0
+            union
+            select fecha,litros,observaciones,'CARGA' as tipo from cargas
+              where fecha BETWEEN ? and ?
+            union
+            select fecha,litros,observaciones,'PARTICULAR' as tipo from cargas_part
+              where fecha BETWEEN ? and ?
+            order by fecha";
+    $bind = array($desde,$hasta,$desde,$hasta,$desde,$hasta);
+    $consulta = DB::select($sql,$bind);
+    return $consulta;
+  }
+
+  public function getAnteriorCisterna($desde) {
+    $sql  = "select sum(litros) as ingresos from cisterna
+              where fecha < ? and litros>=0";
+    $bind = array($desde);
+    $consulta = DB::select($sql,$bind);
+    $registro = $consulta->fetch();
+    //echo "ingresos ".$registro['ingresos']." ".$desde;
+    $ingresos = $registro['ingresos'];
+
+    $sql  = "select sum(litros) as egresos from
+            (select litros*(-1) as litros from cisterna
+              where fecha < ? and litros<0
+            union
+            select litros from cargas
+              where fecha < ?
+            union
+            select litros from cargas_part
+              where fecha < ?) as tabla";
+    $bind = array($desde,$desde,$desde);
+    $consulta = DB::select($sql,$bind);
+    $registro = $consulta->fetch();
+    //echo "egresos ".$registro['egresos']." ".$desde;
+    $egresos = $registro['egresos'];
+
+    return $ingresos - $egresos;
+  }
+
   public function getInicial($vehiculo,$fecha) {
     $sql  = "select kmshrs from trabajos
               where idvehiculo=? and fecha<?

@@ -81,6 +81,19 @@ class ReportesControlador {
     require_once "layouts/layout_foot.php";
   }
 
+  public function cisterna() {
+    $opcion57 = "active";
+    require_once "layouts/layout_head.php";
+
+    require_once "modelos/Fechas.php";
+    $anios = Fechas::get_anios();
+    $meses = Fechas::get_meses();
+    require_once "vistas/reportes/cisterna.php";
+
+    $scripts = array("reportes.js");
+    require_once "layouts/layout_foot.php";
+  }
+
   public function validar() {
     if ($_POST['vehiculo']==0)
       echo "- No ha escogido VEHÍCULO.<br>";
@@ -124,6 +137,19 @@ class ReportesControlador {
   }
 
   public function validarParticulares() {
+    $mesdesde = $_POST['mesdesde'];
+    $meshasta = $_POST['meshasta'];
+
+    if ($mesdesde<10) $mesdesde = "0$mesdesde";
+    if ($meshasta<10) $meshasta = "0$meshasta";
+
+    $desde = $_POST['aniodesde'].$mesdesde;
+    $hasta = $_POST['aniohasta'].$meshasta;
+    if ($desde>$hasta)
+      echo "- El intervalo de FECHAS no es válido.<br>";
+  }
+
+  public function validarCisterna() {
     $mesdesde = $_POST['mesdesde'];
     $meshasta = $_POST['meshasta'];
 
@@ -187,6 +213,20 @@ class ReportesControlador {
     $reporte = ReportesModelo::getConsultaParticulares($primero,$ultimo);
 
     require_once "vistas/reportes/mostrarParticulares.php";
+  }
+
+  public function mostrarCisterna() {
+    require_once "modelos/Fechas.php";
+    $primero = Fechas::get_primero($_POST['mesdesde'],$_POST['aniodesde']);
+    $ultimo  = Fechas::get_ultimo($_POST['meshasta'],$_POST['aniohasta']);
+    //echo "$primero $ultimo";
+
+    require_once "modelos/ReportesModelo.php";
+    $ingresos = ReportesModelo::getIngresosCisterna($primero,$ultimo);
+    $egresos  = ReportesModelo::getEgresosCisterna($primero,$ultimo);
+    $anterior = ReportesModelo::getAnteriorCisterna($primero);
+
+    require_once "vistas/reportes/mostrarCisterna.php";
   }
 
   public function imprimirHistcheck() {
