@@ -1,5 +1,8 @@
-<title>Control de Consumo | Cerámica Santiago</title>
+<!DOCTYPE html>
 
+<head>
+<title>Control de Consumo | Cerámica Santiago</title>
+<meta charset="UTF-8"> 
 <style>
   body {
     font-family: arial;
@@ -24,14 +27,16 @@
     margin-right: 100px;
   }
 </style>
+</head>
 
+<body>
 <div class="titulo">
   HISTÓRICO DE CHECKLISTS
 </div>
 
 <table style="width:100%;" border=1>
-  <tr><td style="width:250px;"><b>Desde:</b></td><td><?php echo date("d/m/Y",strtotime($primero)); ?></td></tr>
-  <tr><td><b>Hasta:</b></td><td><?php echo date("d/m/Y",strtotime($ultimo)); ?></td></tr>
+  <tr><td style="width:250px;"><b>Desde:</b></td><td><?php echo date("d/m/Y",strtotime($desde)); ?></td></tr>
+  <tr><td><b>Hasta:</b></td><td><?php echo date("d/m/Y",strtotime($hasta)); ?></td></tr>
 </table>
 <br><br><br>
 
@@ -67,3 +72,4 @@
       }
       ?>
     </table>
+</body>

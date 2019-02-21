@@ -20,13 +20,19 @@ class ReportesModelo {
     return $consulta;
   }
 
-  public function getConsultaHistcheck($desde,$hasta) {
+  public function getConsultaHistcheck($desde,$hasta,$idvehiculo,$solucionado) {
+    $where = "";
+    if ($idvehiculo)
+      $where .= " and vehiculos.idvehiculo=$idvehiculo";
+    if ($solucionado)
+      $where .= " and detalles.solucionado is not null";
+    
     $sql  = "select fecha,descripcion,seccion,item,detalles,solucionado,resultados from checklist
               inner join detalles on checklist.idchecklist=detalles.idchecklist
               inner join vehiculos on checklist.idVehiculo=vehiculos.idVehiculo
               inner join items on detalles.idItem=items.idItem
               inner join secciones on items.idSeccion=secciones.idSeccion
-              where fecha BETWEEN ? and ?
+              where fecha BETWEEN ? and ? $where
               order by fecha";
     $bind = array($desde,$hasta);
     $consulta = DB::select($sql,$bind);

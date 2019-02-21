@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Morris charts -->
   <link rel="stylesheet" href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/bower_components/morris.js/morris.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/plugins/iCheck/all.css">
   <!-- bootstrap datepicker -->
   <link rel="stylesheet" href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <!-- DataTables -->

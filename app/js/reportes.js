@@ -7,6 +7,24 @@ $(function () {
   $("#anio_hasta").val(fecha.getFullYear());
   $("#mes_hasta").val(fecha.getMonth()+1);
 
+  //Date picker
+  $('#fecha_desde').datepicker({
+    autoclose: true,
+    format: 'dd/mm/yyyy',
+    orientation: 'bottom'
+  })
+  $('#fecha_hasta').datepicker({
+    autoclose: true,
+    format: 'dd/mm/yyyy',
+    orientation: 'bottom'
+  })
+  
+  //Flat red color scheme for iCheck
+  $('input[type="checkbox"]').iCheck({
+    checkboxClass: 'icheckbox_flat-green',
+    radioClass   : 'iradio_flat-green'
+  })
+  
   var etiquetas = etiquetas_precios();
   var datos     = datos_precios();
 
@@ -119,10 +137,11 @@ function cancelarHistcheck() {
   fecha = new Date();
   $("#alerta").hide();
 
-  $("#anio_desde").val(fecha.getFullYear());
-  $("#mes_desde").val(fecha.getMonth()+1);
-  $("#anio_hasta").val(fecha.getFullYear());
-  $("#mes_hasta").val(fecha.getMonth()+1);
+  $("#idvehiculo").val(0);
+  $("#fecha_desde").val("");
+  $("#fecha_hasta").val("");
+  $("#solucionado").prop("checked",false);
+  $("#solucionado").iCheck('update');
 }
 
 function cancelarChecklist() {
@@ -286,15 +305,16 @@ function mostrarHistorico() {
 }
 
 function mostrarHistcheck() {
-  mesdesde  = $("#mes_desde").val();
-  aniodesde = $("#anio_desde").val();
-  meshasta  = $("#mes_hasta").val();
-  aniohasta = $("#anio_hasta").val();
+  desde       = $("#fecha_desde").val();
+  hasta       = $("#fecha_hasta").val();
+  idvehiculo  = $("#idvehiculo").val();
+  solucionado = 0;
+  if ($("#solucionado").prop("checked")) solucionado=1;
 
   $.ajax({
     type: "POST",
     url: "index.php?c=reportes&a=validarHistcheck",
-    data: "mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
+    data: "desde="+desde+"&hasta="+hasta+"&idvehiculo="+idvehiculo+"&solucionado="+solucionado,
     success: function(data) {
       if (data) {
         alerta("warning","Atención",data,"fa-warning");
@@ -304,7 +324,7 @@ function mostrarHistcheck() {
         $.ajax({
           type: "POST",
           url: "index.php?c=reportes&a=mostrarHistcheck",
-          data: "mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
+          data: "desde="+desde+"&hasta="+hasta+"&idvehiculo="+idvehiculo+"&solucionado="+solucionado,
           beforeSend: function() {
             $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
           },
@@ -382,12 +402,13 @@ function mostrarCisterna() {
 }
 
 function imprimirHistcheck() {
-  md = $("#mes_desde").val();
-  ad = $("#anio_desde").val();
-  mh = $("#mes_hasta").val();
-  ah = $("#anio_hasta").val();
+  d = $("#fecha_desde").val();
+  h = $("#fecha_hasta").val();
+  v = $("#idvehiculo").val();
+  s = 0;
+  if ($("#solucionado").prop("checked")) s=1;
 
-  window.open("index.php?c=reportes&a=imprimirHistcheck&md="+md+"&ad="+ad+"&mh="+mh+"&ah="+ah,"_blank");
+  window.open("index.php?c=reportes&a=imprimirHistcheck&d="+d+"&h="+h+"&v="+v+"&s="+s,"_blank");
 }
 
 function litrosChart(mesdesde,aniodesde,meshasta,aniohasta) {

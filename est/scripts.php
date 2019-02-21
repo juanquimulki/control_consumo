@@ -14,6 +14,8 @@
 <script src="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- bootstrap datepicker -->
 <script src="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/plugins/iCheck/icheck.min.js"></script>
 <!-- AdminLTE App -->
 <script src="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/dist/js/adminlte.min.js"></script>
 

@@ -59,6 +59,8 @@ class ReportesControlador {
     $opcion55 = "active";
     require_once "layouts/layout_head.php";
 
+    require_once "modelos/VehiculosModelo.php";
+    $vehiculos = VehiculosModelo::getVehiculos();
     require_once "modelos/Fechas.php";
     $anios = Fechas::get_anios();
     $meses = Fechas::get_meses();
@@ -124,16 +126,27 @@ class ReportesControlador {
   }
 
   public function validarHistcheck() {
-    $mesdesde = $_POST['mesdesde'];
+    require_once "modelos/Fechas.php";
+    
+    if (empty($_POST['desde']))
+      echo "- No ha ingresado FECHA DESDE.<br>";
+    if (empty($_POST['hasta']))
+      echo "- No ha ingresado FECHA HASTA.<br>";
+    
+    $desde = Fechas::fecha_mysql($_POST['desde']);
+    $hasta = Fechas::fecha_mysql($_POST['hasta']);
+    if ($desde>$hasta)
+      echo "- El intervalo de FECHAS no es válido.<br>";
+
+    /*$mesdesde = $_POST['mesdesde'];
     $meshasta = $_POST['meshasta'];
 
     if ($mesdesde<10) $mesdesde = "0$mesdesde";
     if ($meshasta<10) $meshasta = "0$meshasta";
 
     $desde = $_POST['aniodesde'].$mesdesde;
-    $hasta = $_POST['aniohasta'].$meshasta;
-    if ($desde>$hasta)
-      echo "- El intervalo de FECHAS no es válido.<br>";
+    $hasta = $_POST['aniohasta'].$meshasta;*/
+
   }
 
   public function validarParticulares() {
@@ -193,12 +206,14 @@ class ReportesControlador {
 
   public function mostrarHistcheck() {
     require_once "modelos/Fechas.php";
-    $primero = Fechas::get_primero($_POST['mesdesde'],$_POST['aniodesde']);
-    $ultimo  = Fechas::get_ultimo($_POST['meshasta'],$_POST['aniohasta']);
+    $desde = Fechas::fecha_mysql($_POST['desde']);
+    $hasta = Fechas::fecha_mysql($_POST['hasta']);
+    $idvehiculo  = $_POST['idvehiculo'];
+    $solucionado = $_POST['solucionado'];
     //echo "$primero $ultimo";
 
     require_once "modelos/ReportesModelo.php";
-    $reporte = ReportesModelo::getConsultaHistcheck($primero,$ultimo);
+    $reporte = ReportesModelo::getConsultaHistcheck($desde,$hasta,$idvehiculo,$solucionado);
 
     require_once "vistas/reportes/mostrarHistcheck.php";
   }
@@ -231,12 +246,14 @@ class ReportesControlador {
 
   public function imprimirHistcheck() {
     require_once "modelos/Fechas.php";
-    $primero = Fechas::get_primero($_GET['md'],$_GET['ad']);
-    $ultimo  = Fechas::get_ultimo($_GET['mh'],$_GET['ah']);
+    $desde = Fechas::fecha_mysql($_GET['d']);
+    $hasta = Fechas::fecha_mysql($_GET['h']);
+    $idvehiculo  = $_GET['v'];
+    $solucionado = $_GET['s'];
     //echo "$primero $ultimo";
 
     require_once "modelos/ReportesModelo.php";
-    $reporte = ReportesModelo::getConsultaHistcheck($primero,$ultimo);
+    $reporte = ReportesModelo::getConsultaHistcheck($desde,$hasta,$idvehiculo,$solucionado);
 
     require_once "vistas/reportes/imprimirHistcheck.php";
   }
