@@ -35,6 +35,25 @@ class VehiculosControlador {
     echo $id;
   }
     
+  public function modificar() {
+    require_once "modelos/VehiculosModelo.php";
+    $registro = VehiculosModelo::selectVehiculo($_POST['id']);
+    
+    echo '{
+        "idvehiculo":"'.$registro['idVehiculo'].'",
+        "idmaquina":"'.$registro['idMaquina'].'",
+        "descripcion":"'.$registro['descripcion'].'",
+        "iniciales":"'.$registro['iniciales'].'"
+    }';    
+    //var_dump($registro);
+  }
+
+  public function actualizar() {
+    require_once "modelos/VehiculosModelo.php";
+    $cantidad = VehiculosModelo::updateVehiculo($_POST['id'],$_POST['idmaquina'],$_POST['descripcion'],$_POST['iniciales']);
+    echo $cantidad;  
+  }
+  
   public function mostrar() {
     require_once "modelos/VehiculosModelo.php";
     $vehiculos = VehiculosModelo::getVehiculos();

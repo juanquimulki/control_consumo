@@ -34,6 +34,14 @@ class DB {
     return $consulta;
   }
 
+  public function selectWhere($sql,$where,$bind) {
+    $cnn = DB::conexion();
+    $consulta = $cnn->prepare("$sql where $where");
+    $consulta-> execute($bind);
+    //print_r($consulta->errorInfo());
+    return $consulta;
+  }
+  
   public function selectCount($tabla,$id) {
     $cnn = DB::conexion();
     $sql = "select count($id) as cantidad from $tabla";

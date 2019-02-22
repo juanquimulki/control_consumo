@@ -2,6 +2,25 @@ function modalEliminar(id) {
   $("#id_eliminar").val(id);
 }
 
+function modificar(id) {
+  //alert(id);
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=vehiculos&a=modificar",
+    data: "id="+id,
+    success: function(data) {
+      arreglo = JSON.parse(data);
+      //alert(arreglo.descripcion);
+      
+      $("#id").val(arreglo.idvehiculo);
+      $("#maquina").val(arreglo.idmaquina);
+      $("#codigo").val(arreglo.idmaquina);
+      $("#descripcion").val(arreglo.descripcion);
+      $("#iniciales").val(arreglo.iniciales);
+    }
+  }) 
+}
+
 function eliminar() {
   var id = $("#id_eliminar").val();
   
@@ -29,6 +48,7 @@ function buscarCodigo(id) {
 
 function guardar() {
   $("#alerta").hide();
+  var id          = $("#id").val();
   var codigo      = $("#codigo").val();
   var descripcion = $("#descripcion").val();
   var iniciales   = $("#iniciales").val();
@@ -42,18 +62,26 @@ function guardar() {
         alerta("warning","Atención",data,"fa-warning");
       }
       else {
+        if (id=="#") { //guardo
+          url = "index.php?c=vehiculos&a=guardar";
+          mje = "guardado";
+        }
+        else { //modifico
+          url = "index.php?c=vehiculos&a=actualizar";
+          mje = "actualizado";
+        }
         $.ajax({
           type: "POST",
-          url: "index.php?c=vehiculos&a=guardar",
-          data: "codigo="+codigo+"&descripcion="+descripcion+"&iniciales="+iniciales,
+          url: url,
+          data: "codigo="+codigo+"&descripcion="+descripcion+"&iniciales="+iniciales+"&id="+id,
           success: function(data) {
             if (data!=0) {
               $("#id").val(data);
-              alerta("success","Información","El registro ha sido guardado con éxito.","fa-check");
+              alerta("success","Información","El registro ha sido "+mje+" con éxito.","fa-check");
               mostrar();
             }
             else {
-              alerta("error","Error","Hubo problemas al guardar.","fa-ban");
+              alerta("error","Error","Hubo problemas al ejecutar.","fa-ban");
             }
           }
         })  

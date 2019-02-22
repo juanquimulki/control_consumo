@@ -22,7 +22,12 @@
       //echo "<td><a href='http://".$GLOBALS['SERVER_NAME']."/control_consumo/index.php?c=operarios&a=borrar&id=".$r[$id]."'><img src='http://".$GLOBALS['SERVER_NAME']."/control_consumo/img/delete.png' /></a></td>";
       $id_eliminar = $r[$id]; 
       if ($_SESSION['perfil']==1) {
-        echo "<td><a style='cursor:pointer' data-toggle='modal' data-target='#modal-default' onclick='javascript:modalEliminar($id_eliminar)'><img src='http://".$GLOBALS['SERVER_NAME']."/control_consumo/img/delete.png' /></a></td>";
+        echo "<td>";
+        echo "<a style='cursor:pointer' data-toggle='modal' data-target='#modal-default' onclick='javascript:modalEliminar($id_eliminar)'><img src='http://".$GLOBALS['SERVER_NAME']."/control_consumo/img/delete.png' /></a>";
+        if ($maestro) {
+          echo "<a href='#arriba' style='cursor:pointer'><img src='http://".$GLOBALS['SERVER_NAME']."/control_consumo/img/edit.png' onclick='javascript:modificar($id_eliminar);' /></a>";
+        }
+        echo "</td>";
       }
       else {
         echo "<td></td>";

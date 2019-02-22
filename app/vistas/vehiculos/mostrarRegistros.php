@@ -13,6 +13,7 @@
         $id          = "idVehiculo";
         $encabezados = array("ID","Descripci&oacute;n","Kms/Hrs Iniciales");
         $registros   = $vehiculos;
+        $maestro     = 1;
         include "vistas/tabla_registros.php";
         ?>
 
