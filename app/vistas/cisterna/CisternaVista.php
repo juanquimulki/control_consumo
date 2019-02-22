@@ -1,8 +1,8 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Vehículos
-    <small>Archivo de vehículos</small>
+    Cisterna
+    <small>Gestión de los movimientos de cisterna</small>
   </h1>
 </section>
 
