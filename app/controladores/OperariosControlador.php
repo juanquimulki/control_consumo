@@ -30,6 +30,23 @@ class OperariosControlador {
     echo $id;
   }
 
+  public function modificar() {
+    require_once "modelos/OperariosModelo.php";
+    $registro = OperariosModelo::selectOperario($_POST['id']);
+    
+    echo '{
+        "idoperario":"'.$registro['idOperario'].'",
+        "nombre":"'.$registro['nombre'].'",
+        "abreviatura":"'.$registro['abreviatura'].'"
+    }';    
+  }
+  
+  public function actualizar() {
+    require_once "modelos/OperariosModelo.php";
+    $cantidad = OperariosModelo::updateOperario($_POST['id'],$_POST['nombre'],$_POST['abreviatura']);
+    echo $cantidad;  
+  }
+  
   public function mostrar() {
     require_once "modelos/OperariosModelo.php";
     $operarios = OperariosModelo::getOperarios();

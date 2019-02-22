@@ -13,6 +13,7 @@
         $id          = "idOperario";
         $encabezados = array("ID","Nombre","Abreviatura");
         $registros   = $operarios;
+        $maestro     = 1;
         include "vistas/tabla_registros.php";
         ?>
 

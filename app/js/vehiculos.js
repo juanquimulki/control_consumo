@@ -76,7 +76,7 @@ function guardar() {
           data: "codigo="+codigo+"&descripcion="+descripcion+"&iniciales="+iniciales+"&id="+id,
           success: function(data) {
             if (data!=0) {
-              $("#id").val(data);
+              if (mje=="guardado") $("#id").val(data);
               alerta("success","Información","El registro ha sido "+mje+" con éxito.","fa-check");
               mostrar();
             }
