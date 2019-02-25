@@ -2,6 +2,23 @@ function modalEliminar(id) {
   $("#id_eliminar").val(id);
 }
 
+function modificar(id) {
+  //alert(id);
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=particulares&a=modificar",
+    data: "id="+id,
+    success: function(data) {
+      arreglo = JSON.parse(data);
+      //alert(arreglo.descripcion);
+      
+      $("#id").val(arreglo.idparticular);
+      $("#nombre").val(arreglo.nombre);
+      $("#abreviatura").val(arreglo.abreviatura);
+    }
+  }) 
+}
+
 function eliminar() {
   var id = $("#id_eliminar").val();
 
@@ -42,9 +59,10 @@ function eliminarCarga() {
 
 function guardar() {
   $("#alerta").hide();
+  var id          = $("#id").val();
   var nombre      = $("#nombre").val();
   var abreviatura = $("#abreviatura").val();
-
+  
   $.ajax({
     type: "POST",
     url: "index.php?c=particulares&a=validar",
@@ -54,24 +72,32 @@ function guardar() {
         alerta("warning","Atención",data,"fa-warning");
       }
       else {
+        if (id=="#") { //guardo
+          url = "index.php?c=particulares&a=guardar";
+          mje = "guardado";
+        }
+        else { //modifico
+          url = "index.php?c=particulares&a=actualizar";
+          mje = "actualizado";
+        }
         $.ajax({
           type: "POST",
-          url: "index.php?c=particulares&a=guardar",
-          data: "nombre="+nombre+"&abreviatura="+abreviatura,
+          url: url,
+          data: "nombre="+nombre+"&abreviatura="+abreviatura+"&id="+id,
           success: function(data) {
             if (data!=0) {
-              $("#id").val(data);
-              alerta("success","Información","El registro ha sido guardado con éxito.","fa-check");
+              if (mje=="guardado") $("#id").val(data);
+              alerta("success","Información","El registro ha sido "+mje+" con éxito.","fa-check");
               mostrar();
             }
             else {
-              alerta("error","Error","Hubo problemas al guardar.","fa-ban");
+              alerta("error","Error","Hubo problemas al ejecutar.","fa-ban");
             }
           }
-        })
+        })  
       }
     }
-  })
+  })  
 }
 
 function guardarCarga() {

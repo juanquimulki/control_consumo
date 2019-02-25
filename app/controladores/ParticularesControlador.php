@@ -55,6 +55,23 @@ class ParticularesControlador {
     echo $id;
   }
 
+  public function modificar() {
+    require_once "modelos/ParticularesModelo.php";
+    $registro = ParticularesModelo::selectParticular($_POST['id']);
+    
+    echo '{
+        "idparticular":"'.$registro['idParticular'].'",
+        "nombre":"'.$registro['nombre'].'",
+        "abreviatura":"'.$registro['abreviatura'].'"
+    }';    
+  }
+  
+  public function actualizar() {
+    require_once "modelos/ParticularesModelo.php";
+    $cantidad = ParticularesModelo::updateParticular($_POST['id'],$_POST['nombre'],$_POST['abreviatura']);
+    echo $cantidad;  
+  }
+  
   public function eliminarCarga() {
     require_once "modelos/ParticularesModelo.php";
     $id = ParticularesModelo::deleteCarga($_POST['id']);

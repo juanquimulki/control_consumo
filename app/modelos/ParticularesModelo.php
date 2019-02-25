@@ -7,11 +7,25 @@ class ParticularesModelo {
     return $consulta;
   }
 
+  public function selectParticular($id) {
+    $sql   = "select * from particulares";
+    $where = "idParticular=?"; 
+    $bind  = array($id);
+    $consulta = DB::selectWhere($sql,$where,$bind);
+    return $consulta->fetch();
+  }
+  
   public function insertParticular($nombre,$abreviatura) {
     $id = DB::insert("insert into particulares (nombre,abreviatura) values (?,?)",array($nombre,$abreviatura));
     return $id;
   }
 
+  public function updateParticular($id,$nombre,$abreviatura) {
+    $cantidad = DB::update("update particulares set nombre=?,abreviatura=? where idparticular=?",
+      array($nombre,$abreviatura,$id));
+    return $cantidad;
+  }
+  
   public function deleteParticular($id) {
     $id = DB::delete("delete from particulares where idParticular=?",array($id));
     return $id;
