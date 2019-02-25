@@ -2,6 +2,23 @@ function modalEliminar(id) {
   $("#id_eliminar").val(id);
 }
 
+function modificar(id) {
+  //alert(id);
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=items&a=modificar",
+    data: "id="+id,
+    success: function(data) {
+      arreglo = JSON.parse(data);
+      //alert(arreglo.descripcion);
+      
+      $("#id").val(arreglo.iditem);
+      $("#seccion").val(arreglo.idseccion);
+      $("#item").val(arreglo.item);
+    }
+  }) 
+}
+
 function eliminar() {
   var id = $("#id_eliminar").val();
   
@@ -23,6 +40,7 @@ function eliminar() {
 
 function guardar() {
   $("#alerta").hide();
+  var id      = $("#id").val();
   var seccion = $("#seccion").val();
   var item    = $("#item").val();
   
@@ -35,18 +53,26 @@ function guardar() {
         alerta("warning","Atención",data,"fa-warning");
       }
       else {
+        if (id=="#") { //guardo
+          url = "index.php?c=items&a=guardar";
+          mje = "guardado";
+        }
+        else { //modifico
+          url = "index.php?c=items&a=actualizar";
+          mje = "actualizado";
+        }
         $.ajax({
           type: "POST",
-          url: "index.php?c=items&a=guardar",
-          data: "seccion="+seccion+"&item="+item,
+          url: url,
+          data: "seccion="+seccion+"&item="+item+"&id="+id,
           success: function(data) {
             if (data!=0) {
-              $("#id").val(data);
-              alerta("success","Información","El registro ha sido guardado con éxito.","fa-check");
+              if (mje=="guardado") $("#id").val(data);
+              alerta("success","Información","El registro ha sido "+mje+" con éxito.","fa-check");
               mostrar();
             }
             else {
-              alerta("error","Error","Hubo problemas al guardar.","fa-ban");
+              alerta("error","Error","Hubo problemas al ejecutar.","fa-ban");
             }
           }
         })  

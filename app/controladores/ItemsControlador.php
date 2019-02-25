@@ -32,6 +32,23 @@ class ItemsControlador {
     echo $id;
   }
 
+  public function modificar() {
+    require_once "modelos/ItemsModelo.php";
+    $registro = ItemsModelo::selectItem($_POST['id']);
+    
+    echo '{
+        "iditem":"'.$registro['idItem'].'",
+        "idseccion":"'.$registro['idSeccion'].'",
+        "item":"'.$registro['item'].'"
+    }';    
+  }
+  
+  public function actualizar() {
+    require_once "modelos/ItemsModelo.php";
+    $cantidad = ItemsModelo::updateItem($_POST['id'],$_POST['seccion'],$_POST['item']);
+    echo $cantidad;  
+  }
+
   public function mostrar() {
     require_once "modelos/ItemsModelo.php";
     $items = ItemsModelo::getItems();

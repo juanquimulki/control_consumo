@@ -13,6 +13,7 @@
         $id          = "idItem";
         $encabezados = array("ID","Secci&oacute;n","Item");
         $registros   = $items;
+        $maestro     = 1;
         include "vistas/tabla_registros.php";
         ?>
 

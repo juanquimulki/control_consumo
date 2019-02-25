@@ -7,6 +7,14 @@ class ItemsModelo {
     return $consulta;
   }
   
+  public function selectItem($id) {
+    $sql   = "select * from items";
+    $where = "idItem=?"; 
+    $bind  = array($id);
+    $consulta = DB::selectWhere($sql,$where,$bind);
+    return $consulta->fetch();
+  }
+  
   public function getItems() {
     $sql = "select * from items 
               inner join secciones on items.idseccion=secciones.idseccion
@@ -20,6 +28,12 @@ class ItemsModelo {
     return $id;
   }
 
+  public function updateItem($id,$idseccion,$item) {
+    $cantidad = DB::update("update items set idseccion=?,item=? where iditem=?",
+      array($idseccion,$item,$id));
+    return $cantidad;
+  }
+  
   public function deleteItem($id) {
     $id = DB::delete("delete from items where idItem=?",array($id));
     return $id;
