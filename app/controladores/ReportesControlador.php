@@ -258,6 +258,23 @@ class ReportesControlador {
     require_once "vistas/reportes/imprimirHistcheck.php";
   }
 
+  public function imprimirPlanilla() {
+    require_once "modelos/Fechas.php";
+    $primero = Fechas::get_primero($_GET['md'],$_GET['ad']);
+    $ultimo  = Fechas::get_ultimo($_GET['mh'],$_GET['ah']);
+
+    $desde = $primero;
+    $hasta = $ultimo;
+
+    require_once "modelos/ReportesModelo.php";
+    $reporte = ReportesModelo::getConsulta($_GET['v'],$primero,$ultimo);
+    $fecha   = $_GET['ad']."/".$_GET['md']."/01";
+    $inicial = ReportesModelo::getInicial($_GET['v'],$fecha);
+    
+    $vehiculo = $_GET['n'];
+    require_once "vistas/reportes/imprimirPlanilla.php";
+  }
+  
   public function mostrarChecklist() {
     $mes  = $_POST['mesdesde'];
     $anio = $_POST['aniodesde'];

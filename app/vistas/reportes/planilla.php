@@ -87,6 +87,7 @@
         <div class="box-footer">
           <button class="btn btn-default" onclick="cancelar()">Cancelar</button>
           <button class="btn btn-info pull-right" onclick="mostrar()">Mostrar</button>
+          <button style="margin-right:10px;" class="btn btn-info pull-right" onclick="imprimirPlanilla()">Imprimir</button>
         </div>
         <!--div class="box-footer">
           Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
