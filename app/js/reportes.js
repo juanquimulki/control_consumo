@@ -422,6 +422,15 @@ function imprimirPlanilla() {
   window.open("index.php?c=reportes&a=imprimirPlanilla&v="+idvehiculo+"&md="+mesdesde+"&ad="+aniodesde+"&mh="+meshasta+"&ah="+aniohasta+"&n="+vehiculo,"_blank");
 }
 
+function imprimirHistorico() {
+  mesdesde  = $("#mes_desde").val();
+  aniodesde = $("#anio_desde").val();
+  meshasta  = $("#mes_hasta").val();
+  aniohasta = $("#anio_hasta").val();
+
+  window.open("index.php?c=reportes&a=imprimirHistorico&md="+mesdesde+"&ad="+aniodesde+"&mh="+meshasta+"&ah="+aniohasta,"_blank");
+}
+
 function litrosChart(mesdesde,aniodesde,meshasta,aniohasta) {
   $.ajax({
     type: "POST",

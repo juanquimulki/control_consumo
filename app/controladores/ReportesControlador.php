@@ -275,6 +275,21 @@ class ReportesControlador {
     require_once "vistas/reportes/imprimirPlanilla.php";
   }
   
+  public function imprimirHistorico() {
+    require_once "modelos/Fechas.php";
+    $primero = Fechas::get_primero($_GET['md'],$_GET['ad']);
+    $ultimo  = Fechas::get_ultimo($_GET['mh'],$_GET['ah']);
+
+    $desde = $primero;
+    $hasta = $ultimo;
+
+    $meses = Fechas::get_meses();
+    require_once "modelos/ReportesModelo.php";
+    $reporte = ReportesModelo::getConsultaHistorico($primero,$ultimo);
+
+    require_once "vistas/reportes/imprimirHistorico.php";
+  }
+  
   public function mostrarChecklist() {
     $mes  = $_POST['mesdesde'];
     $anio = $_POST['aniodesde'];
