@@ -1,0 +1,175 @@
+function modalEliminar(id) {
+  $("#id_eliminar").val(id);
+}
+
+function modificar(id) {
+  //alert(id);
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=neumaticos&a=modificar",
+    data: "id="+id,
+    success: function(data) {
+      arreglo = JSON.parse(data);
+      //alert(arreglo.descripcion);
+
+      $("#id").val(arreglo.idneumatico);
+      $("#codigo").val(arreglo.codigo);
+      $("#marca").val(arreglo.marca);
+      $("#modelo").val(arreglo.modelo);
+      $("#medida").val(arreglo.medida);
+      $("#estado").val(arreglo.estado);
+      $("#fecha").val(arreglo.fecha);
+      $("#precio").val(arreglo.precio);
+      $("#kilometros").val(arreglo.kilometros);
+      $("#observaciones").val(arreglo.observaciones);
+    }
+  })
+}
+
+function eliminar() {
+  var id = $("#id_eliminar").val();
+
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=operarios&a=eliminar",
+    data: "id="+id,
+    success: function(data) {
+      if (data=="1") {
+        alerta("success","Información","El registro ha sido eliminado con éxito.","fa-check");
+        mostrar();
+      }
+      else {
+        alerta("error","Error","Hubo problemas al eliminar.","fa-ban");
+      }
+    }
+  })
+}
+
+function guardar() {
+  $("#alerta").hide();
+  var id     = $("#id").val();
+  var codigo = $("#codigo").val();
+  var marca  = $("#marca").val();
+  var modelo = $("#modelo").val();
+  var medida = $("#medida").val();
+  var estado = $("#estado").val();
+  var fecha  = $("#fecha").val();
+  var precio = $("#precio").val();
+  var kilometros    = $("#kilometros").val();
+  var observaciones = $("#observaciones").val();
+
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=neumaticos&a=validar",
+    data: "codigo="+codigo+"&marca="+marca+"&modelo="+modelo+"&medida="+medida+"&estado="+estado+"&fecha="+fecha+"&precio="+precio+"&kilometros="+kilometros+"&observaciones="+observaciones,
+    success: function(data) {
+      if (data) {
+        alerta("warning","Atención",data,"fa-warning");
+      }
+      else {
+        if (id=="#") { //guardo
+          url = "index.php?c=neumaticos&a=guardar";
+          mje = "guardado";
+        }
+        else { //modifico
+          url = "index.php?c=neumaticos&a=actualizar";
+          mje = "actualizado";
+        }
+        $.ajax({
+          type: "POST",
+          url: url,
+          data: "codigo="+codigo+"&marca="+marca+"&modelo="+modelo+"&medida="+medida+"&estado="+estado+"&fecha="+fecha+"&precio="+precio+"&kilometros="+kilometros+"&observaciones="+observaciones,
+          success: function(data) {
+            if (data!=0) {
+              if (mje=="guardado") $("#id").val(data);
+              alerta("success","Información","El registro ha sido "+mje+" con éxito.","fa-check");
+              mostrar();
+            }
+            else {
+              alerta("error","Error","Hubo problemas al ejecutar.","fa-ban");
+            }
+          }
+        })
+      }
+    }
+  })
+}
+
+function cancelar() {
+  $("#id").val("#");
+  $("#codigo").val("");
+  $("#marca").val("");
+  $("#modelo").val("");
+  $("#medida").val("");
+  $("#estado").val(0);
+  $("#fecha").val("");
+  $("#precio").val("");
+  $("#kilometros").val("");
+  $("#observaciones").val("");
+}
+
+function mostrar() {
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=neumaticos&a=mostrar",
+    beforeSend: function() {
+      $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
+    },
+    success: function(data) {
+      $("#mostrar").html(data);
+      datatable();
+    }
+  })
+}
+
+function alerta(tipo,titulo,mensaje,icono) {
+  $("#alerta").html('<div class="alert alert-'+tipo+' alert-dismissible">'+
+          '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'+
+          '<h4><i class="icon fa '+icono+'"></i> '+titulo+':</h4>'+
+          mensaje+
+          '</div>');
+  $("#alerta").show('fade');
+}
+
+function datatable() {
+  $('#tabla_registros').DataTable({
+      "order": [[ 1, "asc" ]],
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false,
+      language: {
+          "decimal": "",
+          "emptyTable": "No hay información",
+          "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+          "infoEmpty": "Mostrando 0 a 0 de 0 registros",
+          "infoFiltered": "(Filtrado de _MAX_ registros)",
+          "infoPostFix": "",
+          "thousands": ",",
+          "lengthMenu": "Mostrar _MENU_ registros",
+          "loadingRecords": "Cargando...",
+          "processing": "Procesando...",
+          "search": "Buscar:",
+          "zeroRecords": "Sin registros para mostrar",
+          "paginate": {
+              "first": "Primero",
+              "last": "Último",
+              "next": "Siguiente",
+              "previous": "Anterior"
+          }
+      }
+    });
+}
+
+$(function () {
+  //Date picker
+  $('#fecha').datepicker({
+    autoclose: true,
+    format: 'dd/mm/yyyy',
+  })
+
+  $("#alerta").hide();
+  mostrar();
+})
