@@ -7,6 +7,11 @@ class NeumaticosModelo {
     return $consulta;
   }
 
+  public function getOperaciones() {
+    $consulta = DB::select("select * from operaciones_neuma order by idOperacion",null);
+    return $consulta;
+  }
+
   public function selectNeumatico($id) {
     $sql   = "select * from neumaticos";
     $where = "idNeumatico=?";

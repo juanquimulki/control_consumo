@@ -10,6 +10,21 @@ class NeumaticosControlador {
     $scripts = array("neumaticos.js");
     require_once "layouts/layout_foot.php";
   }
+  
+  public function historial() {
+    $opcion82 = "active";
+    require_once "layouts/layout_head.php";
+
+    require_once "modelos/NeumaticosModelo.php";
+    $neumaticos = NeumaticosModelo::getNeumaticos();
+    $operaciones = NeumaticosModelo::getOperaciones();
+    require_once "modelos/VehiculosModelo.php";
+    $camiones = VehiculosModelo::getCamiones();
+    require_once "vistas/neumaticos/HistorialVista.php";
+
+    $scripts = array("neumaticos.js");
+    require_once "layouts/layout_foot.php";
+  }
 
   public function validar() {
     if (empty($_POST['codigo']))

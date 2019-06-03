@@ -7,6 +7,11 @@ class VehiculosModelo {
     return $consulta;
   }
 
+  public function getCamiones() {
+    $consulta = DB::select("select * from vehiculos where camion=1 order by descripcion",null);
+    return $consulta;
+  }
+
   public function selectVehiculo($id) {
     $sql   = "select * from vehiculos";
     $where = "idVehiculo=?"; 
