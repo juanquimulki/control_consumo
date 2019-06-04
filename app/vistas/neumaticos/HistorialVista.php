@@ -1,3 +1,14 @@
+<style>
+  .rueda {
+    background-color: gray;
+    border:2px solid black;
+    cursor: pointer;
+  }
+  .rueda:hover {
+    background-color: black;
+  }
+</style>
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <a name="arriba"></a>
@@ -109,7 +120,15 @@
                     <div class="form-group">
                       <label for="posicion" class="col-sm-2 control-label">Posición</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="posicion" placeholder="Posición..." maxlength="2" style="width:100px;" />
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <input type="text" class="form-control" id="posicion" placeholder="Posición..." maxlength="2" style="width:100px;" />
+                          </div>
+                          <div class="col">
+                            <button type="button" style="width:70px;" class="btn btn-block btn-default" data-toggle='modal' data-target='#modal-posicion' onclick=''>Ver...</button>
+                            <!--a style='cursor:pointer' data-toggle='modal' data-target='#modal-default' onclick=''>Ver...</a-->
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div class="form-group">
@@ -161,6 +180,40 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-primary" onclick="" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<div class="modal fade" id="modal-posicion">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Escoger posición del neumático...</h4>
+      </div>
+      <div class="modal-body">
+          <table style="margin:auto;" border=0 width="70%" cellspacing=10>
+            <tr><td class="rueda" onclick="javascript:posicion(1);" data-dismiss="modal">&nbsp;<br>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="rueda" onclick="javascript:posicion(2);" data-dismiss="modal">&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td class="rueda" onclick="javascript:posicion(3);" data-dismiss="modal">&nbsp;<br>&nbsp;</td><td class="rueda" onclick="javascript:posicion(4);" data-dismiss="modal">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="rueda" onclick="javascript:posicion(5);" data-dismiss="modal" >&nbsp;</td><td class="rueda" onclick="javascript:posicion(6);" data-dismiss="modal">&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td class="rueda" onclick="javascript:posicion(7);" data-dismiss="modal">&nbsp;<br>&nbsp;</td><td class="rueda" onclick="javascript:posicion(8);" data-dismiss="modal">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="rueda" onclick="javascript:posicion(9);" data-dismiss="modal">&nbsp;</td><td class="rueda" onclick="javascript:posicion(10);" data-dismiss="modal">&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td class="rueda" onclick="javascript:posicion(11);" data-dismiss="modal">&nbsp;<br>&nbsp;</td><td class="rueda" onclick="javascript:posicion(12);" data-dismiss="modal">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="rueda" onclick="javascript:posicion(13);" data-dismiss="modal">&nbsp;</td><td class="rueda" onclick="javascript:posicion(14);" data-dismiss="modal">&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td class="rueda" onclick="javascript:posicion(15);" data-dismiss="modal">&nbsp;<br>&nbsp;</td><td class="rueda" onclick="javascript:posicion(16);" data-dismiss="modal">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="rueda" onclick="javascript:posicion(17);" data-dismiss="modal">&nbsp;</td><td class="rueda" onclick="javascript:posicion(18);" data-dismiss="modal">&nbsp;</td><td>&nbsp;</td><td class="rueda" onclick="javascript:posicion(19);" data-dismiss="modal">&nbsp;</td></tr>
+          </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+        <!--button type="button" class="btn btn-primary" onclick="" data-dismiss="modal">Aceptar</button-->
       </div>
     </div>
     <!-- /.modal-content -->

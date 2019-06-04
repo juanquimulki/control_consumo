@@ -1,3 +1,7 @@
+function posicion(valor) {
+  $("#posicion").val(valor);
+}
+
 function modalEliminar(id) {
   $("#id_eliminar").val(id);
 }
