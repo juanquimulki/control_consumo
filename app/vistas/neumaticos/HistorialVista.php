@@ -62,7 +62,7 @@
                             </select>
                           </div>
                           <div class="col">
-                            <button style="width:70px;" class="btn btn-block btn-default">Mostrar</button>
+                            <button type="button" style="width:70px;" class="btn btn-block btn-default" onclick="javascript:mostrarHistorial();">Mostrar</button>
                           </div>
                         </div>
                         
@@ -125,7 +125,7 @@
                             <input type="text" class="form-control" id="posicion" placeholder="Posición..." maxlength="2" style="width:100px;" />
                           </div>
                           <div class="col">
-                            <button type="button" style="width:70px;" class="btn btn-block btn-default" data-toggle='modal' data-target='#modal-posicion' onclick=''>Ver...</button>
+                            <button type="button" style="width:70px;" class="btn btn-block btn-default" data-toggle='modal' data-target='#modal-posicion' onclick=''>Ayuda...</button>
                             <!--a style='cursor:pointer' data-toggle='modal' data-target='#modal-default' onclick=''>Ver...</a-->
                           </div>
                         </div>
@@ -143,8 +143,8 @@
           </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          <button class="btn btn-default" onclick="cancelar()">Cancelar</button>
-          <button class="btn btn-info pull-right" onclick="guardar()">Guardar</button>
+          <button class="btn btn-default" onclick="cancelarHistorial()">Cancelar</button>
+          <button class="btn btn-info pull-right" onclick="guardarHistorial()">Guardar</button>
         </div>
         <!--div class="box-footer">
           Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
@@ -161,7 +161,7 @@
   }
   ?>
 
-<div id="mostrar">
+<div id="mostrarHistorial">
 </div>
 
 <div class="modal fade" id="modal-default">

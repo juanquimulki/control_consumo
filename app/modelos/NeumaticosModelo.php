@@ -7,6 +7,11 @@ class NeumaticosModelo {
     return $consulta;
   }
 
+  public function getHistorial($id) {
+    $consulta = DB::select("select * from historial_neuma where idNeumatico=? order by fecha desc",array($id));
+    return $consulta;
+  }
+
   public function getOperaciones() {
     $consulta = DB::select("select * from operaciones_neuma order by idOperacion",null);
     return $consulta;
@@ -22,6 +27,11 @@ class NeumaticosModelo {
 
   public function insertNeumatico($codigo,$marca,$modelo,$medida,$estado,$fecha,$precio,$kilometros,$observaciones) {
     $id = DB::insert("insert into neumaticos (codigo,marca,modelo,medida,estado,fecha,precio,kilometros,observaciones) values (?,?,?,?,?,?,?,?,?)",array($codigo,$marca,$modelo,$medida,$estado,$fecha,$precio,$kilometros,$observaciones));
+    return $id;
+  }
+
+  public function insertHistorial($idneumatico,$fecha,$idoperacion,$idvehiculo,$kilometros,$posicion,$observaciones) {
+    $id = DB::insert("insert into historial_neuma (idneumatico,fecha,idoperacion,idvehiculo,kilometros,posicion,observaciones) values (?,?,?,?,?,?,?)",array($idneumatico,$fecha,$idoperacion,$idvehiculo,$kilometros,$posicion,$observaciones));
     return $id;
   }
 

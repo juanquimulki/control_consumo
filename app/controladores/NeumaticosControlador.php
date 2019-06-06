@@ -48,6 +48,27 @@ class NeumaticosControlador {
       if (!is_numeric($_POST['kilometros']))
         echo "- Los KILÓMETROS deben ser un número.<br>";
   }
+  
+  public function validarHistorial() {
+    if ($_POST['idneumatico']==0)
+      echo "- No ha escogido NEUMÁTICO.<br>";
+    if (empty($_POST['fecha']))
+      echo "- No ha ingresado FECHA.<br>";
+    if ($_POST['idoperacion']==0)
+      echo "- No ha escogido OPERACIÓN.<br>";
+    if ($_POST['idvehiculo']==0)
+      echo "- No ha escogido VEHÍCULO.<br>";
+    if (empty($_POST['kilometros']))
+      echo "- No ha ingresado KILÓMETROS.<br>";
+    else
+      if (!is_numeric($_POST['kilometros']))
+        echo "- Los KILÓMETROS deben ser un número.<br>";
+    if (empty($_POST['posicion']))
+      echo "- No ha ingresado POSICIÓN.<br>";
+    else
+      if (!is_numeric($_POST['posicion']))
+        echo "- La POSICIÓN debe ser un número.<br>";
+  }
 
   public function guardar() {
     require_once "modelos/NeumaticosModelo.php";
@@ -59,10 +80,26 @@ class NeumaticosControlador {
     echo $id;
   }
 
+  public function guardarHistorial() {
+    require_once "modelos/NeumaticosModelo.php";
+
+    require_once "modelos/Fechas.php";
+    $fecha = Fechas::fecha_mysql($_POST['fecha']);
+    require_once "modelos/NeumaticosModelo.php";
+    $id = NeumaticosModelo::insertHistorial($_POST['idneumatico'],$fecha,$_POST['idoperacion'],$_POST['idvehiculo'],$_POST['kilometros'],$_POST['posicion'],$_POST['observaciones']);
+    echo $id;
+  }
+
   public function mostrar() {
     require_once "modelos/NeumaticosModelo.php";
     $neumaticos = NeumaticosModelo::getNeumaticos();
     require_once "vistas/neumaticos/mostrarRegistros.php";
+  }
+
+  public function mostrarHistorial() {
+    require_once "modelos/NeumaticosModelo.php";
+    $historial = NeumaticosModelo::getHistorial($_POST['id']);
+    require_once "vistas/neumaticos/mostrarRegistrosHistorial.php";
   }
 
   public function modificar() {

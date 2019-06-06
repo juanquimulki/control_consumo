@@ -99,6 +99,54 @@ function guardar() {
   })
 }
 
+function guardarHistorial() {
+  $("#alerta").hide();
+  var id          = $("#id").val();
+  var idneumatico = $("#idneumatico").val();
+  var fecha       = $("#fecha").val();
+  var idoperacion = $("#idoperacion").val();
+  var idvehiculo  = $("#idvehiculo").val();
+  var kilometros  = $("#kilometros").val();
+  var posicion    = $("#posicion").val();
+  var observaciones = $("#observaciones").val();
+
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=neumaticos&a=validarHistorial",
+    data: "idneumatico="+idneumatico+"&fecha="+fecha+"&idoperacion="+idoperacion+"&idvehiculo="+idvehiculo+"&kilometros="+kilometros+"&posicion="+posicion,
+    success: function(data) {
+      if (data) {
+        alerta("warning","Atención",data,"fa-warning");
+      }
+      else {
+        if (id=="#") { //guardo
+          url = "index.php?c=neumaticos&a=guardarHistorial";
+          mje = "guardado";
+        }
+        else { //modifico
+          url = "index.php?c=neumaticos&a=actualizar";
+          mje = "actualizado";
+        }
+        $.ajax({
+          type: "POST",
+          url: url,
+          data: "idneumatico="+idneumatico+"&fecha="+fecha+"&idoperacion="+idoperacion+"&idvehiculo="+idvehiculo+"&kilometros="+kilometros+"&posicion="+posicion+"&observaciones="+observaciones,
+          success: function(data) {
+            if (data!=0) {
+              if (mje=="guardado") $("#id").val(data);
+              alerta("success","Información","El registro ha sido "+mje+" con éxito.","fa-check");
+              mostrar();
+            }
+            else {
+              alerta("error","Error","Hubo problemas al ejecutar.","fa-ban");
+            }
+          }
+        })
+      }
+    }
+  })
+}
+
 function cancelar() {
   $("#id").val("#");
   $("#codigo").val("");
@@ -112,6 +160,17 @@ function cancelar() {
   $("#observaciones").val("");
 }
 
+function cancelarHistorial() {
+  $("#id").val("#");
+  $("#idneumatico").val(0);
+  $("#fecha").val("");
+  $("#idoperacion").val(0);
+  $("#idvehiculo").val(0);
+  $("#kilometros").val("");
+  $("#posicion").val("");
+  $("#observaciones").val("");
+}
+
 function mostrar() {
   $.ajax({
     type: "POST",
@@ -122,6 +181,22 @@ function mostrar() {
     success: function(data) {
       $("#mostrar").html(data);
       datatable();
+    }
+  })
+}
+
+function mostrarHistorial() {
+  var id = $("#idneumatico").val();
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=neumaticos&a=mostrarHistorial",
+    data: "id="+id,
+    beforeSend: function() {
+      $("#mostrarHistorial").html("<center><img src='../img/loading.gif' width='100px' /></center>");
+    },
+    success: function(data) {
+      $("#mostrarHistorial").html(data);
+      //datatable();
     }
   })
 }
@@ -175,5 +250,10 @@ $(function () {
   })
 
   $("#alerta").hide();
-  mostrar();
+  if ($("#mostrarHistorial").length) {
+    mostrarHistorial(0);
+  }
+  else {
+    mostrar();
+  }
 })
