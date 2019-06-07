@@ -9,7 +9,7 @@
 
         <?php
         $nombre      = "tabla_registros";
-        $campos      = array("fecha","idOperacion","kilometros","idVehiculo","posicion","observaciones");
+        $campos      = array("fecha","operacion","kilometros","vehiculo","posicion","observaciones");
         $id          = "idHistorial";
         $encabezados = array("Fecha","Operacion","Kilometros","Vehiculo","Posicion","Observaciones");
         $registros   = $historial;

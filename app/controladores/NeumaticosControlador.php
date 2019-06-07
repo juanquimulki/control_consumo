@@ -78,6 +78,7 @@ class NeumaticosControlador {
     require_once "modelos/NeumaticosModelo.php";
     $id = NeumaticosModelo::insertNeumatico($_POST['codigo'],$_POST['marca'],$_POST['modelo'],$_POST['medida'],$_POST['estado'],$fecha,$_POST['precio'],$_POST['kilometros'],$_POST['observaciones']);
     echo $id;
+    NeumaticosModelo::insertHistorial($id,date("Y-m-d"),1,0,$_POST['kilometros'],0,"");
   }
 
   public function guardarHistorial() {

@@ -8,7 +8,11 @@ class NeumaticosModelo {
   }
 
   public function getHistorial($id) {
-    $consulta = DB::select("select * from historial_neuma where idNeumatico=? order by fecha desc",array($id));
+    $consulta = DB::select("select idhistorial,fecha,operaciones_neuma.descripcion as operacion,kilometros,vehiculos.descripcion as vehiculo,posicion,observaciones
+                            from historial_neuma 
+                            left outer join operaciones_neuma on historial_neuma.idoperacion=operaciones_neuma.idoperacion
+                            left outer join vehiculos on historial_neuma.idvehiculo=vehiculos.idvehiculo
+                            where idNeumatico=? order by fecha",array($id));
     return $consulta;
   }
 

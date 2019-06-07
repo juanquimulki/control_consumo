@@ -135,7 +135,7 @@ function guardarHistorial() {
             if (data!=0) {
               if (mje=="guardado") $("#id").val(data);
               alerta("success","Información","El registro ha sido "+mje+" con éxito.","fa-check");
-              mostrar();
+              mostrarHistorial();
             }
             else {
               alerta("error","Error","Hubo problemas al ejecutar.","fa-ban");
