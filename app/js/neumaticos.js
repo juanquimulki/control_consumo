@@ -201,6 +201,23 @@ function mostrarHistorial() {
   })
 }
 
+function mostrarUbicacion() {
+  var idn = $("#idneumatico").val();
+  var idv = $("#idvehiculo").val();
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=neumaticos&a=mostrarUbicacion",
+    data: "idv="+idv+"&idn="+idn,
+    beforeSend: function() {
+      $("#mostrarUbicacion").html("<center><img src='../img/loading.gif' width='100px' /></center>");
+    },
+    success: function(data) {
+      $("#mostrarUbicacion").html(data);
+      //datatable();
+    }
+  })
+}
+
 function alerta(tipo,titulo,mensaje,icono) {
   $("#alerta").html('<div class="alert alert-'+tipo+' alert-dismissible">'+
           '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'+
@@ -252,6 +269,12 @@ $(function () {
   $("#alerta").hide();
   if ($("#mostrarHistorial").length) {
     mostrarHistorial(0);
+  }
+  else {
+    mostrar();
+  }
+  if ($("#mostrarUbicacion").length) {
+    mostrarUbicacion(0);
   }
   else {
     mostrar();

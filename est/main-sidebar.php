@@ -67,7 +67,7 @@
           <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
         </ul-->
       </li>
-      <li class="<?php echo $opcion81.$opcion82; ?> treeview">
+      <li class="<?php echo $opcion81.$opcion82.$opcion831; ?> treeview">
         <a href="#">
           <i class="fa fa-dot-circle-o"></i> <span>Neumáticos</span>
           <span class="pull-right-container">
@@ -77,7 +77,7 @@
         <ul class="treeview-menu">
           <li class="<?php echo $opcion81; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=index"><i class="fa fa-circle-o"></i> Archivo de Cubiertas</a></li>
           <li class="<?php echo $opcion82; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=historial"><i class="fa fa-circle-o"></i> Historial de las Cubiertas</a></li>
-          <li class="treeview">
+          <li class="<?php echo $opcion831; ?> treeview">
             <a href="#"><i class="fa fa-circle-o"></i> Informes
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -85,7 +85,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="#"><i class="fa fa-circle-o"></i> Stock Actual</a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Ubicación de las Cubiertas</a></li>
+              <li class="<?php echo $opcion831; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=ubicacion"><i class="fa fa-circle-o"></i> Ubicación de las Cubiertas</a></li>
               <li><a href="#"><i class="fa fa-circle-o"></i> Kilómetros / Costos</a></li>
               <li><a href="#"><i class="fa fa-circle-o"></i> Último Movimiento</a></li>
             </ul>

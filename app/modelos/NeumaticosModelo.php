@@ -16,6 +16,33 @@ class NeumaticosModelo {
     return $consulta;
   }
 
+  public function getUbicacionVehiculo($idv) {
+    $arreglo = array();
+    for ($i=1;$i<=16;$i++) {
+      $consulta = DB::select("select historial_neuma.fecha,posicion,codigo,marca,modelo,historial_neuma.kilometros from vw_ultimo_hist_neuma
+        inner join historial_neuma on vw_ultimo_hist_neuma.ultimo=historial_neuma.idHistorial
+        inner join neumaticos on historial_neuma.idNeumatico=neumaticos.idNeumatico
+        where idOperacion=2 and idVehiculo=? and posicion=?",array($idv,$i));
+        
+      if ($registro=$consulta->fetch()) {
+        $arreglo[$i] = $registro['codigo'];
+      }
+      else {
+        $arreglo[$i] = 0;
+      }
+     }
+    
+    return $arreglo;
+  }
+  
+  public function getUbicacionNeumatico($idn) {
+    $consulta = DB::select("select neumaticos.idNeumatico,idVehiculo,codigo from vw_ultimo_hist_neuma
+      inner join historial_neuma on vw_ultimo_hist_neuma.ultimo=historial_neuma.idHistorial
+      inner join neumaticos on historial_neuma.idNeumatico=neumaticos.idNeumatico
+      where idOperacion=2 and vw_ultimo_hist_neuma.idNeumatico=?",array($idn));
+    return $consulta;
+  }
+
   public function getOperaciones() {
     $consulta = DB::select("select * from operaciones_neuma order by idOperacion",null);
     return $consulta;

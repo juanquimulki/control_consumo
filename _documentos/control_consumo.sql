@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50067
 File Encoding         : 65001
 
-Date: 2019-06-03 12:56:36
+Date: 2019-06-11 11:29:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -108,13 +108,18 @@ CREATE TABLE `historial_neuma` (
   `kilometros` double default NULL,
   `idVehiculo` int(11) default NULL,
   `posicion` tinyint(4) default NULL,
-  `detalles` text,
+  `observaciones` text,
   PRIMARY KEY  (`idHistorial`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of historial_neuma
 -- ----------------------------
+INSERT INTO `historial_neuma` VALUES ('1', '2', '2019-06-04', '1', '123', '3', '12', null);
+INSERT INTO `historial_neuma` VALUES ('2', '2', '2019-06-06', '2', '13', '3', '8', 'jola');
+INSERT INTO `historial_neuma` VALUES ('3', '2', '2019-06-10', '2', '333', '3', '7', 'jajajaja');
+INSERT INTO `historial_neuma` VALUES ('4', '4', '2019-06-07', '1', '321', '0', '0', '');
+INSERT INTO `historial_neuma` VALUES ('5', '3', '2019-06-24', '2', '123', '3', '6', '');
 
 -- ----------------------------
 -- Table structure for `items`
@@ -166,14 +171,15 @@ CREATE TABLE `neumaticos` (
   `kilometros` double default NULL,
   `observaciones` tinytext,
   PRIMARY KEY  (`idNeumatico`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of neumaticos
 -- ----------------------------
 INSERT INTO `neumaticos` VALUES ('1', '123', 'pirelli', 'p400', '123/45/67', '1', '2019-08-01', '123.45', '1234.56', 'prueba');
-INSERT INTO `neumaticos` VALUES ('2', '1', '1', '1', '1', '1', '2019-06-02', '1', '1', '1');
+INSERT INTO `neumaticos` VALUES ('2', 'PX3-123456', '1', '1', '1', '1', '2019-06-02', '1', '1', '1');
 INSERT INTO `neumaticos` VALUES ('3', 'codigo', 'marca', 'modelo', 'medida', '2', '2019-06-03', '123', '345', '456');
+INSERT INTO `neumaticos` VALUES ('4', '333', 'firestone', 'catumba', '1122', '2', '2019-06-01', '123', '321', 'hola');
 
 -- ----------------------------
 -- Table structure for `operaciones_neuma`
@@ -373,6 +379,12 @@ INSERT INTO `vehiculos` VALUES ('17', '0', 'maquina', '122.0', '');
 -- ----------------------------
 DROP VIEW IF EXISTS `consulta`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `consulta` AS select `cargas`.`idCarga` AS `idCarga`,`trabajos`.`idTrabajo` AS `idTrabajo`,`cargas`.`fecha` AS `fecha`,`cargas`.`idVehiculo` AS `idVehiculo`,`cargas`.`litros` AS `litros`,`trabajos`.`kmshrs` AS `kmshrs` from (`cargas` join `trabajos` on(((`cargas`.`fecha` = `trabajos`.`fecha`) and (`cargas`.`idVehiculo` = `trabajos`.`idVehiculo`)))) ;
+
+-- ----------------------------
+-- View structure for `vw_ultimo_hist_neuma`
+-- ----------------------------
+DROP VIEW IF EXISTS `vw_ultimo_hist_neuma`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_ultimo_hist_neuma` AS select `historial_neuma`.`idNeumatico` AS `idNeumatico`,max(`historial_neuma`.`idHistorial`) AS `ultimo` from `historial_neuma` group by `historial_neuma`.`idNeumatico` ;
 
 -- ----------------------------
 -- View structure for `_consulta`

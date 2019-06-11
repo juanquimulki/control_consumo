@@ -11,6 +11,20 @@ class NeumaticosControlador {
     require_once "layouts/layout_foot.php";
   }
   
+  public function ubicacion() {
+    $opcion831 = "active";
+    require_once "layouts/layout_head.php";
+
+    require_once "modelos/NeumaticosModelo.php";
+    $neumaticos = NeumaticosModelo::getNeumaticos();
+    require_once "modelos/VehiculosModelo.php";
+    $camiones = VehiculosModelo::getCamiones();
+    require_once "vistas/neumaticos/UbicacionVista.php";
+
+    $scripts = array("neumaticos.js");
+    require_once "layouts/layout_foot.php";
+  }
+  
   public function historial() {
     $opcion82 = "active";
     require_once "layouts/layout_head.php";
@@ -101,6 +115,30 @@ class NeumaticosControlador {
     require_once "modelos/NeumaticosModelo.php";
     $historial = NeumaticosModelo::getHistorial($_POST['id']);
     require_once "vistas/neumaticos/mostrarRegistrosHistorial.php";
+  }
+
+  public function mostrarUbicacion() {
+    require_once "modelos/NeumaticosModelo.php";
+    if ($_POST['idn']) {
+      $consulta = NeumaticosModelo::getUbicacionNeumatico($_POST['idn']);
+      if ($neumatico=$consulta->fetch()) {
+        $idvehiculo = $neumatico['idVehiculo'];
+        $codigo = $neumatico['codigo'];
+      }
+      else {
+        $idvehiculo = 0;
+        $codigo = "";
+      }
+    }
+    else {
+      $idvehiculo = $_POST['idv'];
+      $codigo = "";
+    }
+
+    $arreglo = NeumaticosModelo::getUbicacionVehiculo($idvehiculo);
+    require_once "modelos/VehiculosModelo.php";
+    $vehiculo = VehiculosModelo::selectVehiculo($idvehiculo); 
+    require_once "vistas/neumaticos/mostrarUbicacion.php";
   }
 
   public function modificar() {
