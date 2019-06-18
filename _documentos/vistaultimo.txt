@@ -1,0 +1,1 @@
+select `historial_neuma`.`idNeumatico` AS `idNeumatico`,max(`historial_neuma`.`idHistorial`) AS `ultimo`,`historial_neuma`.`idOperacion` AS `idOperacion` from `historial_neuma` group by `historial_neuma`.`idNeumatico`

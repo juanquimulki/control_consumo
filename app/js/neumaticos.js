@@ -218,6 +218,20 @@ function mostrarUbicacion() {
   })
 }
 
+function infoNeuma(codigo) {
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=neumaticos&a=infoNeuma",
+    data: "codigo="+codigo,
+    beforeSend: function() {
+      $("#infoNeuma").html("<center><img src='../img/loading.gif' width='100px' /></center>");
+    },
+    success: function(data) {
+      $("#infoNeuma").html(data);
+    }
+  })
+}
+
 function alerta(tipo,titulo,mensaje,icono) {
   $("#alerta").html('<div class="alert alert-'+tipo+' alert-dismissible">'+
           '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'+

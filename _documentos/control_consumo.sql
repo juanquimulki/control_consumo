@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50067
 File Encoding         : 65001
 
-Date: 2019-06-11 11:29:57
+Date: 2019-06-18 10:39:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -190,17 +190,18 @@ CREATE TABLE `operaciones_neuma` (
   `descripcion` varchar(50) default NULL,
   `validar` varchar(20) default NULL,
   PRIMARY KEY  (`idOperacion`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of operaciones_neuma
 -- ----------------------------
 INSERT INTO `operaciones_neuma` VALUES ('1', 'Registrado', null);
-INSERT INTO `operaciones_neuma` VALUES ('2', 'Colocado', '2.4.5');
+INSERT INTO `operaciones_neuma` VALUES ('2', 'Colocado', '1.3.4.5.6');
 INSERT INTO `operaciones_neuma` VALUES ('3', 'Quitado', '2');
 INSERT INTO `operaciones_neuma` VALUES ('4', 'Recapado', '3');
 INSERT INTO `operaciones_neuma` VALUES ('5', 'Reparado', '3');
-INSERT INTO `operaciones_neuma` VALUES ('6', 'Descartado', '3');
+INSERT INTO `operaciones_neuma` VALUES ('7', 'Descartado', '3');
+INSERT INTO `operaciones_neuma` VALUES ('6', 'Rotado', '3');
 
 -- ----------------------------
 -- Table structure for `operarios`

@@ -25,6 +25,31 @@ class NeumaticosControlador {
     require_once "layouts/layout_foot.php";
   }
   
+  public function stock() {
+    $opcion832 = "active";
+    require_once "layouts/layout_head.php";
+
+    require_once "modelos/NeumaticosModelo.php";
+    $neumaticos = NeumaticosModelo::getStock();
+    require_once "vistas/neumaticos/StockVista.php";
+
+    $scripts = array("neumaticos.js");
+    require_once "layouts/layout_foot.php";
+  }
+
+  public function ultimo() {
+    $opcion833 = "active";
+    require_once "layouts/layout_head.php";
+
+    require_once "modelos/NeumaticosModelo.php";
+    $ultimos = NeumaticosModelo::getUltimos();
+    $algunos = NeumaticosModelo::getAlgunos();
+    require_once "vistas/neumaticos/UltimoVista.php";
+
+    $scripts = array("neumaticos.js");
+    require_once "layouts/layout_foot.php";
+  }
+
   public function historial() {
     $opcion82 = "active";
     require_once "layouts/layout_head.php";
@@ -139,6 +164,14 @@ class NeumaticosControlador {
     require_once "modelos/VehiculosModelo.php";
     $vehiculo = VehiculosModelo::selectVehiculo($idvehiculo); 
     require_once "vistas/neumaticos/mostrarUbicacion.php";
+  }
+  
+  public function infoNeuma() {
+    require_once "modelos/NeumaticosModelo.php";
+    $id = NeumaticosModelo::getId($_POST['codigo']);
+    $neumatico = NeumaticosModelo::selectNeumatico($id);
+    $historial = NeumaticosModelo::getHistorial($id);
+    require_once "vistas/neumaticos/infoNeuma.php";
   }
 
   public function modificar() {
