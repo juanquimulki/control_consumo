@@ -9,7 +9,7 @@ class NeumaticosModelo {
 
   public function getHistorial($id) {
     $consulta = DB::select("select idhistorial,fecha,operaciones_neuma.descripcion as operacion,kilometros,vehiculos.descripcion as vehiculo,posicion,observaciones
-                            from historial_neuma 
+                            from historial_neuma
                             left outer join operaciones_neuma on historial_neuma.idoperacion=operaciones_neuma.idoperacion
                             left outer join vehiculos on historial_neuma.idvehiculo=vehiculos.idvehiculo
                             where idNeumatico=? order by fecha",array($id));
@@ -22,8 +22,8 @@ class NeumaticosModelo {
       $consulta = DB::select("select historial_neuma.fecha,posicion,codigo,marca,modelo,historial_neuma.kilometros from vw_ultimo_hist_neuma
         inner join historial_neuma on vw_ultimo_hist_neuma.ultimo=historial_neuma.idHistorial
         inner join neumaticos on historial_neuma.idNeumatico=neumaticos.idNeumatico
-        where idOperacion=2 and idVehiculo=? and posicion=?",array($idv,$i));
-        
+        where historial_neuma.idOperacion=2 and idVehiculo=? and posicion=?",array($idv,$i));
+
       if ($registro=$consulta->fetch()) {
         $arreglo[$i] = $registro['codigo'];
       }
@@ -31,18 +31,18 @@ class NeumaticosModelo {
         $arreglo[$i] = 0;
       }
      }
-    
+
     return $arreglo;
   }
-  
+
   public function getUbicacionNeumatico($idn) {
     $consulta = DB::select("select neumaticos.idNeumatico,idVehiculo,codigo from vw_ultimo_hist_neuma
       inner join historial_neuma on vw_ultimo_hist_neuma.ultimo=historial_neuma.idHistorial
       inner join neumaticos on historial_neuma.idNeumatico=neumaticos.idNeumatico
-      where idOperacion=2 and vw_ultimo_hist_neuma.idNeumatico=?",array($idn));
+      where historial_neuma.idOperacion=2 and vw_ultimo_hist_neuma.idNeumatico=?",array($idn));
     return $consulta;
   }
-  
+
   public function getStock() {
     $consulta = DB::select("select codigo,marca,modelo,medida,estado,operaciones_neuma.descripcion as operacion,vehiculos.descripcion as vehiculo,posicion from neumaticos
       left outer join vw_ultimo_hist_neuma on neumaticos.idNeumatico=vw_ultimo_hist_neuma.idNeumatico
