@@ -2,13 +2,30 @@
 require_once "modelos/DB.php";
 
 class NeumaticosModelo {
+  public function getEstados() {
+    $estados = array();
+    $estados[] = array("id"=>1,"estado"=>"Nueva");
+    $estados[] = array("id"=>2,"estado"=>"Usada");
+    $estados[] = array("id"=>3,"estado"=>"Recapada (uno)");
+    $estados[] = array("id"=>4,"estado"=>"Recapada (dos)");
+    return $estados;
+  }
+  
+  public function getDestinos() {
+    $destinos = array();
+    $destinos[] = array("id"=>1,"destino"=>"Taller");
+    $destinos[] = array("id"=>2,"destino"=>"Recapado (Proveedor)");
+    $destinos[] = array("id"=>3,"destino"=>"Pañol");
+    return $destinos;
+  }
+
   public function getNeumaticos() {
     $consulta = DB::select("select * from neumaticos order by codigo",null);
     return $consulta;
   }
 
   public function getHistorial($id) {
-    $consulta = DB::select("select idhistorial,fecha,operaciones_neuma.descripcion as operacion,kilometros,vehiculos.descripcion as vehiculo,posicion,observaciones
+    $consulta = DB::select("select idhistorial,fecha,operaciones_neuma.descripcion as operacion,destino,kilometros,vehiculos.descripcion as vehiculo,posicion,observaciones
                             from historial_neuma
                             left outer join operaciones_neuma on historial_neuma.idoperacion=operaciones_neuma.idoperacion
                             left outer join vehiculos on historial_neuma.idvehiculo=vehiculos.idvehiculo
@@ -44,7 +61,7 @@ class NeumaticosModelo {
   }
 
   public function getStock() {
-    $consulta = DB::select("select codigo,marca,modelo,medida,estado,operaciones_neuma.descripcion as operacion,vehiculos.descripcion as vehiculo,posicion from neumaticos
+    $consulta = DB::select("select codigo,marca,modelo,medida,estado,operaciones_neuma.descripcion as operacion,destino,vehiculos.descripcion as vehiculo,posicion from neumaticos
       left outer join vw_ultimo_hist_neuma on neumaticos.idNeumatico=vw_ultimo_hist_neuma.idNeumatico
       left outer join historial_neuma on vw_ultimo_hist_neuma.ultimo=historial_neuma.idHistorial
       left outer join operaciones_neuma on historial_neuma.idOperacion=operaciones_neuma.idOperacion
@@ -73,7 +90,7 @@ class NeumaticosModelo {
   }
 
   public function getOperaciones() {
-    $consulta = DB::select("select * from operaciones_neuma order by idOperacion",null);
+    $consulta = DB::select("select * from operaciones_neuma where mostrar=1 order by idOperacion",null);
     return $consulta;
   }
 
@@ -94,13 +111,13 @@ class NeumaticosModelo {
     return $registro['idNeumatico'];
   }
 
-  public function insertNeumatico($codigo,$marca,$modelo,$medida,$estado,$fecha,$precio,$kilometros,$observaciones) {
-    $id = DB::insert("insert into neumaticos (codigo,marca,modelo,medida,estado,fecha,precio,kilometros,observaciones) values (?,?,?,?,?,?,?,?,?)",array($codigo,$marca,$modelo,$medida,$estado,$fecha,$precio,$kilometros,$observaciones));
+  public function insertNeumatico($codigo,$marca,$modelo,$medida,$estado,$proveedor,$fecha,$precio,$kilometros,$observaciones) {
+    $id = DB::insert("insert into neumaticos (codigo,marca,modelo,medida,estado,proveedor,fecha,precio,kilometros,observaciones) values (?,?,?,?,?,?,?,?,?,?)",array($codigo,$marca,$modelo,$medida,$estado,$proveedor,$fecha,$precio,$kilometros,$observaciones));
     return $id;
   }
 
-  public function insertHistorial($idneumatico,$fecha,$idoperacion,$idvehiculo,$kilometros,$posicion,$observaciones) {
-    $id = DB::insert("insert into historial_neuma (idneumatico,fecha,idoperacion,idvehiculo,kilometros,posicion,observaciones) values (?,?,?,?,?,?,?)",array($idneumatico,$fecha,$idoperacion,$idvehiculo,$kilometros,$posicion,$observaciones));
+  public function insertHistorial($idneumatico,$fecha,$idoperacion,$destino,$idvehiculo,$kilometros,$posicion,$observaciones) {
+    $id = DB::insert("insert into historial_neuma (idneumatico,fecha,idoperacion,destino,idvehiculo,kilometros,posicion,observaciones) values (?,?,?,?,?,?,?,?)",array($idneumatico,$fecha,$idoperacion,$destino,$idvehiculo,$kilometros,$posicion,$observaciones));
     return $id;
   }
 

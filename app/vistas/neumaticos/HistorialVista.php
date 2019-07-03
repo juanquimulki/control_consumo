@@ -83,11 +83,24 @@
                     <div class="form-group">
                       <label for="idoperacion" class="col-sm-2 control-label">Operación</label>
                       <div class="col-sm-10">
-                        <select class="form-control" id="idoperacion">
+                        <select class="form-control" id="idoperacion" onchange="divDestino(this.value);">
                           <option value='0'>Seleccione...</option>
                           <?php
                           while ($registro=$operaciones->fetch()) {
                             echo "<option value='".$registro['idOperacion']."'>".utf8_encode($registro['descripcion'])."</option>";
+                          }
+                          ?>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group" id="divdestino">
+                      <label for="destino" class="col-sm-2 control-label">Destino</label>
+                      <div class="col-sm-10">
+                        <select class="form-control" id="destino">
+                          <option value='0'>Seleccione...</option>
+                          <?php
+                          foreach ($destinos as $dest) {
+                            echo "<option value='".$dest['id']."'>".$dest['destino']."</option>";
                           }
                           ?>
                         </select>
@@ -112,9 +125,9 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="kilometros" class="col-sm-2 control-label">Kilómetros</label>
+                      <label for="kilometros" class="col-sm-2 control-label">Kms/Hrs</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="kilometros" placeholder="Kilómetros..." style="width:100px;" />
+                        <input type="text" class="form-control" id="kilometros" placeholder="Kms/Hrs..." style="width:100px;" />
                       </div>
                     </div>
                     <div class="form-group">

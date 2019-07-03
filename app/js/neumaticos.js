@@ -22,6 +22,7 @@ function modificar(id) {
       $("#modelo").val(arreglo.modelo);
       $("#medida").val(arreglo.medida);
       $("#estado").val(arreglo.estado);
+      $("#proveedor").val(arreglo.proveedor);
       $("#fecha").val(arreglo.fecha);
       $("#precio").val(arreglo.precio);
       $("#kilometros").val(arreglo.kilometros);
@@ -57,6 +58,7 @@ function guardar() {
   var modelo = $("#modelo").val();
   var medida = $("#medida").val();
   var estado = $("#estado").val();
+  var proveedor = $("#proveedor").val();
   var fecha  = $("#fecha").val();
   var precio = $("#precio").val();
   var kilometros    = $("#kilometros").val();
@@ -65,7 +67,7 @@ function guardar() {
   $.ajax({
     type: "POST",
     url: "index.php?c=neumaticos&a=validar",
-    data: "codigo="+codigo+"&marca="+marca+"&modelo="+modelo+"&medida="+medida+"&estado="+estado+"&fecha="+fecha+"&precio="+precio+"&kilometros="+kilometros+"&observaciones="+observaciones,
+    data: "codigo="+codigo+"&marca="+marca+"&modelo="+modelo+"&medida="+medida+"&estado="+estado+"&proveedor="+proveedor+"&fecha="+fecha+"&precio="+precio+"&kilometros="+kilometros+"&observaciones="+observaciones,
     success: function(data) {
       if (data) {
         alerta("warning","Atención",data,"fa-warning");
@@ -82,7 +84,7 @@ function guardar() {
         $.ajax({
           type: "POST",
           url: url,
-          data: "codigo="+codigo+"&marca="+marca+"&modelo="+modelo+"&medida="+medida+"&estado="+estado+"&fecha="+fecha+"&precio="+precio+"&kilometros="+kilometros+"&observaciones="+observaciones,
+          data: "codigo="+codigo+"&marca="+marca+"&modelo="+modelo+"&medida="+medida+"&estado="+estado+"&proveedor="+proveedor+"&fecha="+fecha+"&precio="+precio+"&kilometros="+kilometros+"&observaciones="+observaciones,
           success: function(data) {
             if (data!=0) {
               if (mje=="guardado") $("#id").val(data);
@@ -105,6 +107,7 @@ function guardarHistorial() {
   var idneumatico = $("#idneumatico").val();
   var fecha       = $("#fecha").val();
   var idoperacion = $("#idoperacion").val();
+  var destino     = $("#destino").val();
   var idvehiculo  = $("#idvehiculo").val();
   var kilometros  = $("#kilometros").val();
   var posicion    = $("#posicion").val();
@@ -113,7 +116,7 @@ function guardarHistorial() {
   $.ajax({
     type: "POST",
     url: "index.php?c=neumaticos&a=validarHistorial",
-    data: "idneumatico="+idneumatico+"&fecha="+fecha+"&idoperacion="+idoperacion+"&idvehiculo="+idvehiculo+"&kilometros="+kilometros+"&posicion="+posicion,
+    data: "idneumatico="+idneumatico+"&fecha="+fecha+"&idoperacion="+idoperacion+"&destino="+destino+"&idvehiculo="+idvehiculo+"&kilometros="+kilometros+"&posicion="+posicion,
     success: function(data) {
       if (data) {
         alerta("warning","Atención",data,"fa-warning");
@@ -130,7 +133,7 @@ function guardarHistorial() {
         $.ajax({
           type: "POST",
           url: url,
-          data: "idneumatico="+idneumatico+"&fecha="+fecha+"&idoperacion="+idoperacion+"&idvehiculo="+idvehiculo+"&kilometros="+kilometros+"&posicion="+posicion+"&observaciones="+observaciones,
+          data: "idneumatico="+idneumatico+"&fecha="+fecha+"&idoperacion="+idoperacion+"&destino="+destino+"&idvehiculo="+idvehiculo+"&kilometros="+kilometros+"&posicion="+posicion+"&observaciones="+observaciones,
           success: function(data) {
             if (data!=0) {
               if (mje=="guardado") $("#id").val(data);
@@ -154,6 +157,7 @@ function cancelar() {
   $("#modelo").val("");
   $("#medida").val("");
   $("#estado").val(0);
+  $("#proveedor").val("");
   $("#fecha").val("");
   $("#precio").val("");
   $("#kilometros").val("");
@@ -165,6 +169,7 @@ function cancelarHistorial() {
   $("#idneumatico").val(0);
   $("#fecha").val("");
   $("#idoperacion").val(0);
+  $("#destino").val(0);
   $("#idvehiculo").val(0);
   $("#kilometros").val("");
   $("#posicion").val("");
@@ -241,6 +246,16 @@ function alerta(tipo,titulo,mensaje,icono) {
   $("#alerta").show('fade');
 }
 
+function divDestino(valor) {
+  if (valor==3) {
+    $("#divdestino").show();
+  }
+  else {
+    $("#destino").val(0);
+    $("#divdestino").hide();
+  }
+}
+
 function datatable() {
   $('#tabla_registros').DataTable({
       "order": [[ 1, "asc" ]],
@@ -292,5 +307,8 @@ $(function () {
   }
   else {
     mostrar();
+  }
+  if ($("#divdestino").length) {
+    $("#divdestino").hide();
   }
 })

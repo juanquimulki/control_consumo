@@ -38,7 +38,9 @@
                         <td>".$registro['marca']."</td>
                         <td>".$registro['modelo']."</td>
                         <td>".$registro['medida']."</td>
-                        <td><b>".strtoupper($registro['operacion'])."</b></td>
+                        <td><b>".strtoupper($registro['operacion'])."</b> ";
+                  echo ($registro['destino']?"<br>".$destinos[$registro['destino']-1]["destino"]:"");
+                  echo "</td>
                         <td>".$registro['vehiculo']."</td>
                         <td>".($registro['posicion']?$registro['posicion']:"")."</td>
                         <tr>";

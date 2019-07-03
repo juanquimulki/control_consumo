@@ -5,6 +5,8 @@ class NeumaticosControlador {
     $opcion81 = "active";
     require_once "layouts/layout_head.php";
 
+    require_once "modelos/NeumaticosModelo.php";
+    $estados = NeumaticosModelo::getEstados();
     require_once "vistas/neumaticos/NeumaticosVista.php";
 
     $scripts = array("neumaticos.js");
@@ -30,6 +32,7 @@ class NeumaticosControlador {
     require_once "layouts/layout_head.php";
 
     require_once "modelos/NeumaticosModelo.php";
+    $destinos   = NeumaticosModelo::getDestinos();
     $neumaticos = NeumaticosModelo::getStock();
     require_once "vistas/neumaticos/StockVista.php";
 
@@ -55,8 +58,9 @@ class NeumaticosControlador {
     require_once "layouts/layout_head.php";
 
     require_once "modelos/NeumaticosModelo.php";
-    $neumaticos = NeumaticosModelo::getNeumaticos();
+    $neumaticos  = NeumaticosModelo::getNeumaticos();
     $operaciones = NeumaticosModelo::getOperaciones();
+    $destinos    = NeumaticosModelo::getDestinos();
     require_once "modelos/VehiculosModelo.php";
     $camiones = VehiculosModelo::getCamiones();
     require_once "vistas/neumaticos/HistorialVista.php";
@@ -74,6 +78,8 @@ class NeumaticosControlador {
       echo "- No ha ingresado MODELO.<br>";
     if ($_POST['estado']==0)
       echo "- No ha escogido ESTADO.<br>";
+    if (empty($_POST['proveedor']))
+      echo "- No ha ingresado PROVEEDOR.<br>";
     if (empty($_POST['fecha']))
       echo "- No ha ingresado FECHA.<br>";
     if (empty($_POST['precio']))
@@ -95,6 +101,8 @@ class NeumaticosControlador {
       echo "- No ha ingresado FECHA.<br>";
     if ($_POST['idoperacion']==0)
       echo "- No ha escogido OPERACIÓN.<br>";
+    if ($_POST['idoperacion']==3 && $_POST['destino']==0)
+      echo "- No ha escogido DESTINO.<br>";
     if ($_POST['idvehiculo']==0)
       echo "- No ha escogido VEHÍCULO.<br>";
     if (empty($_POST['kilometros']))
@@ -115,7 +123,7 @@ class NeumaticosControlador {
     require_once "modelos/Fechas.php";
     $fecha = Fechas::fecha_mysql($_POST['fecha']);
     require_once "modelos/NeumaticosModelo.php";
-    $id = NeumaticosModelo::insertNeumatico($_POST['codigo'],$_POST['marca'],$_POST['modelo'],$_POST['medida'],$_POST['estado'],$fecha,$_POST['precio'],$_POST['kilometros'],$_POST['observaciones']);
+    $id = NeumaticosModelo::insertNeumatico($_POST['codigo'],$_POST['marca'],$_POST['modelo'],$_POST['medida'],$_POST['estado'],$_POST['proveedor'],$fecha,$_POST['precio'],$_POST['kilometros'],$_POST['observaciones']);
     echo $id;
     NeumaticosModelo::insertHistorial($id,date("Y-m-d"),1,0,$_POST['kilometros'],0,"");
   }
@@ -126,7 +134,7 @@ class NeumaticosControlador {
     require_once "modelos/Fechas.php";
     $fecha = Fechas::fecha_mysql($_POST['fecha']);
     require_once "modelos/NeumaticosModelo.php";
-    $id = NeumaticosModelo::insertHistorial($_POST['idneumatico'],$fecha,$_POST['idoperacion'],$_POST['idvehiculo'],$_POST['kilometros'],$_POST['posicion'],$_POST['observaciones']);
+    $id = NeumaticosModelo::insertHistorial($_POST['idneumatico'],$fecha,$_POST['idoperacion'],$_POST['destino'],$_POST['idvehiculo'],$_POST['kilometros'],$_POST['posicion'],$_POST['observaciones']);
     echo $id;
   }
 
@@ -138,7 +146,9 @@ class NeumaticosControlador {
 
   public function mostrarHistorial() {
     require_once "modelos/NeumaticosModelo.php";
+    $destinos  = NeumaticosModelo::getDestinos();
     $historial = NeumaticosModelo::getHistorial($_POST['id']);
+    $neumatico = NeumaticosModelo::selectNeumatico($_POST['id']);
     require_once "vistas/neumaticos/mostrarRegistrosHistorial.php";
   }
 
@@ -185,6 +195,7 @@ class NeumaticosControlador {
         "modelo":"'.$registro['modelo'].'",
         "medida":"'.$registro['medida'].'",
         "estado":"'.$registro['estado'].'",
+        "proveedor":"'.$registro['proveedor'].'",
         "fecha":"'.date("d/m/Y",strtotime($registro['fecha'])).'",
         "precio":"'.$registro['precio'].'",
         "kilometros":"'.$registro['kilometros'].'",

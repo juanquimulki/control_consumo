@@ -60,19 +60,28 @@
                         <input type="text" class="form-control" id="medida" placeholder="Medida..." maxlength="20" style="width:150px;">
                       </div>
                     </div>
+                    <div class="form-group">
+                      <label for="idvehiculo" class="col-sm-2 control-label">Estado</label>
+                      <div class="col-sm-10">
+                        <select class="form-control" id="estado" style="width:150px;">
+                          <option value='0'>Seleccione...</option>
+                          <?php 
+                          foreach ($estados as $est) {
+                            echo "<option value='".$est['id']."'>".$est['estado']."</option>";
+                          }
+                          ?>
+                        </select>
+                      </div>
+                    </div>
                   </form>
                 </div>
 
                 <div class="col-md-6">
                   <form class="form-horizontal">
                     <div class="form-group">
-                      <label for="idvehiculo" class="col-sm-2 control-label">Estado</label>
+                      <label for="nombre" class="col-sm-2 control-label">Proveedor</label>
                       <div class="col-sm-10">
-                        <select class="form-control" id="estado" style="width:150px;">
-                          <option value='0'>Seleccione...</option>
-                          <option value='1'>Nueva</option>
-                          <option value='2'>Usada</option>
-                        </select>
+                        <input type="text" class="form-control" id="proveedor" placeholder="Proveedor..." maxlength="50">
                       </div>
                     </div>
                     <div class="form-group">
