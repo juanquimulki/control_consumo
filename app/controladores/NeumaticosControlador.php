@@ -69,6 +69,18 @@ class NeumaticosControlador {
     require_once "layouts/layout_foot.php";
   }
 
+  public function rodaje() {
+    $opcion834 = "active";
+    require_once "layouts/layout_head.php";
+
+    require_once "modelos/NeumaticosModelo.php";
+    $neumaticos  = NeumaticosModelo::getNeumaticos();
+    require_once "vistas/neumaticos/RodajeVista.php";
+
+    $scripts = array("neumaticos.js");
+    require_once "layouts/layout_foot.php";
+  }
+
   public function validar() {
     if (empty($_POST['codigo']))
       echo "- No ha ingresado CÓDIGO.<br>";
@@ -87,9 +99,9 @@ class NeumaticosControlador {
     else
       if (!is_numeric($_POST['precio']))
         echo "- El PRECIO debe ser un número.<br>";
-    if (empty($_POST['kilometros']))
+    /*if (empty($_POST['kilometros']))
       echo "- No ha ingresado KILÓMETROS.<br>";
-    else
+    else*/
       if (!is_numeric($_POST['kilometros']))
         echo "- Los KILÓMETROS deben ser un número.<br>";
   }
@@ -142,6 +154,12 @@ class NeumaticosControlador {
     require_once "modelos/NeumaticosModelo.php";
     $neumaticos = NeumaticosModelo::getNeumaticos();
     require_once "vistas/neumaticos/mostrarRegistros.php";
+  }
+
+  public function mostrarRodaje() {
+    require_once "modelos/NeumaticosModelo.php";
+    $movimientos  = NeumaticosModelo::getHistorialRodaje($_POST['id']);
+    require_once "vistas/neumaticos/mostrarRodaje.php";
   }
 
   public function mostrarHistorial() {

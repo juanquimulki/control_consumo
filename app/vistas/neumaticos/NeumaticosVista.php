@@ -103,9 +103,9 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="precinto" class="col-sm-2 control-label">Kilómetros</label>
+                      <label for="precinto" class="col-sm-2 control-label">Kms/Hrs</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="kilometros" placeholder="Kilómetros..." style="width:100px;" />
+                        <input type="text" class="form-control" id="kilometros" placeholder="Kms/Hrs..." style="width:100px;" />
                       </div>
                     </div>
                     <div class="form-group">

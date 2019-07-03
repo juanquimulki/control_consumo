@@ -33,6 +33,15 @@ class NeumaticosModelo {
     return $consulta;
   }
 
+  public function getHistorialRodaje($id) {
+    $consulta = DB::select("select idhistorial,fecha,operaciones_neuma.descripcion as operacion,destino,kilometros,vehiculos.descripcion as vehiculo,posicion,observaciones,historial_neuma.idoperacion
+                            from historial_neuma
+                            left outer join operaciones_neuma on historial_neuma.idoperacion=operaciones_neuma.idoperacion
+                            left outer join vehiculos on historial_neuma.idvehiculo=vehiculos.idvehiculo
+                            where idNeumatico=? and (historial_neuma.idoperacion between 1 and 3) order by fecha",array($id));
+    return $consulta;
+  }
+
   public function getUbicacionVehiculo($idv) {
     $arreglo = array();
     for ($i=1;$i<=16;$i++) {

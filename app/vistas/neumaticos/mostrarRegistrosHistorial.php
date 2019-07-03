@@ -11,7 +11,7 @@
         $nombre      = "tabla_registros";
         $campos      = array("fecha","operacion","kilometros","vehiculo","posicion","observaciones");
         $id          = "idHistorial";
-        $encabezados = array("Fecha","Operacion","Kilometros","Vehiculo","Posicion","Observaciones");
+        $encabezados = array("Fecha","Operacion","Kms/Hrs","Vehiculo","Posicion","Observaciones");
         $registros   = $historial;
         $maestro     = 0;
         //include "vistas/tabla_registros.php";

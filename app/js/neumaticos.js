@@ -169,6 +169,7 @@ function cancelarHistorial() {
   $("#idneumatico").val(0);
   $("#fecha").val("");
   $("#idoperacion").val(0);
+  $("#divdestino").hide();
   $("#destino").val(0);
   $("#idvehiculo").val(0);
   $("#kilometros").val("");
@@ -218,6 +219,22 @@ function mostrarUbicacion() {
     },
     success: function(data) {
       $("#mostrarUbicacion").html(data);
+      //datatable();
+    }
+  })
+}
+
+function mostrarRodaje() {
+  var id = $("#idneumatico").val();
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=neumaticos&a=mostrarRodaje",
+    data: "id="+id,
+    beforeSend: function() {
+      $("#mostrarRodaje").html("<center><img src='../img/loading.gif' width='100px' /></center>");
+    },
+    success: function(data) {
+      $("#mostrarRodaje").html(data);
       //datatable();
     }
   })
@@ -300,13 +317,17 @@ $(function () {
     mostrarHistorial(0);
   }
   else {
-    mostrar();
-  }
-  if ($("#mostrarUbicacion").length) {
-    mostrarUbicacion(0);
-  }
-  else {
-    mostrar();
+    if ($("#mostrarUbicacion").length) {
+      mostrarUbicacion(0);
+    }
+    else {
+      if ($("#mostrarRodaje").length) {
+        mostrarRodaje(0);
+      }
+      else {
+        mostrar();
+      }
+    }
   }
   if ($("#divdestino").length) {
     $("#divdestino").hide();
