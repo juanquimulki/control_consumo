@@ -157,7 +157,7 @@
         <!-- /.box-body -->
         <div class="box-footer">
           <button class="btn btn-default" onclick="cancelarHistorial()">Cancelar</button>
-          <button class="btn btn-info pull-right" onclick="guardarHistorial()">Guardar</button>
+          <button class="btn btn-info pull-right" onclick="guardarHistorial()" id="boton_guardar">Guardar</button>
         </div>
         <!--div class="box-footer">
           Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about

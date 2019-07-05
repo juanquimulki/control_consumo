@@ -138,6 +138,7 @@ function guardarHistorial() {
             if (data!=0) {
               if (mje=="guardado") $("#id").val(data);
               alerta("success","Información","El registro ha sido "+mje+" con éxito.","fa-check");
+              $("#boton_guardar").attr("disabled", "disabled")
               mostrarHistorial();
             }
             else {
@@ -175,6 +176,7 @@ function cancelarHistorial() {
   $("#kilometros").val("");
   $("#posicion").val("");
   $("#observaciones").val("");
+  $("#boton_guardar").removeAttr("disabled");  
 }
 
 function mostrar() {
