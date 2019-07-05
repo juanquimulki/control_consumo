@@ -224,12 +224,12 @@ function mostrarUbicacion() {
   })
 }
 
-function mostrarRodaje() {
+function mostrarRodaje(actuales) {
   var id = $("#idneumatico").val();
   $.ajax({
     type: "POST",
     url: "index.php?c=neumaticos&a=mostrarRodaje",
-    data: "id="+id,
+    data: "id="+id+"&actuales="+actuales,
     beforeSend: function() {
       $("#mostrarRodaje").html("<center><img src='../img/loading.gif' width='100px' /></center>");
     },
@@ -238,6 +238,11 @@ function mostrarRodaje() {
       //datatable();
     }
   })
+}
+
+function estadoActual() {
+  var kmshrs = prompt("Ingrese Kms / Hrs actuales...");
+  mostrarRodaje(kmshrs);
 }
 
 function infoNeuma(codigo) {

@@ -43,7 +43,7 @@
         <!-- /.box-body -->
         <div class="box-footer">
           <!--button class="btn btn-default" onclick="cancelar()">Cancelar</button-->
-          <button class="btn btn-info pull-right" onclick="mostrarRodaje()">Mostrar</button>
+          <button class="btn btn-info pull-right" onclick="mostrarRodaje(0)">Mostrar</button>
         </div>
         <!--div class="box-footer">
           Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about

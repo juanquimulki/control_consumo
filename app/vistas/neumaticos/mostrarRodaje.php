@@ -20,6 +20,7 @@
           <tbody>
             <?php
             $total = 0;
+            $boton = false;
             while ($registro =  $movimientos->fetch()) {
                 echo "<tr>
                         <td>".date("d/m/Y",strtotime($registro['fecha']))."</td>
@@ -31,21 +32,32 @@
                     $inicio = $registro['kilometros'];
                     $parcial = $inicio;
                     $total += $inicio;
+                    $boton = false;
                     break;
                   case 2:
                     $colocado = $registro['kilometros'];
                     $parcial = "";
+                    $boton = true;
                     break;
                   case 3:
                     $quitado = $registro['kilometros'];
                     $parcial = $quitado - $colocado;
                     $total += $parcial;
+                    $boton = false;
                     break;
                 }        
                         
                 echo "<td>$parcial</td>";        
-                echo "<td>$total</td>";        
+                echo "<td>$total</td>";
                 echo "</tr>";
+            }
+            if ($actuales) {
+              $parcial = $actuales - $colocado;
+              $total += $parcial;
+              echo "<tr style='font-style:italic;'><td>".date("d/m/Y")."</td><td>Estado Actual</td><td>".$actuales."</td><td>".$parcial."</td><td>".$total."</td></tr>";
+            }
+            if ($boton) {
+              echo "<tr><td></td><td><button onclick='estadoActual();'>Estado Actual</button></td></tr>";
             }
             ?>
           </tbody>

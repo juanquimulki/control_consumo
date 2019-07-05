@@ -158,6 +158,7 @@ class NeumaticosControlador {
 
   public function mostrarRodaje() {
     require_once "modelos/NeumaticosModelo.php";
+    $actuales = $_POST['actuales'];
     $movimientos  = NeumaticosModelo::getHistorialRodaje($_POST['id']);
     require_once "vistas/neumaticos/mostrarRodaje.php";
   }
