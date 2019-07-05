@@ -79,6 +79,16 @@ class NeumaticosModelo {
     return $consulta;
   }
 
+  public function getStockRecapados() {
+    $consulta = DB::select("select neumaticos.idNeumatico,codigo,marca,modelo,medida,estado,operaciones_neuma.descripcion as operacion,destino,vehiculos.descripcion as vehiculo,posicion from neumaticos
+      left outer join vw_ultimo_hist_neuma on neumaticos.idNeumatico=vw_ultimo_hist_neuma.idNeumatico
+      left outer join historial_neuma on vw_ultimo_hist_neuma.ultimo=historial_neuma.idHistorial
+      left outer join operaciones_neuma on historial_neuma.idOperacion=operaciones_neuma.idOperacion
+      left outer join vehiculos on historial_neuma.idVehiculo=vehiculos.idVehiculo
+      order by codigo",null);
+    return $consulta;
+  }
+  
   public function getUltimos() {
     $consulta = DB::select("select operaciones_neuma.idOperacion,COUNT(ultimo) as cantidad,descripcion
       from operaciones_neuma

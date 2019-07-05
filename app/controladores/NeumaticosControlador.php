@@ -40,6 +40,19 @@ class NeumaticosControlador {
     require_once "layouts/layout_foot.php";
   }
 
+  public function recapados() {
+    $opcion835 = "active";
+    require_once "layouts/layout_head.php";
+
+    require_once "modelos/NeumaticosModelo.php";
+    $destinos   = NeumaticosModelo::getDestinos();
+    $neumaticos = NeumaticosModelo::getStockRecapados();
+    require_once "vistas/neumaticos/RecapadosVista.php";
+
+    $scripts = array("neumaticos.js");
+    require_once "layouts/layout_foot.php";
+  }
+
   public function ultimo() {
     $opcion833 = "active";
     require_once "layouts/layout_head.php";
