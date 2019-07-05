@@ -113,6 +113,10 @@ class NeumaticosControlador {
       echo "- No ha ingresado FECHA.<br>";
     if ($_POST['idoperacion']==0)
       echo "- No ha escogido OPERACIÓN.<br>";
+    else
+      if (NeumaticosControlador::validarOperacionHist($_POST['idneumatico'],$_POST['idoperacion'])) {}
+      else
+        echo "- LA OPERACIÓN NO ES VÁLIDA PARA ESTA CUBIERTA EN SU CONTEXTO.<br>";
     if ($_POST['idoperacion']==3 && $_POST['destino']==0)
       echo "- No ha escogido DESTINO.<br>";
     if ($_POST['idvehiculo']==0)
@@ -127,6 +131,41 @@ class NeumaticosControlador {
     else
       if (!is_numeric($_POST['posicion']))
         echo "- La POSICIÓN debe ser un número.<br>";
+  }
+
+  public function validarOperacionHist($idneu,$idope) {
+    require_once "modelos/NeumaticosModelo.php";
+    $registro = NeumaticosModelo::selectUltimoHist($idneu);
+    $ultope   = $registro['idOperacion'];
+    
+    switch ($idope) {
+      case 2: //colocado
+        if (in_array($ultope,array(1,3,4)))
+          return true;
+        else
+          return false;
+        break;
+      case 3: //quitado
+        if (in_array($ultope,array(2)))
+          return true;
+        else
+          return false;
+        break;
+      case 4: //recapado
+        if (in_array($ultope,array(3)))
+          return true;
+        else
+          return false;
+        break;
+      case 5: //descartado
+        if (in_array($ultope,array(3,4)))
+          return true;
+        else
+          return false;
+        break;
+    }
+    
+    return false;
   }
 
   public function guardar() {

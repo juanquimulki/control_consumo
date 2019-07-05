@@ -86,6 +86,14 @@ class NeumaticosModelo {
       group by idOperacion",null);
     return $consulta;
   }
+  
+  public function selectUltimoHist($id) {
+    $sql = "select * from vw_ultimo_hist_neuma
+            inner join historial_neuma on vw_ultimo_hist_neuma.ultimo=historial_neuma.idHistorial
+            where vw_ultimo_hist_neuma.idNeumatico=?";
+    $consulta = DB::select($sql,array($id));
+    return $consulta->fetch();
+  }
 
   public function getAlgunos() {
     $consulta = DB::select("select idOperacion,descripcion,count(idNeumatico) as cantidad from (
@@ -127,17 +135,6 @@ class NeumaticosModelo {
 
   public function insertHistorial($idneumatico,$fecha,$idoperacion,$destino,$idvehiculo,$kilometros,$posicion,$observaciones) {
     $id = DB::insert("insert into historial_neuma (idneumatico,fecha,idoperacion,destino,idvehiculo,kilometros,posicion,observaciones) values (?,?,?,?,?,?,?,?)",array($idneumatico,$fecha,$idoperacion,$destino,$idvehiculo,$kilometros,$posicion,$observaciones));
-    return $id;
-  }
-
-  public function updateOperario($id,$nombre,$abreviatura) {
-    $cantidad = DB::update("update operarios set nombre=?,abreviatura=? where idoperario=?",
-      array($nombre,$abreviatura,$id));
-    return $cantidad;
-  }
-
-  public function deleteOperario($id) {
-    $id = DB::delete("delete from operarios where idOperario=?",array($id));
     return $id;
   }
 }

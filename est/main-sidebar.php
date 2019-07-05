@@ -87,7 +87,7 @@
               <li class="<?php echo $opcion832; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=stock"><i class="fa fa-circle-o"></i> Stock Actual</a></li>
               <li class="<?php echo $opcion831; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=ubicacion"><i class="fa fa-circle-o"></i> Ubicación de las Cubiertas</a></li>
               <li class="<?php echo $opcion834; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=rodaje"><i class="fa fa-circle-o"></i> Cálculo de Rodaje</a></li>
-              <li class="<?php echo $opcion833; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=ultimo"><i class="fa fa-circle-o"></i> Último Movimiento</a></li>
+              <!--li class="<?php echo $opcion833; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=ultimo"><i class="fa fa-circle-o"></i> Último Movimiento</a></li-->
             </ul>
           </li>
         </ul>
