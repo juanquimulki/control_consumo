@@ -106,6 +106,15 @@ class NeumaticosModelo {
     return $consulta;
   }
 
+  public function getRecapados($id) {
+    $sql   = "select count(idHistorial) as cantidad from historial_neuma";
+    $where = "idNeumatico=? and idOperacion=?";
+    $bind  = array($id,4);
+    $consulta = DB::selectWhere($sql,$where,$bind);
+    $registro = $consulta->fetch();
+    return $registro['cantidad'];
+  }
+
   public function getOperaciones() {
     $consulta = DB::select("select * from operaciones_neuma where mostrar=1 order by idOperacion",null);
     return $consulta;

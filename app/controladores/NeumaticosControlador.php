@@ -114,7 +114,13 @@ class NeumaticosControlador {
     if ($_POST['idoperacion']==0)
       echo "- No ha escogido OPERACIÓN.<br>";
     else
-      if (NeumaticosControlador::validarOperacionHist($_POST['idneumatico'],$_POST['idoperacion'])) {}
+      if (NeumaticosControlador::validarOperacionHist($_POST['idneumatico'],$_POST['idoperacion'])) {
+        if ($_POST['idoperacion']==4) { //recapado
+            if (NeumaticosControlador::contarRecapados($_POST['idneumatico'])>=2)
+              echo "- LA CUBIERTA YA NO PUEDE SER RECAPADA.<br>";
+            else {}
+        }
+      }
       else
         echo "- LA OPERACIÓN NO ES VÁLIDA PARA ESTA CUBIERTA EN SU CONTEXTO.<br>";
     if ($_POST['idoperacion']==3 && $_POST['destino']==0)
@@ -167,6 +173,19 @@ class NeumaticosControlador {
     
     return false;
   }
+  
+  public function contarRecapados($id) {
+    require_once "modelos/NeumaticosModelo.php";
+    $neumatico = NeumaticosModelo::selectNeumatico($id);
+    
+    $cuenta = 0;
+    if ($neumatico['estado']==3) $cuenta=1;
+    else if ($neumatico['estado']==4) $cuenta=2;
+    
+    $recapados = NeumaticosModelo::getRecapados($id);
+    $cuenta = $cuenta + $recapados;
+    return $cuenta;
+  }
 
   public function guardar() {
     require_once "modelos/NeumaticosModelo.php";
@@ -176,7 +195,8 @@ class NeumaticosControlador {
     require_once "modelos/NeumaticosModelo.php";
     $id = NeumaticosModelo::insertNeumatico($_POST['codigo'],$_POST['marca'],$_POST['modelo'],$_POST['medida'],$_POST['estado'],$_POST['proveedor'],$fecha,$_POST['precio'],$_POST['kilometros'],$_POST['observaciones']);
     echo $id;
-    NeumaticosModelo::insertHistorial($id,date("Y-m-d"),1,0,$_POST['kilometros'],0,"");
+    //$idneumatico,$fecha,$idoperacion,$destino,$idvehiculo,$kilometros,$posicion,$observaciones
+    NeumaticosModelo::insertHistorial($id,date("Y-m-d"),1,0,0,$_POST['kilometros'],0,"");
   }
 
   public function guardarHistorial() {
