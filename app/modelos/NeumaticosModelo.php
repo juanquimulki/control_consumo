@@ -10,7 +10,7 @@ class NeumaticosModelo {
     $estados[] = array("id"=>4,"estado"=>"Recapada (dos)");
     return $estados;
   }
-  
+
   public function getDestinos() {
     $destinos = array();
     $destinos[] = array("id"=>1,"destino"=>"Taller");
@@ -44,7 +44,7 @@ class NeumaticosModelo {
 
   public function getUbicacionVehiculo($idv) {
     $arreglo = array();
-    for ($i=1;$i<=16;$i++) {
+    for ($i=1;$i<=19;$i++) {
       $consulta = DB::select("select historial_neuma.fecha,posicion,codigo,marca,modelo,historial_neuma.kilometros from vw_ultimo_hist_neuma
         inner join historial_neuma on vw_ultimo_hist_neuma.ultimo=historial_neuma.idHistorial
         inner join neumaticos on historial_neuma.idNeumatico=neumaticos.idNeumatico
@@ -88,7 +88,7 @@ class NeumaticosModelo {
       order by codigo",null);
     return $consulta;
   }
-  
+
   public function getUltimos() {
     $consulta = DB::select("select operaciones_neuma.idOperacion,COUNT(ultimo) as cantidad,descripcion
       from operaciones_neuma
@@ -96,7 +96,7 @@ class NeumaticosModelo {
       group by idOperacion",null);
     return $consulta;
   }
-  
+
   public function selectUltimoHist($id) {
     $sql = "select * from vw_ultimo_hist_neuma
             inner join historial_neuma on vw_ultimo_hist_neuma.ultimo=historial_neuma.idHistorial
@@ -150,6 +150,12 @@ class NeumaticosModelo {
   public function insertNeumatico($codigo,$marca,$modelo,$medida,$estado,$proveedor,$fecha,$precio,$kilometros,$observaciones) {
     $id = DB::insert("insert into neumaticos (codigo,marca,modelo,medida,estado,proveedor,fecha,precio,kilometros,observaciones) values (?,?,?,?,?,?,?,?,?,?)",array($codigo,$marca,$modelo,$medida,$estado,$proveedor,$fecha,$precio,$kilometros,$observaciones));
     return $id;
+  }
+
+  public function updateNeumatico($codigo,$marca,$modelo,$medida,$estado,$proveedor,$fecha,$precio,$kilometros,$observaciones,$id) {
+    $cantidad = DB::update("update neumaticos set codigo=?,marca=?,modelo=?,medida=?,estado=?,proveedor=?,fecha=?,precio=?,kilometros=?,observaciones=? where idneumatico=?",
+    array($codigo,$marca,$modelo,$medida,$estado,$proveedor,$fecha,$precio,$kilometros,$observaciones,$id));
+    return $cantidad;
   }
 
   public function insertHistorial($idneumatico,$fecha,$idoperacion,$destino,$idvehiculo,$kilometros,$posicion,$observaciones) {

@@ -84,7 +84,7 @@ function guardar() {
         $.ajax({
           type: "POST",
           url: url,
-          data: "codigo="+codigo+"&marca="+marca+"&modelo="+modelo+"&medida="+medida+"&estado="+estado+"&proveedor="+proveedor+"&fecha="+fecha+"&precio="+precio+"&kilometros="+kilometros+"&observaciones="+observaciones,
+          data: "codigo="+codigo+"&marca="+marca+"&modelo="+modelo+"&medida="+medida+"&estado="+estado+"&proveedor="+proveedor+"&fecha="+fecha+"&precio="+precio+"&kilometros="+kilometros+"&observaciones="+observaciones+"&id="+id,
           success: function(data) {
             if (data!=0) {
               if (mje=="guardado") $("#id").val(data);
@@ -176,7 +176,7 @@ function cancelarHistorial() {
   $("#kilometros").val("");
   $("#posicion").val("");
   $("#observaciones").val("");
-  $("#boton_guardar").removeAttr("disabled");  
+  $("#boton_guardar").removeAttr("disabled");
 }
 
 function mostrar() {

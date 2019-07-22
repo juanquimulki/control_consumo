@@ -12,7 +12,7 @@ class NeumaticosControlador {
     $scripts = array("neumaticos.js");
     require_once "layouts/layout_foot.php";
   }
-  
+
   public function ubicacion() {
     $opcion831 = "active";
     require_once "layouts/layout_head.php";
@@ -26,7 +26,7 @@ class NeumaticosControlador {
     $scripts = array("neumaticos.js");
     require_once "layouts/layout_foot.php";
   }
-  
+
   public function stock() {
     $opcion832 = "active";
     require_once "layouts/layout_head.php";
@@ -118,7 +118,7 @@ class NeumaticosControlador {
       if (!is_numeric($_POST['kilometros']))
         echo "- Los KILÓMETROS deben ser un número.<br>";
   }
-  
+
   public function validarHistorial() {
     if ($_POST['idneumatico']==0)
       echo "- No ha escogido NEUMÁTICO.<br>";
@@ -156,7 +156,7 @@ class NeumaticosControlador {
     require_once "modelos/NeumaticosModelo.php";
     $registro = NeumaticosModelo::selectUltimoHist($idneu);
     $ultope   = $registro['idOperacion'];
-    
+
     switch ($idope) {
       case 2: //colocado
         if (in_array($ultope,array(1,3,4)))
@@ -183,18 +183,18 @@ class NeumaticosControlador {
           return false;
         break;
     }
-    
+
     return false;
   }
-  
+
   public function contarRecapados($id) {
     require_once "modelos/NeumaticosModelo.php";
     $neumatico = NeumaticosModelo::selectNeumatico($id);
-    
+
     $cuenta = 0;
     if ($neumatico['estado']==3) $cuenta=1;
     else if ($neumatico['estado']==4) $cuenta=2;
-    
+
     $recapados = NeumaticosModelo::getRecapados($id);
     $cuenta = $cuenta + $recapados;
     return $cuenta;
@@ -263,16 +263,24 @@ class NeumaticosControlador {
 
     $arreglo = NeumaticosModelo::getUbicacionVehiculo($idvehiculo);
     require_once "modelos/VehiculosModelo.php";
-    $vehiculo = VehiculosModelo::selectVehiculo($idvehiculo); 
+    $vehiculo = VehiculosModelo::selectVehiculo($idvehiculo);
     require_once "vistas/neumaticos/mostrarUbicacion.php";
   }
-  
+
   public function infoNeuma() {
     require_once "modelos/NeumaticosModelo.php";
     $id = NeumaticosModelo::getId($_POST['codigo']);
     $neumatico = NeumaticosModelo::selectNeumatico($id);
     $historial = NeumaticosModelo::getHistorial($id);
     require_once "vistas/neumaticos/infoNeuma.php";
+  }
+
+  public function actualizar() {
+    require_once "modelos/Fechas.php";
+    $fecha = Fechas::fecha_mysql($_POST['fecha']);
+    require_once "modelos/NeumaticosModelo.php";
+    $cantidad = NeumaticosModelo::updateNeumatico($_POST['codigo'],$_POST['marca'],$_POST['modelo'],$_POST['medida'],$_POST['estado'],$_POST['proveedor'],$fecha,$_POST['precio'],$_POST['kilometros'],$_POST['observaciones'],$_POST['id']);
+    echo $cantidad;
   }
 
   public function modificar() {

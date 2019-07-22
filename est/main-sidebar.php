@@ -67,32 +67,6 @@
           <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
         </ul-->
       </li>
-      <li class="<?php echo $opcion81.$opcion82.$opcion831.$opcion832.$opcion833.$opcion834.$opcion835; ?> treeview">
-        <a href="#">
-          <i class="fa fa-dot-circle-o"></i> <span>Neumáticos</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li class="<?php echo $opcion81; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=index"><i class="fa fa-circle-o"></i> Archivo de Cubiertas</a></li>
-          <li class="<?php echo $opcion82; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=historial"><i class="fa fa-circle-o"></i> Historial de las Cubiertas</a></li>
-          <li class="<?php echo $opcion831.$opcion832.$opcion833.$opcion834.$opcion835; ?> treeview">
-            <a href="#"><i class="fa fa-circle-o"></i> Informes
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="<?php echo $opcion832; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=stock"><i class="fa fa-circle-o"></i> Stock Actual</a></li>
-              <li class="<?php echo $opcion831; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=ubicacion"><i class="fa fa-circle-o"></i> Ubicación de las Cubiertas</a></li>
-              <li class="<?php echo $opcion834; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=rodaje"><i class="fa fa-circle-o"></i> Cálculo de Rodaje</a></li>
-              <!--li class="<?php echo $opcion833; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=ultimo"><i class="fa fa-circle-o"></i> Último Movimiento</a></li-->
-              <li class="<?php echo $opcion835; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=recapados"><i class="fa fa-circle-o"></i> Listado de Recapados</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
       <li class="<?php echo $opcion7; ?>">
         <a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=cisterna&a=index">
           <i class="fa fa-flask"></i> <span>Cisterna</span>
@@ -127,6 +101,32 @@
           <li class="<?php echo $opcion55; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=histcheck"><i class="fa fa-circle-o"></i> Histórico de Checklists</a></li>
           <li class="<?php echo $opcion56; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=particulares"><i class="fa fa-circle-o"></i> Cargas a Particulares</a></li>
           <li class="<?php echo $opcion57; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=cisterna"><i class="fa fa-circle-o"></i> Stock de Cisterna</a></li>
+        </ul>
+      </li>
+      <li class="<?php echo $opcion81.$opcion82.$opcion831.$opcion832.$opcion833.$opcion834.$opcion835; ?> treeview" style="border:1px solid gray;">
+        <a href="#">
+          <i class="fa fa-dot-circle-o"></i> <span>Neumáticos</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="<?php echo $opcion81; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=index"><i class="fa fa-circle-o"></i> Archivo de Cubiertas</a></li>
+          <li class="<?php echo $opcion82; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=historial"><i class="fa fa-circle-o"></i> Historial de las Cubiertas</a></li>
+          <li class="<?php echo $opcion831.$opcion832.$opcion833.$opcion834.$opcion835; ?> treeview">
+            <a href="#"><i class="fa fa-circle-o"></i> Informes
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="<?php echo $opcion832; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=stock"><i class="fa fa-circle-o"></i> Stock Actual</a></li>
+              <li class="<?php echo $opcion831; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=ubicacion"><i class="fa fa-circle-o"></i> Ubicación de las Cubiertas</a></li>
+              <li class="<?php echo $opcion834; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=rodaje"><i class="fa fa-circle-o"></i> Cálculo de Rodaje</a></li>
+              <!--li class="<?php echo $opcion833; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=ultimo"><i class="fa fa-circle-o"></i> Último Movimiento</a></li-->
+              <li class="<?php echo $opcion835; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=neumaticos&a=recapados"><i class="fa fa-circle-o"></i> Listado de Recapados</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li class="<?php echo $opcion61; ?> treeview">
