@@ -280,6 +280,26 @@ function divDestino(valor) {
   }
 }
 
+function imprimirStock() {
+  window.open("index.php?c=neumaticos&a=imprimirStock","_blank");
+}
+
+function imprimirRecapados() {
+  window.open("index.php?c=neumaticos&a=imprimirRecapados","_blank");
+}
+
+function imprimirRodaje() {
+  id = $("#idneumatico").val();
+  neumatico = $("#idneumatico option:selected").text();
+  window.open("index.php?c=neumaticos&a=imprimirRodaje&id="+id+"&n="+neumatico,"_blank");
+}
+
+function imprimirHistorial() {
+  id = $("#idneumatico").val();
+  neumatico = $("#idneumatico option:selected").text();
+  window.open("index.php?c=neumaticos&a=imprimirHistorial&id="+id+"&n="+neumatico,"_blank");
+}
+
 function datatable() {
   $('#tabla_registros').DataTable({
       "order": [[ 1, "asc" ]],

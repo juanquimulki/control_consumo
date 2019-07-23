@@ -59,4 +59,6 @@
     </div>
   </div>
 
+  <button style="margin-right:10px;" class="btn btn-info pull-right" onclick="imprimirStock()">Imprimir</button>
+
 </section>

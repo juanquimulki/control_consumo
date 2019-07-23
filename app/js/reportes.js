@@ -18,13 +18,13 @@ $(function () {
     format: 'dd/mm/yyyy',
     orientation: 'bottom'
   })
-  
+
   //Flat red color scheme for iCheck
   $('input[type="checkbox"]').iCheck({
     checkboxClass: 'icheckbox_flat-green',
     radioClass   : 'iradio_flat-green'
   })
-  
+
   var etiquetas = etiquetas_precios();
   var datos     = datos_precios();
 
@@ -174,16 +174,14 @@ function cancelarCisterna() {
 }
 
 function mostrar() {
-  vehiculo  = $("#vehiculo").val();
-  mesdesde  = $("#mes_desde").val();
-  aniodesde = $("#anio_desde").val();
-  meshasta  = $("#mes_hasta").val();
-  aniohasta = $("#anio_hasta").val();
+  vehiculo = $("#vehiculo").val();
+  desde    = $("#fecha_desde").val();
+  hasta    = $("#fecha_hasta").val();
 
   $.ajax({
     type: "POST",
     url: "index.php?c=reportes&a=validar",
-    data: "vehiculo="+vehiculo+"&mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
+    data: "vehiculo="+vehiculo+"&desde="+desde+"&hasta="+hasta,
     success: function(data) {
       if (data) {
         alerta("warning","Atención",data,"fa-warning");
@@ -193,14 +191,14 @@ function mostrar() {
         $.ajax({
           type: "POST",
           url: "index.php?c=reportes&a=mostrar",
-          data: "vehiculo="+vehiculo+"&mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
+          data: "vehiculo="+vehiculo+"&desde="+desde+"&hasta="+hasta,
           beforeSend: function() {
             $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
           },
           success: function(data) {
             $("#mostrar").html(data);
-            rendimientoChart(vehiculo,mesdesde,aniodesde,meshasta,aniohasta);
-            cargaChart(vehiculo,mesdesde,aniodesde,meshasta,aniohasta);
+            rendimientoChart(vehiculo,desde,hasta);
+            cargaChart(vehiculo,desde,hasta);
           }
         })
       }
@@ -412,14 +410,12 @@ function imprimirHistcheck() {
 }
 
 function imprimirPlanilla() {
-  idvehiculo  = $("#vehiculo").val();
-  vehiculo    = $("#vehiculo option:selected").text();
-  mesdesde    = $("#mes_desde").val();
-  aniodesde   = $("#anio_desde").val();
-  meshasta    = $("#mes_hasta").val();
-  aniohasta   = $("#anio_hasta").val();
+  idvehiculo = $("#vehiculo").val();
+  vehiculo   = $("#vehiculo option:selected").text();
+  desde = $("#fecha_desde").val();
+  hasta = $("#fecha_hasta").val();
 
-  window.open("index.php?c=reportes&a=imprimirPlanilla&v="+idvehiculo+"&md="+mesdesde+"&ad="+aniodesde+"&mh="+meshasta+"&ah="+aniohasta+"&n="+vehiculo,"_blank");
+  window.open("index.php?c=reportes&a=imprimirPlanilla&v="+idvehiculo+"&d="+desde+"&h="+hasta+"&n="+vehiculo,"_blank");
 }
 
 function imprimirHistorico() {
@@ -473,11 +469,11 @@ function costosChart(mesdesde,aniodesde,meshasta,aniohasta) {
   })
 }
 
-function rendimientoChart(vehiculo,mesdesde,aniodesde,meshasta,aniohasta) {
+function rendimientoChart(vehiculo,desde,hasta) {
   $.ajax({
     type: "POST",
     url: "index.php?c=reportes&a=json_rendimiento",
-    data: "vehiculo="+vehiculo+"&mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
+    data: "vehiculo="+vehiculo+"&desde="+desde+"&hasta="+hasta,
     success: function(data) {
       // AREA CHART
       var area = new Morris.Area({
@@ -494,11 +490,11 @@ function rendimientoChart(vehiculo,mesdesde,aniodesde,meshasta,aniohasta) {
   })
 }
 
-function cargaChart(vehiculo,mesdesde,aniodesde,meshasta,aniohasta) {
+function cargaChart(vehiculo,desde,hasta) {
   $.ajax({
     type: "POST",
     url: "index.php?c=reportes&a=json_carga",
-    data: "vehiculo="+vehiculo+"&mesdesde="+mesdesde+"&aniodesde="+aniodesde+"&meshasta="+meshasta+"&aniohasta="+aniohasta,
+    data: "vehiculo="+vehiculo+"&desde="+desde+"&hasta="+hasta,
     success: function(data) {
       // AREA CHART
       var area = new Morris.Area({

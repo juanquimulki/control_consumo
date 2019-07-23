@@ -36,49 +36,27 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="" class="col-sm-2 control-label">Desde</label>
-                <div class="col-sm-5">
-                  <select class="form-control" id="mes_desde">
-                    <!--option value='0'>Seleccione...</option-->
-                    <?php
-                    foreach ($meses as $m) {
-                      echo "<option value='".$m[0]."'>".$m[1]."</option>";
-                    }
-                    ?>
-                  </select>
-                </div>
-                <div class="col-sm-5">
-                  <select class="form-control" id="anio_desde">
-                    <!--option value='0'>Seleccione...</option-->
-                    <?php
-                    foreach ($anios as $a) {
-                      echo "<option value='$a'>$a</option>";
-                    }
-                    ?>
-                  </select>
+                  <label for="fecha_desde" class="col-sm-2 control-label">Desde</label>
+                  <div class="col-sm-10">
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="fecha_desde" placeholder="dd/mm/aaaa">
+                  </div>
+                  <!-- /.input group -->
                 </div>
               </div>
               <div class="form-group">
-                <label for="" class="col-sm-2 control-label">Hasta</label>
-                <div class="col-sm-5">
-                  <select class="form-control" id="mes_hasta">
-                    <!--option value='0'>Seleccione...</option-->
-                    <?php
-                    foreach ($meses as $m) {
-                      echo "<option value='".$m[0]."'>".$m[1]."</option>";
-                    }
-                    ?>
-                  </select>
-                </div>
-                <div class="col-sm-5">
-                  <select class="form-control" id="anio_hasta">
-                    <!--option value='0'>Seleccione...</option-->
-                    <?php
-                    foreach ($anios as $a) {
-                      echo "<option value='$a'>$a</option>";
-                    }
-                    ?>
-                  </select>
+                  <label for="fecha_hasta" class="col-sm-2 control-label">Hasta:</label>
+                  <div class="col-sm-10">
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="fecha_hasta" placeholder="dd/mm/aaaa">
+                  </div>
+                  <!-- /.input group -->
                 </div>
               </div>
           </form>
@@ -97,7 +75,7 @@
 
       <div id="alerta">
       </div>
-      
+
     </div>
   </div>
 

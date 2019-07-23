@@ -302,5 +302,32 @@ class NeumaticosControlador {
     }';
   }
 
+  public function imprimirStock() {
+    require_once "modelos/NeumaticosModelo.php";
+    $destinos   = NeumaticosModelo::getDestinos();
+    $neumaticos = NeumaticosModelo::getStock();
+    require_once "vistas/neumaticos/imprimirStock.php";
+  }
+
+  public function imprimirRecapados() {
+    require_once "modelos/NeumaticosModelo.php";
+    $destinos   = NeumaticosModelo::getDestinos();
+    $neumaticos = NeumaticosModelo::getStockRecapados();
+    require_once "vistas/neumaticos/imprimirRecapados.php";
+  }
+
+  public function imprimirRodaje() {
+    require_once "modelos/NeumaticosModelo.php";
+    $movimientos  = NeumaticosModelo::getHistorialRodaje($_GET['id']);
+    require_once "vistas/neumaticos/imprimirRodaje.php";
+  }
+
+  public function imprimirHistorial() {
+    require_once "modelos/NeumaticosModelo.php";
+    $destinos  = NeumaticosModelo::getDestinos();
+    $historial = NeumaticosModelo::getHistorial($_GET['id']);
+    //$neumatico = NeumaticosModelo::selectNeumatico($_POST['id']);
+    require_once "vistas/neumaticos/imprimirHistorial.php";
+  }
 }
 ?>
