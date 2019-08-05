@@ -52,7 +52,7 @@
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td class="rueda" <?php echo ($arreglo[9]&&$arreglo[9]==$codigo?"style='background-color:red;'":""); ?> onclick="javascript:posicion(9);"><br><a data-toggle='modal' data-target='#modal-default' onclick="infoNeuma('<?php echo $arreglo[9]; ?>');"><?php echo ($arreglo[9]?$arreglo[9]:"&nbsp;"); ?><br>&nbsp;</td>
-            <td class="rueda" <?php echo ($arreglo[10]&&$arreglo[10]==$codigo?"style='background-color:red;'":""); ?> onclick="javascript:posicion(10);"><br><a data-toggle='modal' data-target='#modal-default' onclick="infoNeuma('<?php echo $arreglo[9]; ?>');"><?php echo ($arreglo[10]?$arreglo[10]:"&nbsp;"); ?><br>&nbsp;</td>
+            <td class="rueda" <?php echo ($arreglo[10]&&$arreglo[10]==$codigo?"style='background-color:red;'":""); ?> onclick="javascript:posicion(10);"><br><a data-toggle='modal' data-target='#modal-default' onclick="infoNeuma('<?php echo $arreglo[10]; ?>');"><?php echo ($arreglo[10]?$arreglo[10]:"&nbsp;"); ?><br>&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;</td>
