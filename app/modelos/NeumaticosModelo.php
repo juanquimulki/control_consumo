@@ -16,6 +16,7 @@ class NeumaticosModelo {
     $destinos[] = array("id"=>1,"destino"=>"Taller");
     $destinos[] = array("id"=>2,"destino"=>"Recapado (Proveedor)");
     $destinos[] = array("id"=>3,"destino"=>"Pañol");
+    $destinos[] = array("id"=>4,"destino"=>"Desecho");
     return $destinos;
   }
 
@@ -44,7 +45,7 @@ class NeumaticosModelo {
 
   public function getUbicacionVehiculo($idv) {
     $arreglo = array();
-    for ($i=1;$i <= 19;$i++) {
+    for ($i=1;$i <= 20;$i++) {
       $consulta = DB::select("select historial_neuma.fecha,posicion,codigo,marca,modelo,historial_neuma.kilometros from vw_ultimo_hist_neuma
         inner join historial_neuma on vw_ultimo_hist_neuma.ultimo=historial_neuma.idHistorial
         inner join neumaticos on historial_neuma.idNeumatico=neumaticos.idNeumatico

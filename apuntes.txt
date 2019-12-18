@@ -1,15 +1,10 @@
-acentos al guardar
-carteles de okay-error
-restricciones de bd
-
--- login y seguridad
---validaciones de datos
-  *inclusive controles lógicos, como km siempre mayores al anterior
--- actualizacion de js mediante mt_rand
-*completar el CRUD
-*index en todas las carpetas
-*control de errores de mvc
-*lenguaje de datepicker
-*máscara de fechas
-*convertir la app en win
-constantes con nombres de perfil de usuario
+index en todas las carpetas
+control de errores de mvc
+validaciones de datos
+  inclusive controles lógicos, como km siempre mayores al anterior
+actualizacion de js mediante mt_rand
+completar el CRUD
+login y seguridad
+lenguaje de datepicker
+máscara de fechas
+convertir la app en win

@@ -305,7 +305,7 @@ class ReportesControlador {
       $fila[] = $registro['seccion'].": ".$registro['item'];
       for ($i=1;$i<=$dias;$i++) {
         $fecha   = $anio."-".$mes."-".$i;
-        $novedad = ChecklistModelo::getNovedad($registro['idItem'],$fecha);
+        $novedad = ChecklistModelo::getNovedad($registro['idItem'],$fecha,$_POST['idvehiculo']);
         if ($nov = $novedad->fetch()) {
           $fila[] = $nov['idDetalle'];
           $solucionado[] = $nov['solucionado'];

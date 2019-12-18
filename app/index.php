@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-$GLOBALS['SERVER_NAME']="localhost";
+$GLOBALS['SERVER_NAME']="192.168.0.5:8080";
 
 //BLOQUE DE SEGURIDAD
 if (($_GET['c']=="usuarios") && ($_GET['a']=="login")) {}

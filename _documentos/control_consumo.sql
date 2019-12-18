@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50067
 File Encoding         : 65001
 
-Date: 2019-07-05 10:55:27
+Date: 2018-12-20 10:27:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -78,78 +78,22 @@ CREATE TABLE `detalles` (
   `idItem` int(11) default NULL,
   `detalles` text,
   `solucionado` date default NULL,
-  `resultados` text,
   PRIMARY KEY  (`idDetalle`)
 ) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of detalles
 -- ----------------------------
-INSERT INTO `detalles` VALUES ('12', '6', '1', '', null, null);
-INSERT INTO `detalles` VALUES ('13', '6', '7', 'Esta muy pesada', '2018-12-26', 'Esta es la soluciÃ³n');
-INSERT INTO `detalles` VALUES ('14', '6', '8', '', null, null);
-INSERT INTO `detalles` VALUES ('15', '7', '1', 'Cargar aceite', '2018-12-26', '');
-INSERT INTO `detalles` VALUES ('16', '7', '7', '', '2018-12-20', null);
-INSERT INTO `detalles` VALUES ('17', '8', '7', '', null, null);
-INSERT INTO `detalles` VALUES ('18', '8', '8', '', null, null);
-INSERT INTO `detalles` VALUES ('19', '8', '12', 'Se quemo la delantera derecha', null, null);
-INSERT INTO `detalles` VALUES ('20', '9', '1', '', null, null);
-INSERT INTO `detalles` VALUES ('21', '9', '4', '', null, null);
-
--- ----------------------------
--- Table structure for `historial_neuma`
--- ----------------------------
-DROP TABLE IF EXISTS `historial_neuma`;
-CREATE TABLE `historial_neuma` (
-  `idHistorial` int(11) NOT NULL auto_increment,
-  `idNeumatico` int(11) default NULL,
-  `fecha` date default NULL,
-  `idOperacion` int(11) default NULL,
-  `destino` int(1) default NULL,
-  `kilometros` double default NULL,
-  `idVehiculo` int(11) default NULL,
-  `posicion` tinyint(4) default NULL,
-  `observaciones` text,
-  PRIMARY KEY  (`idHistorial`)
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of historial_neuma
--- ----------------------------
-INSERT INTO `historial_neuma` VALUES ('1', '2', '2019-06-04', '1', null, '123', '3', '12', null);
-INSERT INTO `historial_neuma` VALUES ('2', '2', '2019-06-06', '2', null, '13', '3', '8', 'jola');
-INSERT INTO `historial_neuma` VALUES ('3', '2', '2019-06-10', '2', null, '333', '3', '7', 'jajajaja');
-INSERT INTO `historial_neuma` VALUES ('4', '4', '2019-06-07', '1', null, '321', '0', '0', '');
-INSERT INTO `historial_neuma` VALUES ('5', '3', '2019-06-24', '2', null, '123', '3', '6', '');
-INSERT INTO `historial_neuma` VALUES ('6', '5', '2019-06-27', '1', null, '123', '0', '0', '');
-INSERT INTO `historial_neuma` VALUES ('7', '0', '2019-06-27', '1', null, '111', '0', '0', '');
-INSERT INTO `historial_neuma` VALUES ('8', '6', '2019-06-27', '1', null, '98', '0', '0', '');
-INSERT INTO `historial_neuma` VALUES ('9', '4', '2019-06-05', '3', '2', '123', '6', '9', 'obs');
-INSERT INTO `historial_neuma` VALUES ('10', '7', '2019-06-15', '1', '0', '150', '0', '0', null);
-INSERT INTO `historial_neuma` VALUES ('11', '7', '2019-07-01', '2', '0', '1000', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('12', '7', '2019-07-02', '3', '3', '1250', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('13', '7', '2019-07-05', '2', '0', '1300', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('14', '7', '2019-07-05', '3', '1', '1500', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('15', '7', '2019-07-24', '2', '0', '3000', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('16', '7', '2019-07-25', '3', '1', '2300', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('17', '7', '2019-07-28', '4', '0', '2300', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('18', '7', '2019-07-30', '4', '0', '123', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('19', '7', '2019-07-30', '4', '0', '1', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('20', '7', '2019-07-30', '3', '1', '1', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('21', '7', '2019-07-30', '4', '0', '1', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('22', '7', '2019-07-30', '2', '0', '1', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('23', '7', '2019-07-30', '3', '2', '1', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('24', '7', '2019-07-31', '4', '0', '1', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('25', '7', '2019-07-31', '2', '0', '1', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('26', '7', '2019-07-31', '3', '1', '1', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('27', '8', '2019-07-05', '1', '0', '0', '1', '0', null);
-INSERT INTO `historial_neuma` VALUES ('28', '9', '2019-07-05', '1', '0', '1', '0', '0', '');
-INSERT INTO `historial_neuma` VALUES ('29', '9', '2019-07-06', '2', '0', '1', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('30', '9', '2019-07-07', '3', '2', '1', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('31', '9', '2019-07-15', '4', '0', '1', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('32', '9', '2019-07-16', '2', '0', '1', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('33', '9', '2019-07-16', '3', '1', '1', '2', '1', '');
-INSERT INTO `historial_neuma` VALUES ('34', '9', '2019-07-24', '5', '0', '1', '2', '1', '');
+INSERT INTO `detalles` VALUES ('12', '6', '1', '', null);
+INSERT INTO `detalles` VALUES ('13', '6', '7', 'Esta muy pesada', null);
+INSERT INTO `detalles` VALUES ('14', '6', '8', '', null);
+INSERT INTO `detalles` VALUES ('15', '7', '1', 'Cargar aceite', null);
+INSERT INTO `detalles` VALUES ('16', '7', '7', '', '2018-12-20');
+INSERT INTO `detalles` VALUES ('17', '8', '7', '', null);
+INSERT INTO `detalles` VALUES ('18', '8', '8', '', null);
+INSERT INTO `detalles` VALUES ('19', '8', '12', 'Se quemo la delantera derecha', null);
+INSERT INTO `detalles` VALUES ('20', '9', '1', '', null);
+INSERT INTO `detalles` VALUES ('21', '9', '4', '', null);
 
 -- ----------------------------
 -- Table structure for `items`
@@ -160,12 +104,12 @@ CREATE TABLE `items` (
   `idSeccion` int(11) default NULL,
   `item` varchar(30) default NULL,
   PRIMARY KEY  (`idItem`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of items
 -- ----------------------------
-INSERT INTO `items` VALUES ('1', '2', 'Tren rodante');
+INSERT INTO `items` VALUES ('1', '1', 'Aceite del motor');
 INSERT INTO `items` VALUES ('2', '1', 'Líquido refrigerante');
 INSERT INTO `items` VALUES ('3', '1', 'Fluído Hidráulico');
 INSERT INTO `items` VALUES ('4', '1', 'Falla general');
@@ -183,60 +127,6 @@ INSERT INTO `items` VALUES ('15', '3', 'Limpia parabrisas');
 INSERT INTO `items` VALUES ('16', '4', 'Falla general');
 INSERT INTO `items` VALUES ('17', '5', 'Falla general');
 INSERT INTO `items` VALUES ('19', '6', 'Falla general');
-INSERT INTO `items` VALUES ('20', '7', 'otra');
-
--- ----------------------------
--- Table structure for `neumaticos`
--- ----------------------------
-DROP TABLE IF EXISTS `neumaticos`;
-CREATE TABLE `neumaticos` (
-  `idNeumatico` int(11) NOT NULL auto_increment,
-  `codigo` varchar(20) default NULL,
-  `marca` varchar(50) default NULL,
-  `modelo` varchar(50) default NULL,
-  `medida` varchar(20) default NULL,
-  `estado` tinyint(1) default NULL,
-  `proveedor` varchar(50) default NULL,
-  `fecha` date default NULL,
-  `precio` double default NULL,
-  `kilometros` double default NULL,
-  `observaciones` tinytext,
-  PRIMARY KEY  (`idNeumatico`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of neumaticos
--- ----------------------------
-INSERT INTO `neumaticos` VALUES ('1', '123', 'pirelli', 'p400', '123/45/67', '1', null, '2019-08-01', '123.45', '1234.56', 'prueba');
-INSERT INTO `neumaticos` VALUES ('2', 'PX3-123456', '1', '1', '1', '1', null, '2019-06-02', '1', '1', '1');
-INSERT INTO `neumaticos` VALUES ('3', 'codigo', 'marca', 'modelo', 'medida', '2', null, '2019-06-03', '123', '345', '456');
-INSERT INTO `neumaticos` VALUES ('4', '333', 'firestone', 'catumba', '1122', '2', null, '2019-06-01', '123', '321', 'hola');
-INSERT INTO `neumaticos` VALUES ('5', 'jky', 'jky', 'jky', 'jky', '3', null, '2019-06-01', '123', '123', 'hola');
-INSERT INTO `neumaticos` VALUES ('6', 'lll', 'lll', 'lll', 'lll', '3', 'provee', '2019-06-12', '98', '98', '98');
-INSERT INTO `neumaticos` VALUES ('7', 'PIR12', 'marca', 'modelo', 'medida', '1', 'proveedor', '2019-07-01', '123', '0', 'observaciones');
-INSERT INTO `neumaticos` VALUES ('8', 'PIRPIR', 'otra', 'otra', 'otra', '3', 'prove', '2019-07-01', '1', '1', '');
-INSERT INTO `neumaticos` VALUES ('9', 'PIRO321', '321', '321', '321', '3', '321', '2019-07-01', '1', '1', '');
-
--- ----------------------------
--- Table structure for `operaciones_neuma`
--- ----------------------------
-DROP TABLE IF EXISTS `operaciones_neuma`;
-CREATE TABLE `operaciones_neuma` (
-  `idOperacion` int(11) NOT NULL auto_increment,
-  `descripcion` varchar(50) default NULL,
-  `validar` varchar(20) default NULL,
-  `mostrar` bit(1) default NULL,
-  PRIMARY KEY  (`idOperacion`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of operaciones_neuma
--- ----------------------------
-INSERT INTO `operaciones_neuma` VALUES ('1', 'Registrado', null, '');
-INSERT INTO `operaciones_neuma` VALUES ('2', 'Colocado', '1.3.4.5', '');
-INSERT INTO `operaciones_neuma` VALUES ('3', 'Quitado', '2', '');
-INSERT INTO `operaciones_neuma` VALUES ('4', 'Recapado', '3', '');
-INSERT INTO `operaciones_neuma` VALUES ('5', 'Descartado', '3', '');
 
 -- ----------------------------
 -- Table structure for `operarios`
@@ -247,7 +137,7 @@ CREATE TABLE `operarios` (
   `nombre` varchar(50) default NULL,
   `abreviatura` varchar(20) default NULL,
   PRIMARY KEY  (`idOperario`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of operarios
@@ -256,36 +146,7 @@ INSERT INTO `operarios` VALUES ('1', 'Juan Marcos Mulki Aguilera', 'J.Mulki');
 INSERT INTO `operarios` VALUES ('2', 'Ramiro Rivera', 'R.Rivera');
 INSERT INTO `operarios` VALUES ('3', 'Norma Beatriz Lesca Gomez', 'N.Lesca');
 INSERT INTO `operarios` VALUES ('6', 'Carlos Buenaventura', 'C.Buena');
-INSERT INTO `operarios` VALUES ('27', 'asdf', 'adf');
-INSERT INTO `operarios` VALUES ('20', 'otro', 'otro');
-INSERT INTO `operarios` VALUES ('21', 'minimo', 'man');
-INSERT INTO `operarios` VALUES ('22', 'Juanqui', 'Juan');
 INSERT INTO `operarios` VALUES ('13', 'Arnaldo Ruiz', 'A.Ruiz');
-INSERT INTO `operarios` VALUES ('25', 'asdfaaa', 'asdfe');
-
--- ----------------------------
--- Table structure for `particulares`
--- ----------------------------
-DROP TABLE IF EXISTS `particulares`;
-CREATE TABLE `particulares` (
-  `idParticular` int(11) NOT NULL auto_increment,
-  `nombre` varchar(50) default NULL,
-  `abreviatura` varchar(20) default NULL,
-  PRIMARY KEY  (`idParticular`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of particulares
--- ----------------------------
-INSERT INTO `particulares` VALUES ('1', 'Juan Marcos Mulki Aguilera', 'J.Mulki');
-INSERT INTO `particulares` VALUES ('2', 'Ramiro Rivera', 'R.Rivera');
-INSERT INTO `particulares` VALUES ('3', 'Norma Beatriz Lesca Gomez', 'N.');
-INSERT INTO `particulares` VALUES ('6', 'Carlos Buenaventura', 'C.Buena');
-INSERT INTO `particulares` VALUES ('27', 'asdf', 'adf');
-INSERT INTO `particulares` VALUES ('20', 'otro', 'otro');
-INSERT INTO `particulares` VALUES ('22', 'Juanqui', 'Juan');
-INSERT INTO `particulares` VALUES ('28', 'prueba', 'prueba');
-INSERT INTO `particulares` VALUES ('25', 'asdfaaa', 'asdfe');
 
 -- ----------------------------
 -- Table structure for `precios`
@@ -385,42 +246,33 @@ CREATE TABLE `vehiculos` (
   `idMaquina` int(11) default NULL,
   `descripcion` varchar(50) default NULL,
   `iniciales` double(11,1) default NULL,
-  `camion` bit(1) default NULL,
   PRIMARY KEY  (`idVehiculo`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of vehiculos
 -- ----------------------------
-INSERT INTO `vehiculos` VALUES ('1', null, 'aaaaaaaaaaaaa', '123.0', null);
-INSERT INTO `vehiculos` VALUES ('2', '0', 'IVECO 2', '1000.0', '');
-INSERT INTO `vehiculos` VALUES ('3', '0', 'IVECO 3', '1000.0', '');
-INSERT INTO `vehiculos` VALUES ('4', '0', 'IVECO 4', '1000.0', '');
-INSERT INTO `vehiculos` VALUES ('5', '0', 'IVECO 5', '1000.0', '');
-INSERT INTO `vehiculos` VALUES ('6', '123', 'IVECO 6', '1000.0', '');
-INSERT INTO `vehiculos` VALUES ('7', '0', 'Autoelevador LINDE 2', '2500.0', null);
-INSERT INTO `vehiculos` VALUES ('8', '0', 'Autoelevador LINDE 4', '2500.0', null);
-INSERT INTO `vehiculos` VALUES ('9', '0', 'Autoelevador LINDE 6', '2500.0', null);
-INSERT INTO `vehiculos` VALUES ('10', '0', 'Autoelevador LINDE 7', '2500.0', null);
-INSERT INTO `vehiculos` VALUES ('11', '0', 'Autoelevador LINDE 8', '2500.0', null);
-INSERT INTO `vehiculos` VALUES ('12', '0', 'Autoelevador LINDE 9', '2500.0', null);
-INSERT INTO `vehiculos` VALUES ('13', null, 'Autoelevador LINDE 10', '2566.0', null);
-INSERT INTO `vehiculos` VALUES ('14', null, 'Autoelevador LINDE 11', '2555.0', null);
-INSERT INTO `vehiculos` VALUES ('15', '0', 'Autoelevador LINDE 12', '2500.0', null);
-INSERT INTO `vehiculos` VALUES ('16', null, 'nada', '123.0', null);
-INSERT INTO `vehiculos` VALUES ('17', '0', 'maquina', '122.0', '');
+INSERT INTO `vehiculos` VALUES ('1', '0', 'IVECO 1', '358633.5');
+INSERT INTO `vehiculos` VALUES ('2', '0', 'IVECO 2', '1000.0');
+INSERT INTO `vehiculos` VALUES ('3', '0', 'IVECO 3', '1000.0');
+INSERT INTO `vehiculos` VALUES ('4', '0', 'IVECO 4', '1000.0');
+INSERT INTO `vehiculos` VALUES ('5', '0', 'IVECO 5', '1000.0');
+INSERT INTO `vehiculos` VALUES ('6', '0', 'IVECO 6', '1000.0');
+INSERT INTO `vehiculos` VALUES ('7', '0', 'Autoelevador LINDE 2', '2500.0');
+INSERT INTO `vehiculos` VALUES ('8', '0', 'Autoelevador LINDE 4', '2500.0');
+INSERT INTO `vehiculos` VALUES ('9', '0', 'Autoelevador LINDE 6', '2500.0');
+INSERT INTO `vehiculos` VALUES ('10', '0', 'Autoelevador LINDE 7', '2500.0');
+INSERT INTO `vehiculos` VALUES ('11', '0', 'Autoelevador LINDE 8', '2500.0');
+INSERT INTO `vehiculos` VALUES ('12', '0', 'Autoelevador LINDE 9', '2500.0');
+INSERT INTO `vehiculos` VALUES ('13', '0', 'Autoelevador LINDE 10', '2500.0');
+INSERT INTO `vehiculos` VALUES ('14', '0', 'Autoelevador LINDE 11', '2500.0');
+INSERT INTO `vehiculos` VALUES ('15', '0', 'Autoelevador LINDE 12', '2500.0');
 
 -- ----------------------------
 -- View structure for `consulta`
 -- ----------------------------
 DROP VIEW IF EXISTS `consulta`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `consulta` AS select `cargas`.`idCarga` AS `idCarga`,`trabajos`.`idTrabajo` AS `idTrabajo`,`cargas`.`fecha` AS `fecha`,`cargas`.`idVehiculo` AS `idVehiculo`,`cargas`.`litros` AS `litros`,`trabajos`.`kmshrs` AS `kmshrs` from (`cargas` join `trabajos` on(((`cargas`.`fecha` = `trabajos`.`fecha`) and (`cargas`.`idVehiculo` = `trabajos`.`idVehiculo`)))) ;
-
--- ----------------------------
--- View structure for `vw_ultimo_hist_neuma`
--- ----------------------------
-DROP VIEW IF EXISTS `vw_ultimo_hist_neuma`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_ultimo_hist_neuma` AS select `historial_neuma`.`idNeumatico` AS `idNeumatico`,max(`historial_neuma`.`idHistorial`) AS `ultimo` from `historial_neuma` group by `historial_neuma`.`idNeumatico` order by `historial_neuma`.`fecha` desc ;
 
 -- ----------------------------
 -- View structure for `_consulta`

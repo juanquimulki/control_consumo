@@ -15,14 +15,14 @@ class ChecklistModelo {
     return $consulta;
   }
 
-  public function getNovedad($iditem,$fecha) {
+  public function getNovedad($iditem,$fecha,$idvehiculo) {
     $sql  = "select checklist.idChecklist,idDetalle,detalles.idItem,checklist.idVehiculo,fecha,solucionado from checklist
               inner join vehiculos on checklist.idVehiculo=vehiculos.idVehiculo
               inner join operarios on checklist.idOperario=operarios.idOperario
               left outer join detalles on checklist.idChecklist=detalles.idChecklist
               left outer join items on detalles.idItem=items.idItem
-              where detalles.idItem=? and checklist.fecha=?";
-    $bind = array($iditem,$fecha);
+              where detalles.idItem=? and checklist.fecha=? and checklist.idVehiculo=?";
+    $bind = array($iditem,$fecha,$idvehiculo);
     $consulta = DB::select($sql,$bind);
     return $consulta;
   }

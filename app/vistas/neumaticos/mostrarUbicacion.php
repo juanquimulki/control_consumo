@@ -95,6 +95,8 @@
             <td class="rueda" <?php echo ($arreglo[18]&&$arreglo[18]==$codigo?"style='background-color:red;'":""); ?> onclick="javascript:posicion(18);"><br><a data-toggle='modal' data-target='#modal-default' onclick="infoNeuma('<?php echo $arreglo[18]; ?>');"><?php echo ($arreglo[18]?$arreglo[18]:"&nbsp;"); ?><br>&nbsp;</td>
             <td>&nbsp;</td>
             <td class="rueda" <?php echo ($arreglo[19]&&$arreglo[19]==$codigo?"style='background-color:red;'":""); ?> onclick="javascript:posicion(19);"><br><a data-toggle='modal' data-target='#modal-default' onclick="infoNeuma('<?php echo $arreglo[19]; ?>');"><?php echo ($arreglo[19]?$arreglo[19]:"&nbsp;"); ?><br>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="rueda" <?php echo ($arreglo[20]&&$arreglo[20]==$codigo?"style='background-color:red;'":""); ?> onclick="javascript:posicion(20);"><br><a data-toggle='modal' data-target='#modal-default' onclick="infoNeuma('<?php echo $arreglo[20]; ?>');"><?php echo ($arreglo[20]?$arreglo[20]:"&nbsp;"); ?><br>&nbsp;</td>
           </tr>
         </table>
 

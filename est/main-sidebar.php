@@ -141,6 +141,11 @@
           <li><a href="#"><i class="fa fa-circle-o"></i> BackUp</a></li>
         </ul>
       </li>
+      <li class="">
+        <a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/ordenes_trabajo/" target='_blank'>
+          <i class="fa fa-paperclip"></i> <span>Ordenes de Trabajo</span>
+        </a>
+      </li>
     </ul>
   </section>
   <!-- /.sidebar -->
