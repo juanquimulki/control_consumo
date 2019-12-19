@@ -86,7 +86,7 @@
           <li class="<?php echo $opcion44; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=particulares&a=cargas"><i class="fa fa-circle-o"></i> Cargas a Particulares</a></li>
         </ul>
       </li>
-      <li class="<?php echo $opcion51.$opcion52.$opcion53.$opcion54.$opcion55.$opcion57; ?> treeview">
+      <li class="<?php echo $opcion51.$opcion52.$opcion53.$opcion54.$opcion55.$opcion57.$opcion58; ?> treeview">
         <a href="#">
           <i class="fa fa-paper-plane"></i> <span>Reportes</span>
           <span class="pull-right-container">
@@ -95,6 +95,7 @@
         </a>
         <ul class="treeview-menu">
           <li class="<?php echo $opcion51; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=planilla"><i class="fa fa-circle-o"></i> Planilla Mensual</a></li>
+          <li class="<?php echo $opcion58; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=planillaTodos"><i class="fa fa-circle-o"></i> Planilla Mensual (Todos)</a></li>
           <li class="<?php echo $opcion52; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=precios"><i class="fa fa-circle-o"></i> Evolución de Precios</a></li>
           <li class="<?php echo $opcion53; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=historico"><i class="fa fa-circle-o"></i> Histórico de Consumo</a></li>
           <li class="<?php echo $opcion54; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=checklist"><i class="fa fa-circle-o"></i> Control de Checklists</a></li>

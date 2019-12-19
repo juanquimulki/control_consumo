@@ -25,6 +25,7 @@ class UsuariosControlador {
       if ($usuario['user']==$_POST['user']) {
         //if ($usuario['pass']==$_POST['pass']) {
         if ($usuario['pass']==md5($_POST['pass'])) {
+          session_start();
           $_SESSION['auth']    = true;
           $_SESSION['user']    = $usuario['user'];
           $_SESSION['pass']    = $usuario['pass'];

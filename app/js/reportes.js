@@ -123,6 +123,12 @@ function cancelar() {
   $("#mes_hasta").val(fecha.getMonth()+1);
 }
 
+function cancelarPlanillaTodos() {
+  $("#fecha_desde").val("");
+  $("#fecha_hasta").val("");
+  $("#alerta").hide();
+}
+
 function cancelarHistorico() {
   fecha = new Date();
   $("#alerta").hide();
@@ -199,6 +205,36 @@ function mostrar() {
             $("#mostrar").html(data);
             rendimientoChart(vehiculo,desde,hasta);
             cargaChart(vehiculo,desde,hasta);
+          }
+        })
+      }
+    }
+  })
+}
+
+function mostrarPlanillaTodos() {
+  desde    = $("#fecha_desde").val();
+  hasta    = $("#fecha_hasta").val();
+
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=reportes&a=validarPlanillaTodos",
+    data: "desde="+desde+"&hasta="+hasta,
+    success: function(data) {
+      if (data) {
+        alerta("warning","Atención",data,"fa-warning");
+      }
+      else {
+        $("#alerta").hide();
+        $.ajax({
+          type: "POST",
+          url: "index.php?c=reportes&a=mostrarPlanillaTodos",
+          data: "desde="+desde+"&hasta="+hasta,
+          beforeSend: function() {
+            $("#mostrar").html("<center><img src='../img/loading.gif' width='100px' /></center>");
+          },
+          success: function(data) {
+            $("#mostrar").html(data);
           }
         })
       }
@@ -416,6 +452,13 @@ function imprimirPlanilla() {
   hasta = $("#fecha_hasta").val();
 
   window.open("index.php?c=reportes&a=imprimirPlanilla&v="+idvehiculo+"&d="+desde+"&h="+hasta+"&n="+vehiculo,"_blank");
+}
+
+function imprimirPlanillaTodos() {
+  desde = $("#fecha_desde").val();
+  hasta = $("#fecha_hasta").val();
+
+  window.open("index.php?c=reportes&a=imprimirPlanillaTodos&d="+desde+"&h="+hasta, "_blank");
 }
 
 function imprimirHistorico() {

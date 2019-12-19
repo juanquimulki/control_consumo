@@ -11,6 +11,16 @@ class ReportesModelo {
     return $consulta;
   }
 
+  public function getConsultaPlanillaTodos($desde,$hasta) {
+    $sql  = "SELECT sum(litros) as cantidad,descripcion FROM cargas
+              INNER JOIN vehiculos ON cargas.idvehiculo=vehiculos.idvehiculo
+              WHERE fecha BETWEEN ? AND ?
+              GROUP BY descripcion";
+    $bind = array($desde,$hasta);
+    $consulta = DB::select($sql,$bind);
+    return $consulta;
+  }
+
   public function getConsultaHistorico($desde,$hasta) {
     $sql  = "select month(fecha) as mes, year(fecha) as anio, sum(litros) as litros, sum(precio*litros) as precio from cargas
               where fecha between ? and ?

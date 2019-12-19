@@ -17,6 +17,20 @@ class ReportesControlador {
     require_once "layouts/layout_foot.php";
   }
 
+  public function planillaTodos() {
+    $opcion58 = "active";
+    require_once "layouts/layout_head.php";
+
+    require_once "modelos/Fechas.php";
+    $anios = Fechas::get_anios();
+    $meses = Fechas::get_meses();
+
+    require_once "vistas/reportes/planillaTodos.php";
+
+    $scripts = array("reportes.js");
+    require_once "layouts/layout_foot.php";
+  }
+
   public function precios() {
     $opcion52 = "active";
     require_once "layouts/layout_head.php";
@@ -106,6 +120,17 @@ class ReportesControlador {
       echo "- El intervalo de FECHAS no es válido.<br>";
   }
 
+  public function validarPlanillaTodos() {
+    $desde = $_POST['desde'];
+    $hasta = $_POST['hasta'];
+    
+    if (!$desde || !$hasta)
+      echo "- El intervalo de FECHAS no es válido.<br>";
+    else 
+      if ($desde>$hasta)
+        echo "- El intervalo de FECHAS no es válido.<br>";
+  }
+
   public function validarHistorico() {
     $mesdesde = $_POST['mesdesde'];
     $meshasta = $_POST['meshasta'];
@@ -186,6 +211,16 @@ class ReportesControlador {
     //$fecha   = $_POST['aniodesde']."/".$_POST['mesdesde']."/01";
     $inicial = ReportesModelo::getInicial($_POST['vehiculo'],$desde);
     require_once "vistas/reportes/mostrar.php";
+  }
+
+  public function mostrarPlanillaTodos() {
+    require_once "modelos/Fechas.php";
+    $desde = Fechas::fecha_mysql($_POST['desde']);
+    $hasta = Fechas::fecha_mysql($_POST['hasta']);
+
+    require_once "modelos/ReportesModelo.php";
+    $reporte = ReportesModelo::getConsultaPlanillaTodos($desde,$hasta);
+    require_once "vistas/reportes/mostrarPlanillaTodos.php";
   }
 
   public function mostrarHistorico() {
@@ -272,6 +307,18 @@ class ReportesControlador {
 
     $vehiculo = $_GET['n'];
     require_once "vistas/reportes/imprimirPlanilla.php";
+  }
+
+  public function imprimirPlanillaTodos() {
+    require_once "modelos/Fechas.php";
+
+    $desde = Fechas::fecha_mysql($_GET['d']);
+    $hasta = Fechas::fecha_mysql($_GET['h']);
+
+    require_once "modelos/ReportesModelo.php";
+    $reporte = ReportesModelo::getConsultaPlanillaTodos($desde,$hasta);
+
+    require_once "vistas/reportes/imprimirPlanillaTodos.php";
   }
 
   public function imprimirHistorico() {
