@@ -9,6 +9,14 @@ class CisternaModelo {
     return $consulta;
   }
 
+  public function selectCisterna($id) {
+    $sql   = "select * from cisterna";
+    $where = "idCisterna=?"; 
+    $bind  = array($id);
+    $consulta = DB::selectWhere($sql,$where,$bind);
+    return $consulta->fetch();
+  }  
+
   public function insertCisterna($fecha,$litros,$observaciones) {
     $id = DB::insert("insert into cisterna (fecha,litros,observaciones) values (?,?,?)",array($fecha,$litros,$observaciones));
     return $id;
@@ -17,6 +25,12 @@ class CisternaModelo {
   public function deleteCisterna($id) {
     $id = DB::delete("delete from cisterna where idCisterna=?",array($id));
     return $id;
+  }
+
+  public function updateCisterna($id,$fecha,$litros,$observaciones) {
+    $cantidad = DB::update("update cisterna set fecha=?,litros=?,observaciones=? where idcisterna=?",
+    array($fecha,$litros,$observaciones,$id));
+    return $cantidad;
   }
 }
 ?>

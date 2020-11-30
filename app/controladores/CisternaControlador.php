@@ -41,6 +41,28 @@ class CisternaControlador {
     echo $id;
   }
 
+  public function modificar() {
+    require_once "modelos/CisternaModelo.php";
+    $registro = CisternaModelo::selectCisterna($_POST['id']);
+    
+    echo '{
+        "idcisterna":"'.$registro['idCisterna'].'",
+        "fecha":"'.date("d/m/Y",strtotime($registro['fecha'])).'",
+        "litros":"'.$registro['litros'].'",
+        "observaciones":"'.$registro['observaciones'].'"
+    }';    
+  }  
+
+  public function actualizar() {
+    require_once "modelos/Fechas.php";
+    $fecha = Fechas::fecha_mysql($_POST['fecha']);
+
+    require_once "modelos/CisternaModelo.php";
+    $litros = ($_POST['tipo']==2?$_POST['litros']*(-1):$_POST['litros']);
+    $cantidad = CisternaModelo::updateCisterna($_POST['id'],$fecha,$litros,$_POST['observaciones']);
+    echo $cantidad;  
+  }
+
   public function mostrar() {
     require_once "modelos/CisternaModelo.php";
     $cisterna = CisternaModelo::getCisterna();

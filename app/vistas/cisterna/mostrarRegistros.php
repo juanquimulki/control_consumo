@@ -13,6 +13,7 @@
         $id          = "idCisterna";
         $encabezados = array("ID","Fecha","Tipo","Litros","Observaciones");
         $registros   = $cisterna;
+        $maestro     = 1;
         include "vistas/tabla_registros.php";
         ?>
 

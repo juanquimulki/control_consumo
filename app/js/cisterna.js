@@ -13,6 +13,34 @@ function egreso() {
   $("#tipo").val("2");
 }
 
+function modificar(id) {
+  //alert(id);
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=cisterna&a=modificar",
+    data: "id="+id,
+    success: function(data) {
+      arreglo = JSON.parse(data);
+      //alert(arreglo.descripcion);
+      
+      var litros = 0;
+      if (arreglo.litros>=0) {
+        litros = arreglo.litros;
+        ingreso();
+      }
+      else {
+        litros = (arreglo.litros * (-1));
+        egreso();
+      }
+
+      $("#id").val(arreglo.idcisterna);
+      $("#fecha").val(arreglo.fecha);
+      $("#litros").val(litros);
+      $("#observaciones").val(arreglo.observaciones);
+    }
+  }) 
+}
+
 function eliminar() {
   var id = $("#id_eliminar").val();
 
@@ -34,6 +62,7 @@ function eliminar() {
 
 function guardar() {
   $("#alerta").hide();
+  var id            = $("#id").val();
   var fecha         = $("#fecha").val();
   var litros        = $("#litros").val();
   var tipo          = $("#tipo").val();
@@ -48,14 +77,22 @@ function guardar() {
         alerta("warning","Atención",data,"fa-warning");
       }
       else {
+        if (id=="#") { //guardo
+          url = "index.php?c=cisterna&a=guardar";
+          mje = "guardado";
+        }
+        else { //modifico
+          url = "index.php?c=cisterna&a=actualizar";
+          mje = "actualizado";
+        }        
         $.ajax({
           type: "POST",
-          url: "index.php?c=cisterna&a=guardar",
-          data: "fecha="+fecha+"&litros="+litros+"&tipo="+tipo+"&observaciones="+observaciones,
+          url: url,
+          data: "fecha="+fecha+"&litros="+litros+"&tipo="+tipo+"&observaciones="+observaciones+"&id="+id,
           success: function(data) {
-            if (data!=0 && $.isNumeric(data)) {
-              $("#id").val(data);
-              alerta("success","Información","El registro ha sido guardado con éxito.","fa-check");
+            if (data!=0) {
+              if (mje=="guardado") $("#id").val(data);
+              alerta("success","Información","El registro ha sido "+mje+" con éxito.","fa-check");
               mostrar();
             }
             else {
