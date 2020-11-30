@@ -2,7 +2,7 @@
 class CisternaControlador {
 
   public function index() {
-    $opcion7 = "active";
+    $opcion42 = "active";
     require_once "layouts/layout_head.php";
 
     require_once "modelos/MaquinasModelo.php";

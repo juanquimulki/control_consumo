@@ -67,12 +67,25 @@
           <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
         </ul-->
       </li>
-      <li class="<?php echo $opcion7; ?>">
+      <!-- <li class="<?php echo $opcion7; ?>">
         <a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=cisterna&a=index">
           <i class="fa fa-flask"></i> <span>Cisterna</span>
         </a>
-      </li>
+      </li> -->
       <li class="<?php echo $opcion41.$opcion42.$opcion44; ?> treeview">
+        <a href="#">
+          <i class="fa fa-keyboard-o"></i> <span>Módulo Combustible</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="<?php echo $opcion42; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=cisterna&a=index"><i class="fa fa-circle-o"></i> Cisterna</a></li>
+          <li class="<?php echo $opcion41; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=cargas&a=index"><i class="fa fa-circle-o"></i> Cargas de Comb. (Fábrica)</a></li>
+          <li class="<?php echo $opcion44; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=particulares&a=cargas"><i class="fa fa-circle-o"></i> Cargas de Comb. (Particulares)</a></li>
+        </ul>
+      </li>
+      <!-- <li class="<?php echo $opcion41.$opcion42.$opcion44; ?> treeview">
         <a href="#">
           <i class="fa fa-keyboard-o"></i> <span>Registros</span>
           <span class="pull-right-container">
@@ -84,7 +97,7 @@
           <li class="<?php echo $opcion42; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=trabajos&a=index"><i class="fa fa-circle-o"></i> Trabajos Realizados</a></li>
           <li class="<?php echo $opcion44; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=particulares&a=cargas"><i class="fa fa-circle-o"></i> Cargas a Particulares</a></li>
         </ul>
-      </li>
+      </li> -->
       <li class="<?php echo $opcion51.$opcion52.$opcion53.$opcion57.$opcion58; ?> treeview">
         <a href="#">
           <i class="fa fa-paper-plane"></i> <span>Reportes</span>
