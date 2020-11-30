@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Control de Consumo | Cerámica Santiago</title>
+  <title>Sistema de Control | Cerámica Santiago</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="icon" type="image/png" href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/img/truck_1.png" />

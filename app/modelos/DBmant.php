@@ -4,7 +4,7 @@ class DBmant {
   private static $host   = "localhost";
   private static $dbname = "mantenimiento";
   private static $user   = "root";
-  private static $pass   = "";
+  private static $pass   = ""; //"tasteful1502";
   
   public function conexion() {
     try 

@@ -4,7 +4,7 @@ class DB {
   private static $host   = "localhost";
   private static $dbname = "control_consumo";
   private static $user   = "root";
-  private static $pass   = "tasteful1502";
+  private static $pass   = ""; //"tasteful1502";
 
   public function conexion() {
     try

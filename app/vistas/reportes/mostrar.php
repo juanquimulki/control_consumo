@@ -12,7 +12,7 @@
         <th style="width: 100px">Lts Carga</th>
         <th style="width: 100px">Odómetro/Reloj</th>
         <th style="width: 100px">Kms/Hrs x Día</th>
-        <th style="width: 100px">Kms/Hrs x Lt</th>
+        <th style="width: 100px">Lt x Kms/Hrs</th>
       </tr>
       <tr>
         <td></td><td><span class='badge bg-blue'>INICIALES</span></td><td></td><td><?php echo $inicial; ?></td>
@@ -26,7 +26,7 @@
       while ($registro = $reporte->fetch()) {
         $pordia=$inicial;
         $pordia=$registro['kmshrs']-$pordia;
-        $porlt=$pordia/$registro['litros'];
+        $porlt=$registro['litros']/$pordia;
 
         echo "<tr>";
         echo "<td>$i</td>";
@@ -58,7 +58,8 @@
       }
       ?>
       <tr>
-        <td></td><td><span class='badge bg-blue'>TOTALES</span></td><td><strong><?php echo number_format($total_lts,2); ?></strong></td><td></td><td><strong><?php echo number_format($total_kms,2); ?></strong></td><td><span class='badge bg-blue'>Promedio = <?php echo (($i-1)>0?number_format($total_porlt/($i-1),2):"---"); ?></span></td>
+        <!--td></td><td><span class='badge bg-blue'>TOTALES</span></td><td><strong><?php echo number_format($total_lts,2); ?></strong></td><td></td><td><strong><?php echo number_format($total_kms,2); ?></strong></td><td><span class='badge bg-blue'>Promedio = <?php echo (($i-1)>0?number_format($total_porlt/($i-1),2):"---"); ?></span></td-->
+        <td></td><td><span class='badge bg-blue'>TOTALES</span></td><td><strong><?php echo number_format($total_lts,2); ?></strong></td><td></td><td><strong><?php echo number_format($total_kms,2); ?></strong></td><td><span class='badge bg-blue'>Promedio = <?php echo (($i-1)>0?number_format($total_lts/$total_kms,2):"---"); ?></span></td>
       </tr>
     </table>
   </div>

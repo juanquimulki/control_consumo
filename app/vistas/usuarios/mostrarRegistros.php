@@ -9,9 +9,9 @@
         
         <?php
         $nombre      = "tabla_registros";
-        $campos      = array("idUsuario","nombre","user");
+        $campos      = array("idUsuario","nombre","user","perfil");
         $id          = "idUsuario";
-        $encabezados = array("ID","Nombre","Usuario");
+        $encabezados = array("ID","Nombre","Usuario","Perfil");
         $registros   = $usuarios;
         include "vistas/tabla_registros.php";
         ?>
