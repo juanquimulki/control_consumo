@@ -4,7 +4,7 @@ require_once "modelos/DB.php";
 class CisternaModelo {
   public function getCisterna() {
     $sql = "select *, if(litros<0,'EGRESO','INGRESO') as tipo from cisterna
-              order by fecha";
+              order by fecha desc";
     $consulta = DB::select($sql,null);
     return $consulta;
   }

@@ -15,24 +15,24 @@
       echo "<tr>";
       foreach ($campos as $c) {
         switch ($c) {
-			case "fecha":
-				echo "<td>".date("d/m/Y",strtotime($r[$c]))."</td>";
-				break;
-			case "perfil":
-				switch ($r[$c]) {
-					case "1":
-						echo "<td>Administrador</td>";
-						break;
-					case "2":
-						echo "<td>Carga</td>";
-						break;
-					case "3":
-						echo "<td>Consulta</td>";
-						break;
-				}
-				break;
-			default:
-				echo "<td>".utf8_encode($r[$c])."</td>";
+          case "fecha":
+            echo "<td data-sort='".$r[$c]."'>".date("d/m/Y",strtotime($r[$c]))."</td>";
+            break;
+          case "perfil":
+            switch ($r[$c]) {
+              case "1":
+                echo "<td>Administrador</td>";
+                break;
+              case "2":
+                echo "<td>Carga</td>";
+                break;
+              case "3":
+                echo "<td>Consulta</td>";
+                break;
+				    }
+				  break;
+			  default:
+				  echo "<td>".utf8_encode($r[$c])."</td>";
 		}
       }
       //echo "<td><a href='http://".$GLOBALS['SERVER_NAME']."/control_consumo/index.php?c=operarios&a=borrar&id=".$r[$id]."'><img src='http://".$GLOBALS['SERVER_NAME']."/control_consumo/img/delete.png' /></a></td>";
