@@ -72,7 +72,7 @@
           <i class="fa fa-flask"></i> <span>Cisterna</span>
         </a>
       </li> -->
-      <li class="<?php echo $opcion41.$opcion42.$opcion44; ?> treeview">
+      <li class="<?php echo $opcion41.$opcion42.$opcion44.$opcion51.$opcion58.$opcion52.$opcion53.$opcion57.$opcion56; ?> treeview">
         <a href="#">
           <i class="fa fa-keyboard-o"></i> <span>Módulo Combustible</span>
           <span class="pull-right-container">
@@ -83,6 +83,21 @@
           <li class="<?php echo $opcion42; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=cisterna&a=index"><i class="fa fa-circle-o"></i> Cisterna</a></li>
           <li class="<?php echo $opcion41; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=cargas&a=index"><i class="fa fa-circle-o"></i> Cargas de Comb. (Fábrica)</a></li>
           <li class="<?php echo $opcion44; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=particulares&a=cargas"><i class="fa fa-circle-o"></i> Cargas de Comb. (Particulares)</a></li>
+          <li class="<?php echo $opcion51.$opcion58.$opcion52.$opcion53.$opcion57.$opcion56; ?> treeview">
+            <a href="#"><i class="fa fa-circle-o"></i> Reportes
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="<?php echo $opcion51; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=planilla"><i class="fa fa-circle-o"></i> Planilla Mensual</a></li>
+              <li class="<?php echo $opcion58; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=planillaTodos"><i class="fa fa-circle-o"></i> Planilla Mensual (Todos)</a></li>
+              <li class="<?php echo $opcion52; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=precios"><i class="fa fa-circle-o"></i> Evolución de Precios</a></li>
+              <li class="<?php echo $opcion53; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=historico"><i class="fa fa-circle-o"></i> Histórico de Consumo</a></li>
+              <li class="<?php echo $opcion57; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=cisterna"><i class="fa fa-circle-o"></i> Stock de Cisterna</a></li>
+              <li class="<?php echo $opcion56; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=particulares"><i class="fa fa-circle-o"></i> Cargas a Particulares</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <!-- <li class="<?php echo $opcion41.$opcion42.$opcion44; ?> treeview">
@@ -98,7 +113,7 @@
           <li class="<?php echo $opcion44; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=particulares&a=cargas"><i class="fa fa-circle-o"></i> Cargas a Particulares</a></li>
         </ul>
       </li> -->
-      <li class="<?php echo $opcion51.$opcion52.$opcion53.$opcion57.$opcion58; ?> treeview">
+      <!-- <li class="<?php echo $opcion51.$opcion52.$opcion53.$opcion57.$opcion58; ?> treeview">
         <a href="#">
           <i class="fa fa-paper-plane"></i> <span>Reportes</span>
           <span class="pull-right-container">
@@ -110,10 +125,10 @@
           <li class="<?php echo $opcion58; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=planillaTodos"><i class="fa fa-circle-o"></i> Planilla Mensual (Todos)</a></li>
           <li class="<?php echo $opcion52; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=precios"><i class="fa fa-circle-o"></i> Evolución de Precios</a></li>
           <li class="<?php echo $opcion53; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=historico"><i class="fa fa-circle-o"></i> Histórico de Consumo</a></li>
-          <li class="<?php echo $opcion56; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=particulares"><i class="fa fa-circle-o"></i> Cargas a Particulares</a></li>
           <li class="<?php echo $opcion57; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=cisterna"><i class="fa fa-circle-o"></i> Stock de Cisterna</a></li>
+          <li class="<?php echo $opcion56; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=reportes&a=particulares"><i class="fa fa-circle-o"></i> Cargas a Particulares</a></li>
         </ul>
-      </li>
+      </li> -->
       <li class="<?php echo $opcion81.$opcion82.$opcion831.$opcion832.$opcion833.$opcion834.$opcion835; ?> treeview" style="border:1px solid gray;">
         <a href="#">
           <i class="fa fa-dot-circle-o"></i> <span>Neumáticos</span>
