@@ -39,7 +39,7 @@ class ParticularesModelo {
   public function getCargas() {
     $sql = "select * from cargas_part
               inner join particulares on cargas_part.idParticular=particulares.idParticular
-              order by fecha asc,idCargaPart asc";
+              order by fecha desc,idCargaPart desc";
     $consulta = DB::select($sql,null);
     return $consulta;
   }

@@ -190,7 +190,7 @@ function alerta(tipo,titulo,mensaje,icono) {
 
 function datatable() {
   $('#tabla_registros').DataTable({
-      "order": [[ 1, "asc" ]],
+      "order": [],
       'paging'      : true,
       'lengthChange': false,
       'searching'   : false,
