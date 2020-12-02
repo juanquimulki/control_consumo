@@ -72,6 +72,18 @@
           <i class="fa fa-flask"></i> <span>Cisterna</span>
         </a>
       </li> -->
+      <li class="<?php echo $opcion61; ?> treeview">
+        <a href="#">
+          <i class="fa fa-gears"></i> <span>Configuración</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="<?php echo $opcion61; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=usuarios&a=index"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> BackUp</a></li>
+        </ul>
+      </li>
       <li class="<?php echo $opcion41.$opcion42.$opcion44.$opcion51.$opcion58.$opcion52.$opcion53.$opcion57.$opcion56; ?> treeview">
         <a href="#">
           <i class="fa fa-keyboard-o"></i> <span>Módulo Combustible</span>
@@ -131,7 +143,7 @@
       </li> -->
       <li class="<?php echo $opcion81.$opcion82.$opcion831.$opcion832.$opcion833.$opcion834.$opcion835; ?> treeview" style="border:1px solid gray;">
         <a href="#">
-          <i class="fa fa-dot-circle-o"></i> <span>Neumáticos</span>
+          <i class="fa fa-dot-circle-o"></i> <span>Módulo Neumáticos</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
@@ -155,21 +167,9 @@
           </li>
         </ul>
       </li>
-      <li class="<?php echo $opcion61; ?> treeview">
-        <a href="#">
-          <i class="fa fa-gears"></i> <span>Configuración</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li class="<?php echo $opcion61; ?>"><a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/control_consumo/app/index.php?c=usuarios&a=index"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> BackUp</a></li>
-        </ul>
-      </li>
       <li class="">
         <a href="http://<?php echo $GLOBALS['SERVER_NAME']; ?>/ordenes_trabajo/" target='_blank'>
-          <i class="fa fa-paperclip"></i> <span>Ordenes de Trabajo</span>
+          <i class="fa fa-paperclip"></i> <span>Módulo Órdenes de Trabajo</span>
         </a>
       </li>
       <li class="<?php echo $opcion43.$opcion54.$opcion55; ?> treeview">

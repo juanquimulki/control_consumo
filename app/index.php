@@ -1,9 +1,9 @@
 <?php
-$GLOBALS['SERVER_NAME']="ceramicasgocamaras.ddns.net:8080";
+$GLOBALS['SERVER_NAME']="localhost:88";
 
 if ($_SERVER['HTTP_HOST']==$GLOBALS['SERVER_NAME']) {
 session_start();
-error_reporting(0);
+//error_reporting(0);
 
 //BLOQUE DE SEGURIDAD
 if (($_GET['c']=="usuarios") && ($_GET['a']=="login")) {}
