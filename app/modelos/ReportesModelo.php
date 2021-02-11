@@ -126,17 +126,17 @@ class ReportesModelo {
   }
 
   public function getEtiquetas() {
-    $sql  = "select * from precios
-              order by fecha
-              limit 20";
+    $sql  = "select * from (select * from precios
+              order by fecha desc
+              limit 20) as tabla order by tabla.fecha";
     $consulta = DB::select($sql,null);
     return $consulta;
   }
 
   public function getDatos() {
-    $sql  = "select * from precios
-              order by fecha
-              limit 20";
+    $sql  = "select * from (select * from precios
+              order by fecha desc
+              limit 20) as tabla order by tabla.fecha";
     $consulta = DB::select($sql,null);
     return $consulta;
   }
