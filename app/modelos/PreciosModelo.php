@@ -3,7 +3,7 @@ require_once "modelos/DB.php";
 
 class PreciosModelo {
   public function getPrecios() {
-    $consulta = DB::select("select * from precios order by fecha",null);
+    $consulta = DB::select("select * from precios order by fecha desc",null);
     return $consulta;
   }
 

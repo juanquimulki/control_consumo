@@ -24,7 +24,8 @@ class ReportesModelo {
   public function getConsultaHistorico($desde,$hasta) {
     $sql  = "select month(fecha) as mes, year(fecha) as anio, sum(litros) as litros, sum(precio*litros) as precio from cargas
               where fecha between ? and ?
-              group by mes,anio";
+              group by mes,anio
+              order by fecha";
     $bind = array($desde,$hasta);
     $consulta = DB::select($sql,$bind);
     return $consulta;

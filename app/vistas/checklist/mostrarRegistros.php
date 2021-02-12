@@ -54,7 +54,7 @@
                 echo "<tr>";
                 foreach ($campos as $c) {
                   if ($c=="fecha")
-                    echo "<td>".date("d/m/Y",strtotime($r[$c]))."</td>";
+                    echo "<td data-sort='".$r[$c]."'>".date("d/m/Y",strtotime($r[$c]))."</td>";
                   else
                     echo "<td>".utf8_encode($r[$c])."</td>";
                 }
