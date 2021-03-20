@@ -72,6 +72,12 @@
                 <div class="col-md-6">
                   <form class="form-horizontal">
                     <div class="form-group">
+                      <label for="kmshrs" class="col-sm-2 control-label">Odóm./Reloj</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="kmshrs" placeholder="Kms/Hrs..." style="width:100px;" />
+                      </div>
+                    </div>
+                    <div class="form-group">
                       <label for="litros" class="col-sm-2 control-label">Litros</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="litros" placeholder="Litros..." style="width:100px;" />

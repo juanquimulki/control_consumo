@@ -25,6 +25,7 @@ function guardar() {
   $("#alerta").hide();
   var fecha         = $("#fecha").val();
   var idvehiculo    = $("#idvehiculo").val();
+  var kmshrs        = $("#kmshrs").val();
   var litros        = $("#litros").val();
   var precinto      = $("#precinto").val();
   var idoperario    = $("#idoperario").val();
@@ -34,7 +35,7 @@ function guardar() {
   $.ajax({
     type: "POST",
     url: "index.php?c=cargas&a=validar",
-    data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&litros="+litros+"&precinto="+precinto+"&idoperario="+idoperario+"&observaciones="+observaciones+"&precio="+precio,
+    data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&kmshrs="+kmshrs+"&litros="+litros+"&precinto="+precinto+"&idoperario="+idoperario+"&observaciones="+observaciones+"&precio="+precio,
     success: function(data) {
       if (data) {
         alerta("warning","Atención",data,"fa-warning");
@@ -43,7 +44,7 @@ function guardar() {
         $.ajax({
           type: "POST",
           url: "index.php?c=cargas&a=guardar",
-          data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&litros="+litros+"&precinto="+precinto+"&idoperario="+idoperario+"&observaciones="+observaciones+"&precio="+precio,
+          data: "fecha="+fecha+"&idvehiculo="+idvehiculo+"&kmshrs="+kmshrs+"&litros="+litros+"&precinto="+precinto+"&idoperario="+idoperario+"&observaciones="+observaciones+"&precio="+precio,
           success: function(data) {
             if (data!=0 && $.isNumeric(data)) {
               $("#id").val(data);
@@ -64,6 +65,7 @@ function cancelar() {
   $("#id").val("#");
   $("#fecha").val("");
   $("#idvehiculo").val("0");
+  $("#kmshrs").val("");
   $("#litros").val("");
   $("#precinto").val("");
   $("#idoperario").val("0");

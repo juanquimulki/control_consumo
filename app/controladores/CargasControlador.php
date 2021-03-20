@@ -22,6 +22,11 @@ class CargasControlador {
       echo "- No ha ingresado FECHA.<br>";
     if ($_POST['idvehiculo']==0)
       echo "- No ha escogido VEHÍCULO.<br>";
+    if (empty($_POST['kmshrs']) || $_POST['kmshrs']==0)
+      echo "- No ha ingresado KMS/HRS.<br>";
+    else 
+      if (!is_numeric($_POST['kmshrs']))
+        echo "- Los KMS/HRS deben ser un número.<br>";
     if (empty($_POST['litros']) || $_POST['litros']==0)
       echo "- No ha ingresado LITROS.<br>";
     else 
@@ -41,6 +46,8 @@ class CargasControlador {
     $fecha = Fechas::fecha_mysql($_POST['fecha']);
     require_once "modelos/CargasModelo.php";
     $id = CargasModelo::insertCarga($fecha,$_POST['idvehiculo'],$_POST['litros'],$_POST['precinto'],$_POST['idoperario'],$_POST['observaciones'],$_POST['precio']);
+    require_once "modelos/TrabajosModelo.php";
+    TrabajosModelo::insertTrabajo($fecha,$_POST['idvehiculo'],$_POST['kmshrs'],$_POST['idoperario'],$_POST['observaciones']);
     echo $id;
   }
 
